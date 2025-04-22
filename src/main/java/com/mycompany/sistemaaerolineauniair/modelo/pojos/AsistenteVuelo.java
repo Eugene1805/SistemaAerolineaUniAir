@@ -8,6 +8,6 @@ package com.mycompany.sistemaaerolineauniair.modelo.pojos;
  *
  * @author eugen
  */
-public class AsistenteVuelo {
+public class AsistenteVuelo extends Empleado{
     
 }

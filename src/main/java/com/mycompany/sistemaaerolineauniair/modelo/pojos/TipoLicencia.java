@@ -9,5 +9,7 @@ package com.mycompany.sistemaaerolineauniair.modelo.pojos;
  * @author eugen
  */
 public enum TipoLicencia {
-    
+    DEPORTIVO,
+    COMERCIAL,
+    DELINEAAEREA;
 }

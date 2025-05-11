@@ -5,4 +5,5 @@ module com.mycompany.sistemaaerolineauniair {
 
     opens com.mycompany.sistemaaerolineauniair to javafx.fxml;
     exports com.mycompany.sistemaaerolineauniair;
+    requires com.google.gson;
 }

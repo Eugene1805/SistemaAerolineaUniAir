@@ -63,7 +63,7 @@ public class AeropuertoDAOImp implements AeropuertoDAO{
     }
 
     @Override
-    public void update(Aeropuerto aeropuesto) throws IOException {
+    public void update(Aeropuerto aeropuerto) throws IOException {
         //TODO
     }
 

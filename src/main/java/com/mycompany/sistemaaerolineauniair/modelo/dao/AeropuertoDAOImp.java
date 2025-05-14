@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.mycompany.sistemaaerolineauniair.modelo.pojos.Aeropuerto;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,7 +15,6 @@ import java.io.Reader;
 import java.io.Writer;
 import java.nio.file.Paths;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -75,19 +76,19 @@ public class AeropuertoDAOImp implements AeropuertoDAO{
     }
 
     @Override
-    public List<Aeropuerto> readAll() throws IOException {
+    public ObservableList<Aeropuerto> readAll() throws IOException {
         try (Reader reader = new FileReader(FILE_PATH)) {
-            Type listType = new TypeToken<ArrayList<Aeropuerto>>(){}.getType();
+            Type listType = new TypeToken<ObservableList<Aeropuerto>>(){}.getType();
             return gson.fromJson(reader, listType);
         } catch (FileNotFoundException e) {
-            return new ArrayList<>();
+            return FXCollections.observableArrayList();
         } catch (IOException e) {
             throw new RuntimeException("Error al leer el archivo JSON", e);
         }
     }
 
     @Override
-    public void exportInformation() throws IOException {
+    public void exportInformation(String extension) throws IOException {
         //TODO
     }
     

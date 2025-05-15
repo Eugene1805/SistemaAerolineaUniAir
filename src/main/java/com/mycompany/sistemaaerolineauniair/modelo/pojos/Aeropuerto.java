@@ -71,6 +71,4 @@ public class Aeropuerto {
     public void setFlota(int flota) {
         this.flota = flota;
     }
-    
-    
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLFormularioClienteController">
+   <children>
+      <TextField fx:id="tfNombre" layoutX="26.0" layoutY="95.0" promptText="Nombre" />
+      <TextField fx:id="tfApellidoPaterno" layoutX="26.0" layoutY="169.0" promptText="Apellido paterno" />
+      <TextField fx:id="tfApellidoMaterno" layoutX="26.0" layoutY="244.0" promptText="Apellido materno" />
+      <TextField fx:id="tfNacionalidad" layoutX="321.0" layoutY="95.0" promptText="Nacionalidad" />
+      <DatePicker fx:id="dpFechaNacimiento" layoutX="321.0" layoutY="169.0" promptText="Fecha de Nacimiento" />
+      <Label layoutX="26.0" layoutY="68.0" text="Nombre:" />
+      <Label layoutX="26.0" layoutY="142.0" text="Apellido paterno:" />
+      <Label layoutX="26.0" layoutY="217.0" text="Apellido materno:" />
+      <Label layoutX="321.0" layoutY="61.0" text="Nacionalidad" />
+      <Label layoutX="321.0" layoutY="142.0" text="Fecha de nacimiento:" />
+      <Button layoutX="335.0" layoutY="323.0" mnemonicParsing="false" onAction="#onAceptar" text="Aceptar" />
+      <Button layoutX="475.0" layoutY="323.0" mnemonicParsing="false" onAction="#onCancelar" text="Cancelar" />
+   </children>
+</AnchorPane>

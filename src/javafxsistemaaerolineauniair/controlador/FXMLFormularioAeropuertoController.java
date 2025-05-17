@@ -44,7 +44,9 @@ public class FXMLFormularioAeropuertoController implements Initializable {
 
     @FXML
     private void btnAceptar(ActionEvent event) {
-        if (tfNombre.getText().isEmpty() || tfDireccion.getText().isEmpty()) {
+        if (tfNombre.getText().isEmpty() || tfDireccion.getText().isEmpty()
+                || tfPersonaContacto.getText().isEmpty() 
+                || tfTelefono.getText().isEmpty() || tfFlota.getText().isEmpty()) {
             Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos requeridos", 
                     "Nombre y Dirección son campos obligatorios");
             return;
@@ -63,7 +65,7 @@ public class FXMLFormularioAeropuertoController implements Initializable {
 
     @FXML
     private void btnCancelar(ActionEvent event) {
-         confirmado = false;
+        confirmado = false;
         ((Stage) tfNombre.getScene().getWindow()).close();  
     }
 

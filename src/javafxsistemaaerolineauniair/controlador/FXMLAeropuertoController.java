@@ -98,7 +98,7 @@ public class FXMLAeropuertoController implements Initializable {
                     "Aeropuerto registrado correctamente");
             }
         } catch (IOException e) {
-            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error al registrar un numero aeropuerto", 
+            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error al registrar un nuevo aeropuerto", 
                     "Error al generar un ID unico para el aeropuerto");
         }
     }
@@ -158,30 +158,13 @@ public class FXMLAeropuertoController implements Initializable {
 
     @FXML
     private void onExportarPDF(ActionEvent event) {
-                exportarArchivoConExtension("PDF files (*.pdf)", "*.pdf");
+        exportarArchivoConExtension("PDF files (*.pdf)", "*.pdf");
 
     }
 
     @FXML
     private void onExportarXLS(ActionEvent event) {
         exportarArchivoConExtension("Excel 97-2003 (*.xls)", "*.xls");
-    }
-    
-    @FXML
-    private void btnCerrarSesion(ActionEvent event) {
-        try{
-            Stage escenarioBase =(Stage) tvAeropuerto.getScene().getWindow();
-            
-            Parent vista = FXMLLoader.load(JavaFXSistemaAerolineaUniAir.class.
-                    getResource("vista/FXMLLogin.fxml"));
-            
-            Scene escenaPrincipal = new Scene(vista);
-            escenarioBase.setScene(escenaPrincipal);
-            escenarioBase.setTitle("Inicio Sesion");
-            escenarioBase.showAndWait();
-        }catch(IOException ex){
-            ex.printStackTrace();
-        }
     }
     
     private void configureTable(){
@@ -248,13 +231,12 @@ public class FXMLAeropuertoController implements Initializable {
         File archivoSeleccionado = fileChooser.showSaveDialog(null);
         if (archivoSeleccionado != null) {
             try {
-                AeropuertoDAO dao = new AeropuertoDAO();
-                dao.exportarAArchivo(archivoSeleccionado);
+                aeropuertoDAO.exportarAArchivo(archivoSeleccionado);
                 Util.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Exito",
                         "Exportacion completada correctamente");
             } catch (IOException | DocumentException e) {
                 e.printStackTrace();
-                Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "Erro al exportar el archivo");
+                Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "Error al exportar el archivo");
             }
         }
     }    

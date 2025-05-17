@@ -36,12 +36,13 @@ public class AeropuertoDAO extends GenericDAO<Aeropuerto>{
     
     @Override
     protected String[] obtenerNombresColumnas() {
-        return new String[]{"Nombre", "Dirección", "Persona de Contacto", "Teléfono", "Flota"};
+        return new String[]{"ID","Nombre", "Dirección", "Persona de Contacto", "Teléfono", "Flota"};
     }
     
     @Override
     protected String[] obtenerValoresFila(Aeropuerto aeropuerto) {
         return new String[]{
+            String.valueOf(aeropuerto.getId()),
             aeropuerto.getNombre(),
             aeropuerto.getDireccion(),
             aeropuerto.getPersonaContacto(),
@@ -108,7 +109,8 @@ public class AeropuertoDAO extends GenericDAO<Aeropuerto>{
      * @param id ID del aeropuerto
      * @return true si se puede eliminar
      */
-    public boolean puedeEliminarse(int id) {
+    public boolean puedeEliminarse(int id) { //TODO 
+        //Posible nueva excepcion personalidada AeropuertoConVueloAsociadoException
         // Implementar lógica de verificación con VueloDAO
         try {
             // VueloDAO vueloDAO = DAOManager.getInstance().getVueloDAO();

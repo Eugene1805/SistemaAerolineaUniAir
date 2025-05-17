@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLClienteController">
-    
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLClienteController">
+   <children>
+      <Label layoutX="40.0" layoutY="90.0" text="Clientes" textFill="#0e437c">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tvClientes" layoutX="40.0" layoutY="161.0" prefHeight="423.0" prefWidth="825.0">
+        <columns>
+          <TableColumn fx:id="tcNombre" prefWidth="199.0" text="Nombre" />
+          <TableColumn fx:id="tcApellidoPaterno" prefWidth="193.0" text="Apellido paterno" />
+            <TableColumn fx:id="tcApellidoMaterno" prefWidth="180.0" text="Apellido materno" />
+            <TableColumn fx:id="tcNacionalidad" prefWidth="156.0" text="Nacionalidad" />
+            <TableColumn fx:id="tcEdad" prefWidth="96.0" text="Edad" />
+        </columns>
+      </TableView>
+      <Button layoutX="602.0" layoutY="90.0" mnemonicParsing="false" onAction="#onRegistrar" text="Alta" />
+      <MenuButton layoutX="750.0" layoutY="90.0" mnemonicParsing="false" text="Exportar">
+        <items>
+          <MenuItem fx:id="btnExportarCSV" mnemonicParsing="false" onAction="#onExportarCSV" text="CSV" />
+          <MenuItem fx:id="btnExportarXLS" mnemonicParsing="false" onAction="#onExportarXLS" text="EXCEL (XLS)" />
+            <MenuItem fx:id="btnExportarXLSX" mnemonicParsing="false" onAction="#onExportarXLSX" text="EXCEL (XLSX)" />
+            <MenuItem fx:id="btnExportarPDF" mnemonicParsing="false" onAction="#onExportarPDF" text="PDF" />
+        </items>
+      </MenuButton>
+   </children>
 </AnchorPane>

@@ -9,7 +9,6 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLAeropuertoController">
    <children>
-      <Button layoutX="750.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnCerrarSesion" text="Cerrar Sesion" />
       <Label layoutX="40.0" layoutY="90.0" text="Aeropuertos" textFill="#0e437c">
          <font>
             <Font size="36.0" />
@@ -30,7 +29,7 @@
       <MenuButton layoutX="758.0" layoutY="97.0" mnemonicParsing="false" text="Exportar">
         <items>
           <MenuItem fx:id="btnExportarCsv" mnemonicParsing="false" onAction="#onExportarCSV" text="CSV" />
-          <MenuItem fx:id="btnExportarXLS" mnemonicParsing="false" onAction="#onExportarXLS" text="EXCEL (XSL)" />
+          <MenuItem fx:id="btnExportarXLS" mnemonicParsing="false" onAction="#onExportarXLS" text="EXCEL (XLS)" />
             <MenuItem fx:id="btnExportarXLSX" mnemonicParsing="false" onAction="#onExportarXLSX" text="EXCEL (XLSX)" />
             <MenuItem fx:id="btnExportarPDF" mnemonicParsing="false" onAction="#onExportarPDF" text="PDF" />
         </items>

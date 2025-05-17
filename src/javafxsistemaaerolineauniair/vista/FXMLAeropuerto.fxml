@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLAeropuertoController">
+   <children>
+      <Button layoutX="750.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnCerrarSesion" text="Cerrar Sesion" />
+      <Label layoutX="40.0" layoutY="90.0" text="Aeropuertos" textFill="#0e437c">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tvAeropuerto" layoutX="24.0" layoutY="166.0" prefHeight="342.0" prefWidth="850.0">
+        <columns>
+          <TableColumn fx:id="tcNombre" prefWidth="181.0" text="Nombre" />
+          <TableColumn fx:id="tcDireccion" minWidth="0.0" prefWidth="319.0" text="Direccion" />
+            <TableColumn fx:id="tcPersonaContacto" prefWidth="174.0" text="Persona Contacto" />
+            <TableColumn fx:id="tcTelefono" prefWidth="107.0" text="Telefono" />
+            <TableColumn fx:id="tcFlota" prefWidth="68.0" text="Flota" />
+        </columns>
+      </TableView>
+      <Button layoutX="345.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnAlta" text="Alta" />
+      <Button layoutX="450.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnActualizar" text="Actualizar" />
+      <Button layoutX="610.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnEliminar" text="Eliminar" />
+      <MenuButton layoutX="758.0" layoutY="97.0" mnemonicParsing="false" text="Exportar">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#btnExportarCSV" text="CSV" />
+          <MenuItem mnemonicParsing="false" onAction="#btnExportarXSL" text="EXCEL (XSL)" />
+            <MenuItem mnemonicParsing="false" onAction="#btnExportarXLSX" text="EXCEL (XLSX)" />
+            <MenuItem mnemonicParsing="false" onAction="#btnExportarPDF" text="PDF" />
+        </items>
+      </MenuButton>
+   </children>
+</AnchorPane>

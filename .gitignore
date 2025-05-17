@@ -1,4 +1,6 @@
 /target/
-.mvn/
-mvnw
-mvnw.cmd
+/nbproject/
+manifest.mf
+build.xml
+/build/
+/dist/

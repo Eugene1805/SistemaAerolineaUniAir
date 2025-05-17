@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLFormularioAeropuertoController">
+   <children>
+      <TextField fx:id="tfNombre" layoutX="29.0" layoutY="103.0" promptText="Nombre" />
+      <TextField fx:id="tfDireccion" layoutX="29.0" layoutY="189.0" promptText="Direccion" />
+      <TextField fx:id="tfPersonaContacto" layoutX="29.0" layoutY="270.0" promptText="Persona contacto" />
+      <TextField fx:id="tfTelefono" layoutX="329.0" layoutY="103.0" promptText="Telefono" />
+      <TextField fx:id="tfFlota" layoutX="329.0" layoutY="181.0" promptText="Tamaño de flota" />
+      <Button layoutX="329.0" layoutY="309.0" mnemonicParsing="false" onAction="#btnAceptar" text="Aceptar" />
+      <Button layoutX="463.0" layoutY="309.0" mnemonicParsing="false" onAction="#btnCancelar" text="Cancelar" />
+      <Label layoutX="29.0" layoutY="64.0" text="Nombre:" />
+      <Label layoutX="29.0" layoutY="154.0" text="Direccion:" />
+      <Label layoutX="29.0" layoutY="243.0" text="Persona contacto:" />
+      <Label layoutX="329.0" layoutY="64.0" text="Telefono:" />
+      <Label layoutX="329.0" layoutY="154.0" text="Tamaño de flota" />
+   </children>
+</AnchorPane>

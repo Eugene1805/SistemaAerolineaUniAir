@@ -1,11 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLPrincipalController">
-    
+<AnchorPane id="AnchorPane" prefHeight="642.0" prefWidth="823.0" style="-fx-background-color: #17283c;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLPrincipalController">
+   <children>
+      <AnchorPane prefHeight="642.0" prefWidth="300.0" style="-fx-background-color: #17283c;">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="203.0" layoutX="41.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/UniAir_Logo_Blanco_Transparente.png" />
+               </image>
+            </ImageView>
+            <Label layoutY="124.0" prefHeight="39.0" prefWidth="301.0" style="-fx-background-color: #3c6fae;" text="      Administrar empleados" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="163.0" onMouseClicked="#lbClicAdministrativo" prefHeight="39.0" prefWidth="247.0" style="-fx-cursor: hand;" text="Administrativo" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="202.0" onMouseClicked="#lbClicPiloto" prefHeight="39.0" prefWidth="247.0" style="-fx-cursor: hand;" text="Piloto" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="241.0" onMouseClicked="#lbClicAsistentePiloto" prefHeight="39.0" prefWidth="247.0" style="-fx-cursor: hand;" text="Asistente Piloto" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutY="280.0" prefHeight="39.0" prefWidth="301.0" style="-fx-background-color: #3c6fae;" text="      Administrar aerolínea" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="319.0" onMouseClicked="#lbClicAeropuerto" prefHeight="39.0" prefWidth="247.0" style="-fx-cursor: hand;" text="Aeropuerto" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="358.0" onMouseClicked="#lbClicAviones" prefHeight="39.0" prefWidth="247.0" style="-fx-cursor: hand;" text="Aviones" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="397.0" onMouseClicked="#lbClicVuelos" prefHeight="39.0" prefWidth="247.0" style="-fx-cursor: hand;" text="Vuelos" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutY="436.0" prefHeight="39.0" prefWidth="301.0" style="-fx-background-color: #3c6fae;" text="      Administrar clientes" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="475.0" onMouseClicked="#lbClicRegistroClientes" prefHeight="39.0" prefWidth="247.0" style="-fx-cursor: hand;" text="Registro de clientes" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="514.0" onMouseClicked="#lbClicComprarBoleto" prefHeight="39.0" prefWidth="247.0" style="-fx-cursor: hand;" text="Comprar boleto" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbCerrarSesion" layoutY="603.0" onMouseClicked="#lbClicCerrarSesión" prefHeight="39.0" prefWidth="301.0" style="-fx-background-color: #254162; -fx-cursor: hand;" text="                    Cerrar Sesión" textAlignment="RIGHT" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="300.0" prefHeight="300.0" prefWidth="380.0">
+         <children>
+            <ImageView fitHeight="642.0" fitWidth="969.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/AvionDelMenu.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

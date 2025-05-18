@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
+ */
 package javafxsistemaaerolineauniair.controlador;
 
 import java.net.URL;
@@ -7,9 +11,9 @@ import javafx.fxml.Initializable;
 /**
  * FXML Controller class
  *
- * @author eugen
+ * @author uriel
  */
-public class FXMLEmpleadoController implements Initializable {
+public class FXMLPilotoController implements Initializable {
 
     /**
      * Initializes the controller class.

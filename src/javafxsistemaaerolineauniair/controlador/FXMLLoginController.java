@@ -22,7 +22,7 @@ import javafxsistemaaerolineauniair.util.Util;
 /**
  * FXML Controller class
  *
- * @author eugen
+ * @author uriel
  */
 public class FXMLLoginController implements Initializable {
 
@@ -73,9 +73,9 @@ public class FXMLLoginController implements Initializable {
             Usuario usuarioSesion = login.verificarCredenciales
             (usuario, contrasena);
             if (usuarioSesion != null){
-                Util.mostrarAlertaSimple(Alert.AlertType.INFORMATION, 
-                        "Credenciales correctas", "Bienvenido(a) " 
-                        + usuarioSesion.toString() + " al sistema.");
+                //Util.mostrarAlertaSimple(Alert.AlertType.INFORMATION, 
+                        //"Credenciales correctas", "Bienvenido(a) " 
+                        //+ usuarioSesion.toString() + " al sistema.");
                 irPantallaPrincipal();
             }else{
                 Util.mostrarAlertaSimple(Alert.AlertType.WARNING, 

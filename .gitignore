@@ -1,6 +1,4 @@
 /target/
-/nbproject/
-manifest.mf
-build.xml
+
 /build/
 /dist/

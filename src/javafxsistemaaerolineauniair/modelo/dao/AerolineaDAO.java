@@ -5,19 +5,19 @@ import java.io.File;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
-import javafxsistemaaerolineauniair.modelo.pojo.Aeropuerto;
+import javafxsistemaaerolineauniair.modelo.pojo.Aerolinea;
 
 /**
  *
  * @author eugen
  */
-public class AeropuertoDAO extends GenericDAO<Aeropuerto>{
+public class AerolineaDAO extends GenericDAO<Aerolinea>{
     
     private static final String DATA_DIR = "data";
-    private static final String FILE_NAME = "aeropuertos.json";
+    private static final String FILE_NAME = "aerolineass.json";
     
-    public AeropuertoDAO() {
-        super(obtenerRutaCompleta(), Aeropuerto.class);
+    public AerolineaDAO() {
+        super(obtenerRutaCompleta(), Aerolinea.class);
     }
     
     /**
@@ -40,26 +40,26 @@ public class AeropuertoDAO extends GenericDAO<Aeropuerto>{
     }
     
     @Override
-    protected String[] obtenerValoresFila(Aeropuerto aeropuerto) {
+    protected String[] obtenerValoresFila(Aerolinea aerolinea) {
         return new String[]{
-            String.valueOf(aeropuerto.getId()),
-            aeropuerto.getNombre(),
-            aeropuerto.getDireccion(),
-            aeropuerto.getPersonaContacto(),
-            aeropuerto.getTelefono(),
-            String.valueOf(aeropuerto.getFlota())
+            String.valueOf(aerolinea.getId()),
+            aerolinea.getNombre(),
+            aerolinea.getDireccion(),
+            aerolinea.getPersonaContacto(),
+            aerolinea.getTelefono(),
+            String.valueOf(aerolinea.getFlota())
         };
     }
     
     // Métodos específicos para Aeropuerto
     
     /**
-     * Busca un aeropuerto por su ID
+     * Busca una aerolinea por su ID
      * @param id ID del aeropuerto
-     * @return Aeropuerto encontrado o null
+     * @return Aerolinea encontrada o null
      * @throws IOException 
      */
-    public Aeropuerto buscarPorId(int id) throws IOException {
+    public Aerolinea buscarPorId(int id) throws IOException {
         return obtenerTodos().stream()
             .filter(a -> a.getId() == id)
             .findFirst()
@@ -67,27 +67,27 @@ public class AeropuertoDAO extends GenericDAO<Aeropuerto>{
     }
     
     /**
-     * Actualiza un aeropuerto existente
-     * @param aeropuertoActualizado Aeropuerto con datos actualizados
+     * Actualiza una aerolinea existente
+     * @param aerolineaActualizada  Aerolinea con datos actualizados
      * @throws IOException 
      */
-    public void actualizar(Aeropuerto aeropuertoActualizado) throws IOException {
-        List<Aeropuerto> aeropuertos = obtenerTodos();
+    public void actualizar(Aerolinea aerolineaActualizada) throws IOException {
+        List<Aerolinea> aeropuertos = obtenerTodos();
         aeropuertos.replaceAll(a -> 
-            a.getId() == aeropuertoActualizado.getId() ? 
-            aeropuertoActualizado : a);
+            a.getId() == aerolineaActualizada.getId() ? 
+            aerolineaActualizada : a);
         guardarTodos(aeropuertos);
     }
     
     /**
      * Elimina un aeropuerto por su ID
-     * @param id ID del aeropuerto a eliminar
+     * @param id ID de la aerolinea a eliminar
      * @throws IOException 
      */
     public void eliminar(int id) throws IOException {
-        List<Aeropuerto> aeropuertos = obtenerTodos();
-        aeropuertos.removeIf(a -> a.getId() == id);
-        guardarTodos(aeropuertos);
+        List<Aerolinea> aerolineas = obtenerTodos();
+        aerolineas.removeIf(a -> a.getId() == id);
+        guardarTodos(aerolineas);
     }
     
     /**

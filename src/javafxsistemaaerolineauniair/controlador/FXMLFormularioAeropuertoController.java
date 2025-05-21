@@ -8,8 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafxsistemaaerolineauniair.modelo.pojo.Aeropuerto;
-import javafxsistemaaerolineauniair.modelo.dao.AeropuertoDAO;
+import javafxsistemaaerolineauniair.modelo.pojo.Aerolinea;
+import javafxsistemaaerolineauniair.modelo.dao.AerolineaDAO;
 import javafxsistemaaerolineauniair.util.Util;
 
 /**
@@ -31,8 +31,8 @@ public class FXMLFormularioAeropuertoController implements Initializable {
     private TextField tfFlota;
 
     
-    private Aeropuerto aeropuerto;
-    private AeropuertoDAO aeropuertoDAO;
+    private Aerolinea aeropuerto;
+    private AerolineaDAO aeropuertoDAO;
     private boolean confirmado = false;
     /**
      * Initializes the controller class.
@@ -69,7 +69,7 @@ public class FXMLFormularioAeropuertoController implements Initializable {
         ((Stage) tfNombre.getScene().getWindow()).close();  
     }
 
-    void inicializarInformacion(Aeropuerto aeropuerto, AeropuertoDAO aeropuertoDAO) {
+    void inicializarInformacion(Aerolinea aeropuerto, AerolineaDAO aeropuertoDAO) {
         this.aeropuerto = aeropuerto;
         this.aeropuertoDAO = aeropuertoDAO;
         

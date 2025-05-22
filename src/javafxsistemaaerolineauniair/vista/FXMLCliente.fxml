@@ -26,10 +26,10 @@
       <Button layoutX="602.0" layoutY="90.0" mnemonicParsing="false" onAction="#onRegistrar" style="-fx-cursor: hand;" text="Alta" />
       <MenuButton layoutX="750.0" layoutY="90.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="Exportar">
         <items>
-          <MenuItem fx:id="btnExportarCSV" mnemonicParsing="false" onAction="#onExportarCSV" text="CSV" />
-          <MenuItem fx:id="btnExportarXLS" mnemonicParsing="false" onAction="#onExportarXLS" text="EXCEL (XLS)" />
-            <MenuItem fx:id="btnExportarXLSX" mnemonicParsing="false" onAction="#onExportarXLSX" text="EXCEL (XLSX)" />
-            <MenuItem fx:id="btnExportarPDF" mnemonicParsing="false" onAction="#onExportarPDF" text="PDF" />
+          <MenuItem fx:id="btnExportarCSV" mnemonicParsing="false" onAction="#onExportarCSV" style="-fx-cursor: hand;" text="CSV" />
+          <MenuItem fx:id="btnExportarXLS" mnemonicParsing="false" onAction="#onExportarXLS" style="-fx-cursor: hand;" text="EXCEL (XLS)" />
+            <MenuItem fx:id="btnExportarXLSX" mnemonicParsing="false" onAction="#onExportarXLSX" style="-fx-cursor: hand;" text="EXCEL (XLSX)" />
+            <MenuItem fx:id="btnExportarPDF" mnemonicParsing="false" onAction="#onExportarPDF" style="-fx-cursor: hand;" text="PDF" />
         </items>
       </MenuButton>
    </children>

@@ -23,8 +23,8 @@
             <TableColumn fx:id="tcEdad" prefWidth="96.0" text="Edad" />
         </columns>
       </TableView>
-      <Button layoutX="602.0" layoutY="90.0" mnemonicParsing="false" onAction="#onRegistrar" text="Alta" />
-      <MenuButton layoutX="750.0" layoutY="90.0" mnemonicParsing="false" text="Exportar">
+      <Button layoutX="602.0" layoutY="90.0" mnemonicParsing="false" onAction="#onRegistrar" style="-fx-cursor: hand;" text="Alta" />
+      <MenuButton layoutX="750.0" layoutY="90.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="Exportar">
         <items>
           <MenuItem fx:id="btnExportarCSV" mnemonicParsing="false" onAction="#onExportarCSV" text="CSV" />
           <MenuItem fx:id="btnExportarXLS" mnemonicParsing="false" onAction="#onExportarXLS" text="EXCEL (XLS)" />

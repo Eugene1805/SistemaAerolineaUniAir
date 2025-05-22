@@ -25,10 +25,10 @@
             <TableColumn fx:id="tcFlota" prefWidth="68.0" text="Flota" />
         </columns>
       </TableView>
-      <Button layoutX="317.0" layoutY="524.0" mnemonicParsing="false" onAction="#btnAlta" style="-fx-background-color: #2F80ED;" text="Alta" textFill="WHITE" />
-      <Button fx:id="btnActualizar" layoutX="398.0" layoutY="524.0" mnemonicParsing="false" onAction="#onActualizar" style="-fx-background-color: #2F80ED;" text="Actualizar" textFill="WHITE" />
-      <Button fx:id="btnEliminar" layoutX="531.0" layoutY="524.0" mnemonicParsing="false" onAction="#onEliminar" style="-fx-background-color: #2F80ED;" text="Eliminar" textFill="WHITE" />
-      <MenuButton layoutX="657.0" layoutY="524.0" mnemonicParsing="false" style="-fx-background-color: #2F80ED;" text="Exportar Informacion" textFill="WHITE">
+      <Button layoutX="317.0" layoutY="524.0" mnemonicParsing="false" onAction="#btnAlta" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Alta" textFill="WHITE" />
+      <Button fx:id="btnActualizar" layoutX="398.0" layoutY="524.0" mnemonicParsing="false" onAction="#onActualizar" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Actualizar" textFill="WHITE" />
+      <Button fx:id="btnEliminar" layoutX="531.0" layoutY="524.0" mnemonicParsing="false" onAction="#onEliminar" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Eliminar" textFill="WHITE" />
+      <MenuButton layoutX="657.0" layoutY="524.0" mnemonicParsing="false" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Exportar Informacion" textFill="WHITE">
         <items>
           <MenuItem fx:id="btnExportarCsv" mnemonicParsing="false" onAction="#onExportarCSV" text="CSV" />
           <MenuItem fx:id="btnExportarXLS" mnemonicParsing="false" onAction="#onExportarXLS" text="EXCEL (XLS)" />
@@ -43,7 +43,7 @@
                   <Font size="50.0" />
                </font>
             </Label>
-            <Button layoutX="772.0" layoutY="25.0" mnemonicParsing="false" onAction="#onRegresar" style="-fx-background-color: #1E2A38; -fx-border-color: #FFF;" text="Regresar" textFill="WHITE" />
+            <Button layoutX="772.0" layoutY="25.0" mnemonicParsing="false" onAction="#onRegresar" style="-fx-background-color: #1E2A38; -fx-border-color: #FFF; -fx-cursor: hand;" text="Regresar" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>

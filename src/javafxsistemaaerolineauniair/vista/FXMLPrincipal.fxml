@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="642.0" prefWidth="823.0" style="-fx-background-color: #17283c;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="642.0" prefWidth="1263.0" style="-fx-background-color: #17283c;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLPrincipalController">
    <children>
       <AnchorPane prefHeight="642.0" prefWidth="300.0" style="-fx-background-color: #17283c;">
          <children>
@@ -42,7 +42,7 @@
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="54.0" layoutY="319.0" onMouseClicked="#lbClicAeropuerto" prefHeight="39.0" prefWidth="247.0" style="-fx-cursor: hand;" text="Aeropuerto" textFill="WHITE">
+            <Label layoutX="54.0" layoutY="319.0" onMouseClicked="#lbClicAeropuerto" prefHeight="39.0" prefWidth="247.0" style="-fx-cursor: hand;" text="Aerolíneas" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>

@@ -14,7 +14,7 @@ import javafxsistemaaerolineauniair.modelo.pojo.Aerolinea;
 public class AerolineaDAO extends GenericDAO<Aerolinea>{
     
     private static final String DATA_DIR = "data";
-    private static final String FILE_NAME = "aerolineass.json";
+    private static final String FILE_NAME = "aerolineas.json";
     
     public AerolineaDAO() {
         super(obtenerRutaCompleta(), Aerolinea.class);

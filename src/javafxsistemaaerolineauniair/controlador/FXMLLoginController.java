@@ -96,6 +96,7 @@ public class FXMLLoginController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Home");
+            escenarioBase.centerOnScreen();
             escenarioBase.showAndWait();
         } catch (IOException ex) {
             ex.printStackTrace();

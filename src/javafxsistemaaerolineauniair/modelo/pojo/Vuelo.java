@@ -9,7 +9,7 @@ public class Vuelo {
     private int tiempoRecorrido;
     private String ciudadSalida;
     private String ciudadLlegada;
-    private  fechaHoraSalida;
-    private  fechaLlegadaEstimada;
+   // private  fechaHoraSalida;
+   // private  fechaLlegadaEstimada;
     
 }

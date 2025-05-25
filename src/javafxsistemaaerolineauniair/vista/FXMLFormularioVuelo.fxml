@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLFormularioVueloController">
+<AnchorPane id="AnchorPane" prefHeight="482.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLFormularioVueloController">
    <children>
       <Label layoutX="27.0" layoutY="87.0" prefHeight="27.0" prefWidth="177.0" text="Número de pasajeros:" textFill="#333333">
          <font>
@@ -21,26 +21,26 @@
          </font>
       </Label>
       <TextField fx:id="tfCiudadSalida" layoutX="371.0" layoutY="126.0" prefHeight="25.0" prefWidth="214.0" promptText="Ciudad de salida" />
-      <Label fx:id="tfCiudadLlegada" layoutX="27.0" layoutY="174.0" text="Ciudad de llegada:" textFill="#333333">
+      <Label layoutX="27.0" layoutY="174.0" text="Ciudad de llegada:" textFill="#333333">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <TextField fx:id="tfCiudadLlegada" layoutX="371.0" layoutY="175.0" prefHeight="25.0" prefWidth="214.0" promptText="Ciudad de llegada" />
-      <Label layoutX="27.0" layoutY="228.0" text="Fecha y hora de llegada:" textFill="#333333" wrapText="true">
+      <Label layoutX="27.0" layoutY="281.0" text="Fecha y hora de llegada:" textFill="#333333" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <DatePicker fx:id="dpFechaLlegada" layoutX="262.0" layoutY="229.0" promptText="Fecha de llegada" />
-      <Label layoutX="26.0" layoutY="281.0" text="Fecha y hora de salida:" textFill="#333333">
+      <DatePicker fx:id="dpFechaLlegada" layoutX="262.0" layoutY="282.0" promptText="Fecha de llegada" />
+      <Label layoutX="26.0" layoutY="228.0" text="Fecha y hora de salida:" textFill="#333333">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <DatePicker fx:id="dpFechaHoraSalida" layoutX="262.0" layoutY="282.0" promptText="Fecha de salida" />
-      <Button layoutX="421.0" layoutY="349.0" mnemonicParsing="false" onAction="#btnClicAceptar" style="-fx-background-color: #2F80ED;" text="Aceptar" />
-      <Button layoutX="517.0" layoutY="349.0" mnemonicParsing="false" onAction="#btnClicCancelar" style="-fx-background-color: #2F80ED;" text="Cancelar" />
+      <DatePicker fx:id="dpFechaSalida" layoutX="262.0" layoutY="229.0" promptText="Fecha de salida" />
+      <Button layoutX="436.0" layoutY="436.0" mnemonicParsing="false" onAction="#btnClicGuardar" style="-fx-background-color: #2F80ED;" text="Guardar" />
+      <Button layoutX="524.0" layoutY="436.0" mnemonicParsing="false" onAction="#btnClicCancelar" style="-fx-background-color: #2F80ED;" text="Cancelar" />
       <AnchorPane layoutY="-1.0" prefHeight="78.0" prefWidth="600.0" style="-fx-background-color: #1E2A38;">
          <children>
             <Label layoutX="14.0" layoutY="13.0" text="Datos del vuelo" textFill="WHITE">
@@ -50,7 +50,19 @@
             </Label>
          </children>
       </AnchorPane>
-      <TextField fx:id="tfHoraLlegada" layoutX="449.0" layoutY="229.0" prefHeight="25.0" prefWidth="136.0" promptText="Hora llegada (HH:mm)" />
-      <TextField layoutX="449.0" layoutY="282.0" prefHeight="25.0" prefWidth="136.0" promptText="Hora salida (HH:mm)" />
+      <TextField fx:id="tfHoraLlegada" layoutX="449.0" layoutY="282.0" prefHeight="25.0" prefWidth="136.0" promptText="Hora llegada (HH:mm)" />
+      <TextField fx:id="tfHoraSalida" layoutX="449.0" layoutY="229.0" prefHeight="25.0" prefWidth="136.0" promptText="Hora salida (HH:mm)" />
+      <Label layoutX="27.0" layoutY="386.0" text="Avión:" textFill="#333333">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbAvion" disable="true" layoutX="371.0" layoutY="387.0" prefHeight="25.0" prefWidth="214.0" promptText="Avión" />
+      <Label layoutX="27.0" layoutY="333.0" text="Costo del boleto:" textFill="#333333">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfCostoBoleto" layoutX="371.0" layoutY="334.0" prefHeight="25.0" prefWidth="214.0" promptText="Costo del boleto" />
    </children>
 </AnchorPane>

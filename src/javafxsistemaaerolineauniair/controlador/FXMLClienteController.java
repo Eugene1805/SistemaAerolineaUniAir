@@ -9,6 +9,8 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
@@ -20,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -62,6 +65,8 @@ public class FXMLClienteController implements Initializable {
     
     private final ObservableList<Cliente> clientes = FXCollections.observableArrayList();
     private final ClienteDAO clienteDAO = new ClienteDAO();
+    @FXML
+    private Button btnRegresar;
     
     /**
      * Initializes the controller class.
@@ -186,6 +191,20 @@ public class FXMLClienteController implements Initializable {
                 e.printStackTrace();
                 Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "Error al exportar el archivo");
             }
+        }
+    }
+
+    @FXML
+    private void onRegresar(ActionEvent event) {
+        try {
+            Stage escenarioBase = (Stage) btnRegresar.getScene().getWindow();
+            Parent vista = FXMLLoader.load(JavaFXSistemaAerolineaUniAir.class.getResource("vista/FXMLPrincipal.fxml"));
+            Scene escenaPrincipal = new Scene(vista);
+            escenarioBase.setScene(escenaPrincipal);
+            escenarioBase.setTitle("Principal");
+            escenarioBase.showAndWait();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLAvionController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -16,7 +16,7 @@
                   <Font name="System Bold" size="50.0" />
                </font>
             </Label>
-            <Button layoutX="1014.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #1e2a38; -fx-border-color: #fff;" text="Regresar" textFill="WHITE" />
+            <Button layoutX="1014.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #1e2a38; -fx-border-color: #fff; -fx-cursor: hand;" text="Regresar" textFill="WHITE" />
          </children>
       </AnchorPane>
       <Label layoutX="14.0" layoutY="97.0" text="Vuelos Registrados" textFill="#1e2a38">
@@ -38,10 +38,10 @@
             <TableColumn fx:id="colAvion" prefWidth="145.0" text="Avion" />
         </columns>
       </TableView>
-      <Button layoutX="658.0" layoutY="544.0" mnemonicParsing="false" onAction="#btnClicAltaVuelos" style="-fx-background-color: #2F80ED;" text="Alta" textFill="WHITE" />
-      <Button fx:id="btnActualizar" disable="true" layoutX="741.0" layoutY="544.0" mnemonicParsing="false" onAction="#btnClicActualizarVuelo" style="-fx-background-color: #2F80ED;" text="Actualizar" textFill="WHITE" />
-      <Button fx:id="btnEliminar" disable="true" layoutX="848.0" layoutY="544.0" mnemonicParsing="false" onAction="#btnClicEliminarVuelo" style="-fx-background-color: #2F80ED;" text="Eliminar" textFill="WHITE" />
-      <MenuButton disable="true" layoutX="947.0" layoutY="544.0" mnemonicParsing="false" style="-fx-background-color: #2F80ED;" text="Exportar Infromación" textFill="WHITE">
+      <Button layoutX="658.0" layoutY="544.0" mnemonicParsing="false" onAction="#btnClicAltaVuelos" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Alta" textFill="WHITE" />
+      <Button fx:id="btnActualizar" disable="true" layoutX="741.0" layoutY="544.0" mnemonicParsing="false" onAction="#btnClicActualizarVuelo" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Actualizar" textFill="WHITE" />
+      <Button fx:id="btnEliminar" disable="true" layoutX="848.0" layoutY="544.0" mnemonicParsing="false" onAction="#btnClicEliminarVuelo" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Eliminar" textFill="WHITE" />
+      <MenuButton disable="true" layoutX="947.0" layoutY="544.0" mnemonicParsing="false" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Exportar Infromación" textFill="WHITE">
         <items>
           <MenuItem fx:id="btnExportarCsv" mnemonicParsing="false" onAction="#btnClicExportarCSV" text="CSV" />
           <MenuItem fx:id="btnExportarXLS" mnemonicParsing="false" onAction="#btnClicExportarXLS" text="EXCEL (XLS)" />

@@ -6,6 +6,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLAdministrativoController">
-    
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLAdministrativoController">
+   <children>
+      <Button fx:id="btnRegresar" layoutX="266.0" layoutY="184.0" mnemonicParsing="false" onAction="#onRegresar" style="-fx-background-color: #1E2A38; -fx-border-color: #FFF; -fx-cursor: hand;" text="Regresar" textFill="WHITE" />
+   </children>
 </AnchorPane>

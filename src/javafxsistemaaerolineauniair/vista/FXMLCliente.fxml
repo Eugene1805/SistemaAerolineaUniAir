@@ -32,5 +32,6 @@
             <MenuItem fx:id="btnExportarPDF" mnemonicParsing="false" onAction="#onExportarPDF" style="-fx-cursor: hand;" text="PDF" />
         </items>
       </MenuButton>
+      <Button fx:id="btnRegresar" layoutX="782.0" layoutY="35.0" mnemonicParsing="false" onAction="#onRegresar" style="-fx-background-color: #1E2A38; -fx-border-color: #FFF; -fx-cursor: hand;" text="Regresar" textFill="WHITE" />
    </children>
 </AnchorPane>

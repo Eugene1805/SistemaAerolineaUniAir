@@ -71,4 +71,10 @@ public class Aerolinea {
     public void setFlota(int flota) {
         this.flota = flota;
     }
+    
+    @Override
+    public String toString() {
+        return nombre; 
+    }
+    
 }

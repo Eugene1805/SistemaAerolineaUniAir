@@ -21,12 +21,12 @@ public class Vuelo {
     private LocalDate fechaLlegada;
     private LocalTime horaLlegada;
     
-    private String idAvion;
+    private int idAvion;
 
     public Vuelo() {
     }
 
-    public Vuelo(int idVuelo, int numPasajeros, int tiempoRecorrido, double costoBoleto, String ciudadSalida, String ciudadLlegada, LocalDate fechaSalida, LocalTime horaSalida, LocalDate fechaLlegada, LocalTime horaLlegada, String idAvion) {
+    public Vuelo(int idVuelo, int numPasajeros, int tiempoRecorrido, double costoBoleto, String ciudadSalida, String ciudadLlegada, LocalDate fechaSalida, LocalTime horaSalida, LocalDate fechaLlegada, LocalTime horaLlegada, int idAvion) {
         this.idVuelo = idVuelo;
         this.numPasajeros = numPasajeros;
         this.tiempoRecorrido = tiempoRecorrido;
@@ -128,11 +128,11 @@ public class Vuelo {
         this.horaLlegada = horaLlegada;
     }
 
-    public String getIdAvion() {
+    public int getIdAvion() {
         return idAvion;
     }
 
-    public void setIdAvion(String idAvion) {
+    public void setIdAvion(int idAvion) {
         this.idAvion = idAvion;
     }
 }

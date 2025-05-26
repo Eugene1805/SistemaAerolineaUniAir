@@ -4,8 +4,6 @@ import com.itextpdf.text.DocumentException;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import javafx.event.ActionEvent;
@@ -125,7 +123,7 @@ public class FXMLVueloController implements Initializable {
 
             Scene escena = new Scene(vista);
             escenarioFormulario.setScene(escena);
-            escenarioFormulario.setTitle(vuelo.getIdVuelo() == 0 ? 
+            escenarioFormulario.setTitle(vuelo.getIdVuelo() != 0 ? 
                 "Nuevo Vuelo" : "Editar Vuelo");
             escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
             escenarioFormulario.showAndWait();

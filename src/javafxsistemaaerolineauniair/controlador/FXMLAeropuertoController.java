@@ -2,7 +2,7 @@ package javafxsistemaaerolineauniair.controlador;
 
 import com.itextpdf.text.DocumentException;
 import java.io.File;
-import javafxsistemaaerolineauniair.modelo.dao.AerolineaDAO;
+import javafxsistemaaerolineauniair.modelo.dao.AeropuertoDAO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,7 +26,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafxsistemaaerolineauniair.modelo.pojo.Aerolinea;
+import javafxsistemaaerolineauniair.modelo.pojo.Aeropuerto;
 import javafxsistemaaerolineauniair.util.Util;
 import javafxsistemaaerolineauniair.JavaFXSistemaAerolineaUniAir;
 
@@ -36,10 +36,10 @@ import javafxsistemaaerolineauniair.JavaFXSistemaAerolineaUniAir;
  *
  * @author eugen
  */
-public class FXMLAerolineaController implements Initializable {
+public class FXMLAeropuertoController implements Initializable {
 
     @FXML
-    private TableView<Aerolinea> tvAeropuerto;
+    private TableView<Aeropuerto> tvAeropuerto;
     @FXML
     private TableColumn tcNombre;
     @FXML
@@ -51,9 +51,9 @@ public class FXMLAerolineaController implements Initializable {
     @FXML
     private TableColumn tcFlota;
     
-    private final ObservableList<Aerolinea> aeropuertos = FXCollections.observableArrayList();
+    private final ObservableList<Aeropuerto> aeropuertos = FXCollections.observableArrayList();
     
-    private final AerolineaDAO aeropuertoDAO = new AerolineaDAO();
+    private final AeropuertoDAO aeropuertoDAO = new AeropuertoDAO();
     @FXML
     private Button btnActualizar;
     @FXML
@@ -89,7 +89,7 @@ public class FXMLAerolineaController implements Initializable {
     @FXML
     private void btnAlta(ActionEvent event) {
         try {
-            Aerolinea nuevo = new Aerolinea();
+            Aeropuerto nuevo = new Aeropuerto();
             nuevo.setId(aeropuertoDAO.generarIdUnico());
             
             // Mostrar diálogo de edición
@@ -106,10 +106,10 @@ public class FXMLAerolineaController implements Initializable {
     }
     @FXML
     private void onActualizar(ActionEvent event) {
-        Aerolinea seleccionado = tvAeropuerto.getSelectionModel().getSelectedItem();
+        Aeropuerto seleccionado = tvAeropuerto.getSelectionModel().getSelectedItem();
         if (seleccionado != null) {
             // Mostrar diálogo de edición (clonar para evitar modificar directamente)
-            Aerolinea copia = clonarAeropuerto(seleccionado);
+            Aeropuerto copia = clonarAeropuerto(seleccionado);
             if (irFormularioAeropuerto(copia)) {
                 try {
                     aeropuertoDAO.actualizar(copia);
@@ -127,7 +127,7 @@ public class FXMLAerolineaController implements Initializable {
 
     @FXML
     private void onEliminar(ActionEvent event) {
-        Aerolinea seleccionado = tvAeropuerto.getSelectionModel().getSelectedItem();
+        Aeropuerto seleccionado = tvAeropuerto.getSelectionModel().getSelectedItem();
         if (seleccionado != null) {
             if (aeropuertoDAO.puedeEliminarse(seleccionado.getId())) {
                 try {
@@ -187,7 +187,7 @@ public class FXMLAerolineaController implements Initializable {
         } 
     }
 
-    private boolean irFormularioAeropuerto(Aerolinea aeropuerto) {
+    private boolean irFormularioAeropuerto(Aeropuerto aeropuerto) {
         try {
             Stage escenarioFormulario = new Stage();
             FXMLLoader loader = new FXMLLoader(JavaFXSistemaAerolineaUniAir.class.
@@ -200,7 +200,7 @@ public class FXMLAerolineaController implements Initializable {
 
             Scene escena = new Scene(vista);
             escenarioFormulario.setScene(escena);
-            escenarioFormulario.setTitle(aeropuerto.getId() == 0 ? 
+            escenarioFormulario.setTitle(aeropuerto.getId() != 0 ? 
                 "Nuevo Aeropuerto" : "Editar Aeropuerto");
             escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
             escenarioFormulario.showAndWait();
@@ -214,8 +214,8 @@ public class FXMLAerolineaController implements Initializable {
         }
     }
 
-    private Aerolinea clonarAeropuerto(Aerolinea original) {
-        return new Aerolinea(
+    private Aeropuerto clonarAeropuerto(Aeropuerto original) {
+        return new Aeropuerto(
             original.getId(),
             original.getNombre(),
             original.getDireccion(),
@@ -253,7 +253,7 @@ public class FXMLAerolineaController implements Initializable {
             escenarioBase.setTitle("Principal");
             escenarioBase.showAndWait();
         } catch (IOException ex) {
-            Logger.getLogger(FXMLAerolineaController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FXMLAeropuertoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -5,19 +5,19 @@ import java.io.File;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
-import javafxsistemaaerolineauniair.modelo.pojo.Aerolinea;
+import javafxsistemaaerolineauniair.modelo.pojo.Aeropuerto;
 
 /**
  *
  * @author eugen
  */
-public class AerolineaDAO extends GenericDAO<Aerolinea>{
+public class AeropuertoDAO extends GenericDAO<Aeropuerto>{
     
     private static final String DATA_DIR = "data";
-    private static final String FILE_NAME = "aerolineas.json";
+    private static final String FILE_NAME = "aeropuertos.json";
     
-    public AerolineaDAO() {
-        super(obtenerRutaCompleta(), Aerolinea.class);
+    public AeropuertoDAO() {
+        super(obtenerRutaCompleta(), Aeropuerto.class);
     }
     
     /**
@@ -40,7 +40,7 @@ public class AerolineaDAO extends GenericDAO<Aerolinea>{
     }
     
     @Override
-    protected String[] obtenerValoresFila(Aerolinea aerolinea) {
+    protected String[] obtenerValoresFila(Aeropuerto aerolinea) {
         return new String[]{
             String.valueOf(aerolinea.getId()),
             aerolinea.getNombre(),
@@ -59,7 +59,7 @@ public class AerolineaDAO extends GenericDAO<Aerolinea>{
      * @return Aerolinea encontrada o null
      * @throws IOException 
      */
-    public Aerolinea buscarPorId(int id) throws IOException {
+    public Aeropuerto buscarPorId(int id) throws IOException {
         return obtenerTodos().stream()
             .filter(a -> a.getId() == id)
             .findFirst()
@@ -71,8 +71,8 @@ public class AerolineaDAO extends GenericDAO<Aerolinea>{
      * @param aerolineaActualizada  Aerolinea con datos actualizados
      * @throws IOException 
      */
-    public void actualizar(Aerolinea aerolineaActualizada) throws IOException {
-        List<Aerolinea> aeropuertos = obtenerTodos();
+    public void actualizar(Aeropuerto aerolineaActualizada) throws IOException {
+        List<Aeropuerto> aeropuertos = obtenerTodos();
         aeropuertos.replaceAll(a -> 
             a.getId() == aerolineaActualizada.getId() ? 
             aerolineaActualizada : a);
@@ -85,7 +85,7 @@ public class AerolineaDAO extends GenericDAO<Aerolinea>{
      * @throws IOException 
      */
     public void eliminar(int id) throws IOException {
-        List<Aerolinea> aerolineas = obtenerTodos();
+        List<Aeropuerto> aerolineas = obtenerTodos();
         aerolineas.removeIf(a -> a.getId() == id);
         guardarTodos(aerolineas);
     }

@@ -4,7 +4,7 @@ package javafxsistemaaerolineauniair.modelo.pojo;
  *
  * @author eugen
  */
-public class Aerolinea {
+public class Aeropuerto {
     private int id;
     private String nombre;
     private String direccion;
@@ -12,10 +12,10 @@ public class Aerolinea {
     private String telefono;
     private int flota;
 
-    public Aerolinea() {
+    public Aeropuerto() {
     }
 
-    public Aerolinea(int id, String nombre, String direccion, String personaContacto, String telefono, int flota) {
+    public Aeropuerto(int id, String nombre, String direccion, String personaContacto, String telefono, int flota) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;

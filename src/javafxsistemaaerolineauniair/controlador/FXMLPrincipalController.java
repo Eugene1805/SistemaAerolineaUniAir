@@ -80,7 +80,7 @@ public class FXMLPrincipalController implements Initializable {
     private void lbClicAeropuerto(MouseEvent event) {
         try{
             Stage escenarioBase = (Stage) lbCerrarSesion.getScene().getWindow();
-            Parent vista = FXMLLoader.load(JavaFXSistemaAerolineaUniAir.class.getResource("vista/FXMLAerolinea.fxml"));
+            Parent vista = FXMLLoader.load(JavaFXSistemaAerolineaUniAir.class.getResource("vista/FXMLAeropuerto.fxml"));
             
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);

@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package javafxsistemaaerolineauniair.controlador;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalTime;
 import java.util.List;
@@ -16,12 +13,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafxsistemaaerolineauniair.modelo.dao.AvionDAO;
-import javafxsistemaaerolineauniair.modelo.dao.GenericDAO;
 import javafxsistemaaerolineauniair.modelo.dao.VueloDAO;
+import javafxsistemaaerolineauniair.modelo.dao.AvionDAO;
 import javafxsistemaaerolineauniair.modelo.pojo.Avion;
 import javafxsistemaaerolineauniair.modelo.pojo.Vuelo;
 import javafxsistemaaerolineauniair.util.Util;
@@ -56,11 +51,12 @@ public class FXMLFormularioVueloController implements Initializable {
     
     private Vuelo vuelo;
     private VueloDAO vueloDAO;
+    private AvionDAO avionDAO = new AvionDAO();
     private boolean confirmado = false;
             
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //cargarAviones(); //DESCOMENTAR
+        cargarAviones(); //DESCOMENTAR
     }    
 
     @FXML
@@ -75,8 +71,7 @@ public class FXMLFormularioVueloController implements Initializable {
             vuelo.setFechaLlegada(dpFechaLlegada.getValue());
             vuelo.setHoraLlegada( LocalTime.parse(tfHoraLlegada.getText()));
             vuelo.setCostoBoleto(Double.parseDouble(tfCostoBoleto.getText()));
-            vuelo.setIdAvion("AV-0000"); //LO COLOQUÉ PARA PROBAR A VER SI SALIA EL FORMULARIO Y NO PASÓ NADA, SE TENDRÍA QUE QUITAR Y DEJAR EL DE ABAJO CUANDO ESTEN LOS AVIONES
-//vuelo.setIdAvion(cbAvion.getValue().getIdentificador()); //Comprobar con el geter que usen como id
+            vuelo.setIdAvion(cbAvion.getValue().getIdAvion());
             vuelo.calcularTiempoRecorrido();           
             
             confirmado = true;
@@ -94,25 +89,25 @@ public class FXMLFormularioVueloController implements Initializable {
         this.vuelo = vuelo;
         this.vueloDAO = vueloDAO;
         
-        if (vuelo.getIdVuelo() != 0) { //Cargar datos de vuelo en los campos
+        if (vuelo.getCiudadLlegada() != null) { //Cargar datos de vuelo en los campos
             tfNumeroPasajeros.setText(String.valueOf(vuelo.getNumPasajeros()));
             tfCiudadSalida.setText(vuelo.getCiudadSalida());
             tfCiudadLlegada.setText(vuelo.getCiudadLlegada());
             dpFechaSalida.setValue(vuelo.getFechaSalida());
-            tfHoraSalida.setText(vuelo.getHoraSalida().toString());
+            tfHoraSalida.setText(vuelo.getHoraSalida() != null ? "" : vuelo.getHoraSalida().toString());
             dpFechaLlegada.setValue(vuelo.getFechaLlegada());
-            tfHoraLlegada.setText(vuelo.getHoraLlegada().toString());
+            tfHoraLlegada.setText(vuelo.getHoraLlegada() != null ? "" : vuelo.getHoraLlegada().toString());
             tfCostoBoleto.setText(String.valueOf(vuelo.getCostoBoleto()));
             
-            /*IMPLEMENTAR CUANDO SE TENGA LA CLASE AVION
+            //IMPLEMENTAR CUANDO SE TENGA LA CLASE AVION
             for(Avion avion : cbAvion.getItems()){
-                if (avion.getId().equals(vuelo.getIdAvion())) { //Compraro ids
+                if(avion.getIdAvion() == vuelo.getIdAvion()){ //Compraro ids
                     cbAvion.getSelectionModel().select(avion);
                     break;
                 }
             }
-           */  
-        }        
+             
+        }       
     }
     
 
@@ -122,20 +117,17 @@ public class FXMLFormularioVueloController implements Initializable {
     }
 
     private void cargarAviones() {
-/*
         //IMPLEMENTAR CUANDO ESTÉ EL DAO DE AVIONES
         try{
-        aviones = FXCollections.observableArrayList();
-        List<Avion> avionesDAO = AvionDAO.obtenerTodos();
-        aviones.addAll(avionesDAO);
-        cbAvion.setItems(aviones);
-        //List<Avion> aviones = AvionDAO.obtenerTodos(); // Obtener lista de aviones
-        //cbAvion.setItems(FXCollections.observableArrayList(aviones)); // Simplificar la carga
-        }catch(Exception ex){
+            aviones = FXCollections.observableArrayList();
+            List<Avion> avionesDAO = avionDAO.obtenerTodos();
+            aviones.addAll(avionesDAO);
+            cbAvion.setItems(aviones); 
+        }catch(IOException ex){
         //IOException
-        Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error al cargar aviones", "Lo sentimos, por el momento no podemos mostrar los aviones");
+        Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error al cargar aviones",
+                "Lo sentimos, por el momento no podemos mostrar los aviones");
         }
-         */
     }
 
     private boolean validarCampos() {

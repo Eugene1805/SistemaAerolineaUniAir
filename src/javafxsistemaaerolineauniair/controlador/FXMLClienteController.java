@@ -157,7 +157,7 @@ public class FXMLClienteController implements Initializable {
 
             Scene escena = new Scene(vista);
             escenarioFormulario.setScene(escena);
-            escenarioFormulario.setTitle(cliente.getId() == 0 ? 
+            escenarioFormulario.setTitle(cliente.getId() != 0 ? 
                 "Nuevo Cliente" : "Editar Cliente");
             escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
             escenarioFormulario.showAndWait();

@@ -1,0 +1,42 @@
+[
+  {
+    "id": 319765886,
+    "nombre": "AirWays Europe",
+    "direccion": "123 Main St, Berlin",
+    "personaContacto": "John Smith",
+    "telefono": "44123456789",
+    "flota": 65
+  },
+  {
+    "id": 1030515690,
+    "nombre": "EuroJet",
+    "direccion": "456 High Rd, Paris",
+    "personaContacto": "Anne Dubois",
+    "telefono": "331234567890",
+    "flota": 115
+  },
+  {
+    "id": 1140857020,
+    "nombre": "SkyFlight",
+    "direccion": "789 King St, London",
+    "personaContacto": "Peter Muller",
+    "telefono": "4430998765432",
+    "flota": 49
+  },
+  {
+    "id": 827029342,
+    "nombre": "TransEuropa",
+    "direccion": "321 Avenue, Madrid",
+    "personaContacto": "Maria Rossi",
+    "telefono": "34915876543",
+    "flota": 78
+  },
+  {
+    "id": 2119842274,
+    "nombre": "GlobalAir",
+    "direccion": "654 Route, Rome",
+    "personaContacto": "Luigui Bianchi",
+    "telefono": "39062345678",
+    "flota": 123
+  }
+]

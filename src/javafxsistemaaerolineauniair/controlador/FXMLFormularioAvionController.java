@@ -1,7 +1,7 @@
 package javafxsistemaaerolineauniair.controlador;
 
+import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -9,9 +9,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafxsistemaaerolineauniair.modelo.dao.AerolineaDAO;
+import javafxsistemaaerolineauniair.modelo.dao.AeropuertoDAO;
 import javafxsistemaaerolineauniair.modelo.dao.AvionDAO;
-import javafxsistemaaerolineauniair.modelo.pojo.Aerolinea;
+import javafxsistemaaerolineauniair.modelo.pojo.Aeropuerto;
 import javafxsistemaaerolineauniair.modelo.pojo.Avion;
 import javafxsistemaaerolineauniair.util.Util;
 
@@ -31,7 +31,7 @@ public class FXMLFormularioAvionController implements Initializable {
     @FXML
     private TextField tfEstatus;
     @FXML
-    private ComboBox<Aerolinea> cbAerolinea;
+    private ComboBox<Aeropuerto> cbAerolinea;
     @FXML
     private DatePicker dpFechaDeIngreso;
 
@@ -42,9 +42,9 @@ public class FXMLFormularioAvionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            List<Aerolinea> aerolineas = new AerolineaDAO().obtenerTodos();
+            List<Aeropuerto> aerolineas = new AeropuertoDAO().obtenerTodos();
             cbAerolinea.getItems().addAll(aerolineas);
-        } catch (Exception e) {
+        } catch (IOException e) {
             Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo cargar la lista de aerolíneas.");
         }
     }   
@@ -53,7 +53,8 @@ public class FXMLFormularioAvionController implements Initializable {
     private void btnClicGuardar(ActionEvent event) {
         if (tfCapacidad.getText().isEmpty() || tfModelo.getText().isEmpty() || tfPeso.getText().isEmpty() ||
             tfEstatus.getText().isEmpty() || dpFechaDeIngreso.getValue() == null || cbAerolinea.getValue() == null) {
-            Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos requeridos", "Todos los campos son obligatorios.");
+            Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos requeridos",
+                    "Todos los campos son obligatorios.");
             return;
         }
 
@@ -68,7 +69,8 @@ public class FXMLFormularioAvionController implements Initializable {
             confirmado = true;
             ((Stage) tfCapacidad.getScene().getWindow()).close();
         } catch (Exception e) {
-            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error de entrada", "Verifica los campos numéricos y la fecha (AAAA-MM-DD).");
+            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error de entrada",
+                    "Verifica los campos numéricos y la fecha (AAAA-MM-DD).");
         }
     }
 
@@ -82,7 +84,7 @@ public class FXMLFormularioAvionController implements Initializable {
         this.avion = avion;
         this.avionDAO = avionDAO;
 
-        if (avion.getIdAvion() != 0) {
+        if (avion.getFechaDeIngreso()!= null) {
             tfCapacidad.setText(String.valueOf(avion.getCapacidad()));
             tfModelo.setText(avion.getModelo());
             tfPeso.setText(String.valueOf(avion.getPeso()));

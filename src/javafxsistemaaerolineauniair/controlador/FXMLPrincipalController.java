@@ -40,7 +40,7 @@ public class FXMLPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Administrativo");
-            escenarioBase.showAndWait();
+            escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
         }
@@ -55,7 +55,7 @@ public class FXMLPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Piloto");
-            escenarioBase.showAndWait();
+            escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
         }
@@ -70,7 +70,7 @@ public class FXMLPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Asistente Piloto");
-            escenarioBase.showAndWait();
+            escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
         }
@@ -85,7 +85,7 @@ public class FXMLPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Aeropuerto");
-            escenarioBase.showAndWait();
+            escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
         }
@@ -100,7 +100,7 @@ public class FXMLPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Aviones");
-            escenarioBase.showAndWait();
+            escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
         }
@@ -115,7 +115,7 @@ public class FXMLPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Vuelos");
-            escenarioBase.showAndWait();
+            escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
         }
@@ -130,7 +130,7 @@ public class FXMLPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Registro de clientes");
-            escenarioBase.showAndWait();
+            escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
         }
@@ -145,7 +145,7 @@ public class FXMLPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Comprar boleto");
-            escenarioBase.showAndWait();
+            escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
         }
@@ -160,7 +160,7 @@ public class FXMLPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Inicio Sesión");
-            escenarioBase.showAndWait();
+            escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
         }

@@ -1,0 +1,15 @@
+[
+  {
+    "idAvion": 1926901376,
+    "capacidad": 150,
+    "modelo": "boing 777",
+    "peso": 7000.0,
+    "estatus": "activo",
+    "fechaDeIngreso": {
+      "year": 2024,
+      "month": 11,
+      "day": 13
+    },
+    "idAerolinea": 319765886
+  }
+]

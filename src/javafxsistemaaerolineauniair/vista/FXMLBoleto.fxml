@@ -1,13 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLBoletoController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLBoletoController">
    <children>
-      <Button fx:id="btnRegresar" layoutX="260.0" layoutY="184.0" mnemonicParsing="false" onAction="#onRegresar" style="-fx-background-color: #1E2A38; -fx-border-color: #FFF; -fx-cursor: hand;" text="Regresar" textFill="WHITE" />
+      <AnchorPane layoutX="-4.0" prefHeight="88.0" prefWidth="1133.0" style="-fx-background-color: #1E2A38;">
+         <children>
+            <Label layoutX="14.0" prefHeight="88.0" prefWidth="165.0" text="UniAir" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="50.0" />
+               </font>
+            </Label>
+            <Button layoutX="1014.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #1e2a38; -fx-border-color: #fff; -fx-cursor: hand;" text="Regresar" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="24.0" layoutY="95.0" text="Vuelos Disponibles" textFill="#1e2a38">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tvVuelos" layoutX="24.0" layoutY="166.0" prefHeight="342.0" prefWidth="1089.0">
+        <columns>
+          <TableColumn fx:id="colNumPasajeros" prefWidth="83.0" text="    Número &#10;de pasajeros" />
+          <TableColumn fx:id="colCiudadSalida" prefWidth="130.0" text=" Ciudad &#10;de salida" />
+            <TableColumn fx:id="colCiudadLlegada" prefWidth="130.0" text="  Ciudad &#10;de llegada" />
+            <TableColumn fx:id="colFechaSalida" prefWidth="120.0" text="Fecha de salida" />
+            <TableColumn fx:id="colHoraSalida" prefWidth="90.0" text="   Hora &#10;de salida" />
+            <TableColumn fx:id="colFechaLlegada" prefWidth="120.0" text="Fecha de llegada" />
+            <TableColumn fx:id="colHoraLlegada" prefWidth="90.0" text="   Hora &#10;de llegada" />
+            <TableColumn fx:id="colTiempoRecorrido" prefWidth="90.0" text="     Tiempo &#10;Recorrido (hrs)" />
+            <TableColumn fx:id="colCostoBoleto" prefWidth="90.0" text="    Costo&#10;del Boleto" />
+            <TableColumn fx:id="colAvion" prefWidth="145.0" text="Avion" />
+        </columns>
+      </TableView>
+      <Button layoutX="733.0" layoutY="544.0" mnemonicParsing="false" onAction="#btnComprar" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Comprar" textFill="WHITE" />
+      <MenuButton disable="true" layoutX="898.0" layoutY="544.0" mnemonicParsing="false" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Exportar Infromación" textFill="WHITE">
+        <items>
+          <MenuItem fx:id="btnExportarCsv" mnemonicParsing="false" onAction="#btnClicExportarCSV" text="CSV" />
+          <MenuItem fx:id="btnExportarXLS" mnemonicParsing="false" onAction="#btnClicExportarXLS" text="EXCEL (XLS)" />
+            <MenuItem fx:id="btnExportarXLSX" mnemonicParsing="false" onAction="#btnClicExportarXLSX" text="EXCEL (XLS)" />
+            <MenuItem fx:id="btnExportarPDF" mnemonicParsing="false" onAction="#btnClicExportarPDF" text="PDF" />
+        </items>
+      </MenuButton>
    </children>
 </AnchorPane>

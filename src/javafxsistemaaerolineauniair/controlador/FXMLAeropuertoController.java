@@ -247,7 +247,8 @@ public class FXMLAeropuertoController implements Initializable {
     private void onRegresar(ActionEvent event) {
         try {
             Stage escenarioBase = (Stage) tvAeropuerto.getScene().getWindow();
-            Parent vista = FXMLLoader.load(JavaFXSistemaAerolineaUniAir.class.getResource("vista/FXMLPrincipal.fxml"));
+            Parent vista = FXMLLoader.load(JavaFXSistemaAerolineaUniAir.class.
+                    getResource("vista/FXMLPrincipal.fxml"));
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Principal");

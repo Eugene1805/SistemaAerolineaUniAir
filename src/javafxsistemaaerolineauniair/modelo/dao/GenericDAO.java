@@ -84,10 +84,10 @@ public abstract class GenericDAO<T> {
             archivoDestino.getName().lastIndexOf(".")).toLowerCase();
             
         switch (extension) {
-            case ".csv": exportarACsv(jsonContent, archivoDestino);
-            case ".xlsx": exportarAExcel(jsonContent, archivoDestino, true);
-            case ".xls": exportarAExcel(jsonContent, archivoDestino, false);
-            case ".pdf": exportarAPdf(jsonContent, archivoDestino);
+            case ".csv": exportarACsv(jsonContent, archivoDestino); break;
+            case ".xlsx": exportarAExcel(jsonContent, archivoDestino, true); break;
+            case ".xls": exportarAExcel(jsonContent, archivoDestino, false); break;
+            case ".pdf": exportarAPdf(jsonContent, archivoDestino); break;
             default: throw new IllegalArgumentException("Formato no soportado");
         }
     }

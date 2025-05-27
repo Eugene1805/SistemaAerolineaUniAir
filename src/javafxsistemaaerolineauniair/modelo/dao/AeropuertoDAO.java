@@ -40,23 +40,23 @@ public class AeropuertoDAO extends GenericDAO<Aeropuerto>{
     }
     
     @Override
-    protected String[] obtenerValoresFila(Aeropuerto aerolinea) {
+    protected String[] obtenerValoresFila(Aeropuerto aeropuerto) {
         return new String[]{
-            String.valueOf(aerolinea.getId()),
-            aerolinea.getNombre(),
-            aerolinea.getDireccion(),
-            aerolinea.getPersonaContacto(),
-            aerolinea.getTelefono(),
-            String.valueOf(aerolinea.getFlota())
+            String.valueOf(aeropuerto.getId()),
+            aeropuerto.getNombre(),
+            aeropuerto.getDireccion(),
+            aeropuerto.getPersonaContacto(),
+            aeropuerto.getTelefono(),
+            String.valueOf(aeropuerto.getFlota())
         };
     }
     
     // Métodos específicos para Aeropuerto
     
     /**
-     * Busca una aerolinea por su ID
+     * Busca un aeropuerto por su ID
      * @param id ID del aeropuerto
-     * @return Aerolinea encontrada o null
+     * @return Aeropuerto encontrada o null
      * @throws IOException 
      */
     public Aeropuerto buscarPorId(int id) throws IOException {
@@ -67,27 +67,27 @@ public class AeropuertoDAO extends GenericDAO<Aeropuerto>{
     }
     
     /**
-     * Actualiza una aerolinea existente
-     * @param aerolineaActualizada  Aerolinea con datos actualizados
+     * Actualiza un aeropuerto existente
+     * @param aeropuertoActualizado  Aeropuerto con datos actualizados
      * @throws IOException 
      */
-    public void actualizar(Aeropuerto aerolineaActualizada) throws IOException {
+    public void actualizar(Aeropuerto aeropuertoActualizado) throws IOException {
         List<Aeropuerto> aeropuertos = obtenerTodos();
         aeropuertos.replaceAll(a -> 
-            a.getId() == aerolineaActualizada.getId() ? 
-            aerolineaActualizada : a);
+            a.getId() == aeropuertoActualizado.getId() ? 
+            aeropuertoActualizado : a);
         guardarTodos(aeropuertos);
     }
     
     /**
      * Elimina un aeropuerto por su ID
-     * @param id ID de la aerolinea a eliminar
+     * @param id ID del aeropuerto a eliminar
      * @throws IOException 
      */
     public void eliminar(int id) throws IOException {
-        List<Aeropuerto> aerolineas = obtenerTodos();
-        aerolineas.removeIf(a -> a.getId() == id);
-        guardarTodos(aerolineas);
+        List<Aeropuerto> aeropuertos = obtenerTodos();
+        aeropuertos.removeIf(a -> a.getId() == id);
+        guardarTodos(aeropuertos);
     }
     
     /**

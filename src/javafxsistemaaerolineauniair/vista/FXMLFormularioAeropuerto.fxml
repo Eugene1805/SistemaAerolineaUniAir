@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLFormularioAeropuertoController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLFormularioAeropuertoController">
    <children>
-      <TextField fx:id="tfNombre" layoutX="29.0" layoutY="103.0" promptText="Nombre" style="-fx-cursor: text;" />
-      <TextField fx:id="tfDireccion" layoutX="29.0" layoutY="189.0" promptText="Direccion" style="-fx-cursor: text;" />
-      <TextField fx:id="tfPersonaContacto" layoutX="29.0" layoutY="270.0" promptText="Persona contacto" style="-fx-cursor: text;" />
-      <TextField fx:id="tfTelefono" layoutX="329.0" layoutY="103.0" promptText="Telefono" style="-fx-cursor: text;" />
-      <TextField fx:id="tfFlota" layoutX="329.0" layoutY="181.0" promptText="Tamaño de flota" style="-fx-cursor: text;" />
-      <Button layoutX="329.0" layoutY="309.0" mnemonicParsing="false" onAction="#btnAceptar" style="-fx-cursor: hand;" text="Aceptar" />
-      <Button layoutX="463.0" layoutY="309.0" mnemonicParsing="false" onAction="#btnCancelar" style="-fx-cursor: hand;" text="Cancelar" />
-      <Label layoutX="29.0" layoutY="64.0" text="Nombre:" />
-      <Label layoutX="29.0" layoutY="154.0" text="Direccion:" />
-      <Label layoutX="29.0" layoutY="243.0" text="Persona contacto:" />
-      <Label layoutX="329.0" layoutY="64.0" text="Telefono:" />
-      <Label layoutX="329.0" layoutY="154.0" text="Tamaño de flota" />
+      <TextField fx:id="tfNombre" layoutX="141.0" layoutY="69.0" prefHeight="39.0" prefWidth="420.0" promptText="Nombre" style="-fx-cursor: text;" />
+      <TextField fx:id="tfDireccion" layoutX="141.0" layoutY="132.0" prefHeight="39.0" prefWidth="420.0" promptText="Direccion" style="-fx-cursor: text;" />
+      <TextField fx:id="tfPersonaContacto" layoutX="141.0" layoutY="186.0" prefHeight="39.0" prefWidth="420.0" promptText="Persona contacto" style="-fx-cursor: text;" />
+      <TextField fx:id="tfTelefono" layoutX="141.0" layoutY="254.0" promptText="Telefono" style="-fx-cursor: text;" />
+      <TextField fx:id="tfFlota" layoutX="141.0" layoutY="328.0" prefHeight="39.0" prefWidth="155.0" promptText="Tamaño de flota" style="-fx-cursor: text;" />
+      <Button layoutX="351.0" layoutY="405.0" mnemonicParsing="false" onAction="#btnAceptar" style="-fx-cursor: hand; -fx-background-color: #2F80ED;" text="Aceptar" textFill="WHITE" />
+      <Button layoutX="468.0" layoutY="405.0" mnemonicParsing="false" onAction="#btnCancelar" style="-fx-background-color: #FFF; -fx-border-color: #cdcdcd;" text="Cancelar" />
+      <Label layoutX="29.0" layoutY="81.0" text="Nombre:" />
+      <Label layoutX="25.0" layoutY="138.0" text="Direccion:" />
+      <Label layoutX="29.0" layoutY="186.0" prefHeight="56.0" prefWidth="92.0" text="Persona de contacto:" wrapText="true" />
+      <Label layoutX="27.0" layoutY="260.0" text="Telefono:" />
+      <Label layoutX="28.0" layoutY="311.0" prefHeight="56.0" prefWidth="86.0" text="Tamaño de flota:" wrapText="true" />
+      <Label layoutX="29.0" layoutY="14.0" text="Datos del aeropuerto">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

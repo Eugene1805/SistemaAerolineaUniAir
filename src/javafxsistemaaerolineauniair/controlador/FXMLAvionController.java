@@ -207,7 +207,7 @@ public class FXMLAvionController implements Initializable {
 
             Stage escenarioFormulario = new Stage();
             escenarioFormulario.setScene(new Scene(vista));
-            escenarioFormulario.setTitle(avion.getIdAvion() == 0 ? "Nuevo Avión" : "Editar Avión");
+            escenarioFormulario.setTitle(avion.getIdAvion() != 0 ? "Nuevo Avión" : "Editar Avión");
             escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
             escenarioFormulario.showAndWait();
 

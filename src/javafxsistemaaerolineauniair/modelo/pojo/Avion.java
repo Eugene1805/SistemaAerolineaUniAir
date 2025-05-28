@@ -14,11 +14,12 @@ public class Avion {
     private String estatus; 
     private LocalDate fechaDeIngreso;
     private int idAerolinea;
+    private int asiento;
 
     public Avion() {
     }
 
-    public Avion(int idAvion, int capacidad, String modelo, float peso, String estatus, LocalDate fechaDeIngreso, int idAerolinea) {
+    public Avion(int idAvion, int capacidad, String modelo, float peso, String estatus, LocalDate fechaDeIngreso, int idAerolinea,int asiento) {
         this.idAvion = idAvion;
         this.capacidad = capacidad;
         this.modelo = modelo;
@@ -26,6 +27,8 @@ public class Avion {
         this.estatus = estatus;
         this.fechaDeIngreso = fechaDeIngreso;
         this.idAerolinea = idAerolinea;
+        this.asiento = asiento;
+        
     }
 
 
@@ -84,6 +87,14 @@ public class Avion {
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
+    }
+
+    public int getAsiento() {
+        return asiento;
+    }
+
+    public void setAsiento(int asiento) {
+        this.asiento = asiento;
     }
     
     

@@ -14,19 +14,19 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="tfCapacidad" layoutX="370.0" layoutY="81.0" prefHeight="25.0" prefWidth="214.0" promptText="Número de pasajeros" text="capacidad" />
+      <TextField fx:id="tfCapacidad" layoutX="370.0" layoutY="81.0" prefHeight="25.0" prefWidth="214.0" promptText="capacidad" />
       <Label layoutX="27.0" layoutY="131.0" text="Modelo" textFill="#333333">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="tfModelo" layoutX="371.0" layoutY="125.0" prefHeight="25.0" prefWidth="214.0" promptText="Ciudad de salida" text="modelo" />
+      <TextField fx:id="tfModelo" layoutX="371.0" layoutY="125.0" prefHeight="25.0" prefWidth="214.0" promptText="Modelo del avion" />
       <Label layoutX="26.0" layoutY="174.0" text="Peso" textFill="#333333">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="tfPeso" layoutX="371.0" layoutY="170.0" prefHeight="25.0" prefWidth="214.0" promptText="Ciudad de llegada" text="peso" />
+      <TextField fx:id="tfPeso" layoutX="371.0" layoutY="170.0" prefHeight="25.0" prefWidth="214.0" promptText="Peso del avion" />
       <Label layoutX="24.0" layoutY="264.0" text="Fecha de ingreso" textFill="#333333" wrapText="true">
          <font>
             <Font size="18.0" />
@@ -48,13 +48,15 @@
             </Label>
          </children>
       </AnchorPane>
-      <TextField fx:id="tfEstatus" layoutX="371.0" layoutY="214.0" prefHeight="39.0" prefWidth="214.0" promptText="Hora salida (HH:mm)" text="estatus" />
-      <Label layoutX="23.0" layoutY="307.0" text="Aerolinea" textFill="#333333">
+      <TextField fx:id="tfEstatus" layoutX="371.0" layoutY="214.0" prefHeight="39.0" prefWidth="214.0" promptText="Estatus" />
+      <Label layoutX="23.0" layoutY="307.0" text="Aeropuerto" textFill="#333333">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cbAerolinea" layoutX="370.0" layoutY="301.0" prefHeight="39.0" prefWidth="214.0" promptText="Aerolinea" />
-      <DatePicker fx:id="dpFechaDeIngreso" layoutX="370.0" layoutY="258.0" prefHeight="39.0" prefWidth="214.0" />
+      <ComboBox fx:id="cbAeropuerto" layoutX="370.0" layoutY="301.0" prefHeight="39.0" prefWidth="214.0" promptText="Aeropuerto" />
+      <DatePicker fx:id="dpFechaDeIngreso" layoutX="370.0" layoutY="258.0" prefHeight="39.0" prefWidth="214.0" promptText="Fecha de ingreso" />
+      <TextField fx:id="tfAsientos" layoutX="366.0" layoutY="350.0" promptText="Numero de asientos" />
+      <Label layoutX="24.0" layoutY="356.0" text="Numero de asientos" />
    </children>
 </AnchorPane>

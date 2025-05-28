@@ -26,7 +26,7 @@ public class AvionDAO extends GenericDAO<Avion> {
 
     @Override
     protected String[] obtenerNombresColumnas() {
-        return new String[]{"ID", "Capacidad", "Modelo", "Peso", "Estatus", "Fecha de Ingreso", "ID Aerolínea"};
+        return new String[]{"ID", "Capacidad", "Modelo", "Peso", "Estatus", "Fecha de Ingreso", "ID Aerolínea", "Asientos"};
     }
 
     @Override
@@ -38,7 +38,8 @@ public class AvionDAO extends GenericDAO<Avion> {
             String.valueOf(avion.getPeso()),
             avion.getEstatus(),
             avion.getFechaDeIngreso().toString(),
-            String.valueOf(avion.getIdAerolinea())
+            String.valueOf(avion.getIdAerolinea()),
+            String.valueOf(avion.getAsiento())
         };
     }
 

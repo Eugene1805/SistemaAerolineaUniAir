@@ -10,6 +10,21 @@
       "month": 11,
       "day": 13
     },
-    "idAerolinea": 319765886
+    "idAerolinea": 319765886,
+    "asiento": 130
+  },
+  {
+    "idAvion": 1635461659,
+    "capacidad": 200,
+    "modelo": "boing 876",
+    "peso": 10000.0,
+    "estatus": "activo",
+    "fechaDeIngreso": {
+      "year": 2024,
+      "month": 12,
+      "day": 3
+    },
+    "idAerolinea": 827029342,
+    "asiento": 180
   }
 ]

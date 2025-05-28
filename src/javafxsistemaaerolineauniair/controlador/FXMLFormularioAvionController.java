@@ -31,28 +31,32 @@ public class FXMLFormularioAvionController implements Initializable {
     @FXML
     private TextField tfEstatus;
     @FXML
-    private ComboBox<Aeropuerto> cbAerolinea;
+    private ComboBox<Aeropuerto> cbAeropuerto;
     @FXML
     private DatePicker dpFechaDeIngreso;
-
+    @FXML
+    private TextField tfAsientos;
+    
     private Avion avion;
     private AvionDAO avionDAO;
     private boolean confirmado = false;
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            List<Aeropuerto> aerolineas = new AeropuertoDAO().obtenerTodos();
-            cbAerolinea.getItems().addAll(aerolineas);
+            List<Aeropuerto> aeropuertos = new AeropuertoDAO().obtenerTodos();
+            cbAeropuerto.getItems().addAll(aeropuertos);
         } catch (IOException e) {
-            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo cargar la lista de aerolíneas.");
+            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo cargar la lista de aeropuertos.");
         }
     }   
 
     @FXML
     private void btnClicGuardar(ActionEvent event) {
         if (tfCapacidad.getText().isEmpty() || tfModelo.getText().isEmpty() || tfPeso.getText().isEmpty() ||
-            tfEstatus.getText().isEmpty() || dpFechaDeIngreso.getValue() == null || cbAerolinea.getValue() == null) {
+            tfEstatus.getText().isEmpty() || dpFechaDeIngreso.getValue() == null || cbAeropuerto.getValue() == null || tfAsientos.getText().isEmpty()) {
             Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos requeridos",
                     "Todos los campos son obligatorios.");
             return;
@@ -64,7 +68,8 @@ public class FXMLFormularioAvionController implements Initializable {
             avion.setPeso(Float.parseFloat(tfPeso.getText()));
             avion.setEstatus(tfEstatus.getText());
             avion.setFechaDeIngreso(dpFechaDeIngreso.getValue());   
-            avion.setIdAerolinea(cbAerolinea.getValue().getId());
+            avion.setIdAerolinea(cbAeropuerto.getValue().getId());
+            avion.setAsiento(Integer.parseInt(tfAsientos.getText()));
 
             confirmado = true;
             ((Stage) tfCapacidad.getScene().getWindow()).close();
@@ -91,12 +96,14 @@ public class FXMLFormularioAvionController implements Initializable {
             tfEstatus.setText(avion.getEstatus());
             dpFechaDeIngreso.setValue(avion.getFechaDeIngreso());
 
-            cbAerolinea.getSelectionModel().select(
-                cbAerolinea.getItems().stream()
+            cbAeropuerto.getSelectionModel().select(
+                cbAeropuerto.getItems().stream()
                     .filter(a -> a.getId() == avion.getIdAerolinea())
                     .findFirst()
                     .orElse(null)
             );
+            
+            tfAsientos.setText(String.valueOf(this.avion.getAsiento()));
         }
     }
     

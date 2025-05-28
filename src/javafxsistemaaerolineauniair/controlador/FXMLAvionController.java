@@ -42,6 +42,8 @@ public class FXMLAvionController implements Initializable {
     @FXML
     private TableColumn<Avion, Integer> tcAerolinea;
     @FXML
+    private TableColumn<Avion, Integer> tcAsientos;    
+    @FXML
     private Button btnActualizar;
     @FXML
     private Button btnEliminar;
@@ -56,6 +58,7 @@ public class FXMLAvionController implements Initializable {
 
     private final ObservableList<Avion> aviones = FXCollections.observableArrayList();
     private final AvionDAO avionDAO = new AvionDAO();
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -181,6 +184,7 @@ public class FXMLAvionController implements Initializable {
         tcEstatus.setCellValueFactory(new PropertyValueFactory<>("estatus"));
         tcFechaIngreso.setCellValueFactory(new PropertyValueFactory<>("fechaDeIngreso"));
         tcAerolinea.setCellValueFactory(new PropertyValueFactory<>("idAerolinea"));
+        tcAsientos.setCellValueFactory(new PropertyValueFactory<>("asiento"));
     }
     
     private void cargarInformacion() {
@@ -233,7 +237,8 @@ public class FXMLAvionController implements Initializable {
             original.getPeso(),
             original.getEstatus(),
             original.getFechaDeIngreso(),
-            original.getIdAerolinea()
+            original.getIdAerolinea(),
+            original.getAsiento()
         );
     }
 }

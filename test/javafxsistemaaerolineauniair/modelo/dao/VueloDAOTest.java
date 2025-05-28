@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import javafxsistemaaerolineauniair.modelo.pojo.Vuelo;
+import org.junit.After;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -16,7 +17,22 @@ import static org.junit.Assert.*;
  * @author uriel
  */
 public class VueloDAOTest {
-    
+
+    @After
+    public void limpiarDatosDePrueba() throws Exception {
+        VueloDAO dao = new VueloDAO();
+
+        // Lista de IDs que usas durante tus pruebas
+        int[] idsPrueba = {777, 888, 999};
+
+        for (int id : idsPrueba) {
+            Vuelo vuelo = dao.buscarPorIdVuelo(id);
+            if (vuelo != null) {
+                dao.eliminar(id);
+            }
+        }
+    }
+
     @Test
     public void testObtenerNombresColumnas() {
         System.out.println("obtenerNombresColumnas");
@@ -27,9 +43,6 @@ public class VueloDAOTest {
         assertArrayEquals(expResultado, resultado);
     }
 
-    /**
-     * Test of obtenerValoresFila method, of class VueloDAO.
-     */
     @Test
     public void testObtenerValoresFila() {
         System.out.println("obtenerValoresFila");
@@ -57,9 +70,6 @@ public class VueloDAOTest {
         assertArrayEquals(expected, result);
     }
 
-    /**
-     * Test of buscarPorIdVuelo method, of class VueloDAO.
-     */
     @Test
     public void testBuscarPorIdVuelo() throws Exception {
         System.out.println("buscarPorIdVuelo");
@@ -85,9 +95,6 @@ public class VueloDAOTest {
         assertEquals(999, result.getIdVuelo());
     }
 
-    /**
-     * Test of actualizar method, of class VueloDAO.
-     */
     @Test
     public void testActualizar() throws Exception {
         System.out.println("actualizar");
@@ -117,9 +124,6 @@ public class VueloDAOTest {
         assertEquals(1600, actualizado.getCostoBoleto(), 0.001);
     }
 
-    /**
-     * Test of eliminar method, of class VueloDAO.
-     */
     @Test
     public void testEliminar() throws Exception {
         System.out.println("eliminar");
@@ -136,21 +140,16 @@ public class VueloDAOTest {
         vuelo.setTiempoRecorrido(90);
         vuelo.setCostoBoleto(850);
 
-        // Guardamos vuelo
         List<Vuelo> vuelos = dao.obtenerTodos();
         vuelos.add(vuelo);
         dao.guardarTodos(vuelos);
 
-        // Lo eliminamos
         dao.eliminar(777);
 
         Vuelo eliminado = dao.buscarPorIdVuelo(777);
         assertNull(eliminado);
     }
 
-    /**
-     * Test of generarIdVueloUnico method, of class VueloDAO.
-     */
     @Test
     public void testGenerarIdVueloUnico() throws Exception {
         System.out.println("generarIdVueloUnico");
@@ -161,5 +160,4 @@ public class VueloDAOTest {
         assertNotEquals("Los IDs deben ser diferentes", id1, id2);
         assertTrue("ID debe ser positivo", id1 > 0 && id2 > 0);
     }
-    
 }

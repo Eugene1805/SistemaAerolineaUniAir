@@ -2,7 +2,7 @@
   {
     "idAvion": 1926901376,
     "capacidad": 150,
-    "modelo": "Airbus A320",
+    "modelo": "boing 777",
     "peso": 7000.0,
     "estatus": "activo",
     "fechaDeIngreso": {

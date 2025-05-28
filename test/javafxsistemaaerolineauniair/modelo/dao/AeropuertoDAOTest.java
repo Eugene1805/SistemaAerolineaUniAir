@@ -5,6 +5,7 @@
 package javafxsistemaaerolineauniair.modelo.dao;
 
 import javafxsistemaaerolineauniair.modelo.pojo.Aeropuerto;
+import org.junit.After;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -14,13 +15,24 @@ import static org.junit.Assert.*;
  */
 public class AeropuertoDAOTest {
     
+    private AeropuertoDAO dao = new AeropuertoDAO();
+    
+    @After
+    public void limpiarDatos() throws Exception {
+        // Limpiar todos los aeropuertos creados en los tests
+        for (Aeropuerto aeropuerto : dao.obtenerTodos()) {
+            // Asegurarse de que no sean datos críticos del sistema
+            if (aeropuerto.getNombre().contains("Test") || aeropuerto.getNombre().contains("Actualizado")) {
+                dao.eliminar(aeropuerto.getId());
+            }
+        }
+    }
     /**
      * Test of obtenerNombresColumnas method, of class AeropuertoDAO.
      */
     @Test
     public void testObtenerNombresColumnas() {
         System.out.println("obtenerNombresColumnas");
-        AeropuertoDAO dao = new AeropuertoDAO();
         String[] expResultado = {"ID","Nombre", "Dirección", "Persona de Contacto", "Teléfono", "Flota"};
         String[] resultado = dao.obtenerNombresColumnas();
         assertArrayEquals(expResultado, resultado);
@@ -41,7 +53,6 @@ public class AeropuertoDAOTest {
         aeropuerto.setTelefono("555-1234");
         aeropuerto.setFlota(5);
 
-        AeropuertoDAO dao = new AeropuertoDAO();
         String[] expResultado = {
             "1", "Aeropuerto Internacional", "Av. Principal 123", "Juan Pérez", "555-1234", "5"
         };
@@ -54,7 +65,6 @@ public class AeropuertoDAOTest {
      */
     @Test
     public void testBuscarPorId() throws Exception {
-        AeropuertoDAO dao = new AeropuertoDAO();
         int id = dao.generarIdUnico();
 
         Aeropuerto aeropuerto = new Aeropuerto(id, "Aeropuerto Test", "Dirección", "Contacto", "555-555", 3);
@@ -71,7 +81,6 @@ public class AeropuertoDAOTest {
      */
     @Test
     public void testActualizar() throws Exception {
-        AeropuertoDAO dao = new AeropuertoDAO();
         int id = dao.generarIdUnico();
 
         Aeropuerto original = new Aeropuerto(id, "Original", "Dirección", "Persona", "000", 2);
@@ -89,7 +98,6 @@ public class AeropuertoDAOTest {
      */
     @Test
     public void testEliminar() throws Exception {
-        AeropuertoDAO dao = new AeropuertoDAO();
         int id = dao.generarIdUnico();
 
         Aeropuerto aeropuerto = new Aeropuerto(id, "Para eliminar", "Dirección", "Persona", "123", 1);
@@ -106,7 +114,6 @@ public class AeropuertoDAOTest {
      */
     @Test
     public void testGenerarIdUnico() throws Exception {
-        AeropuertoDAO dao = new AeropuertoDAO();
         
         int id1 = dao.generarIdUnico();
         int id2 = dao.generarIdUnico();
@@ -123,7 +130,6 @@ public class AeropuertoDAOTest {
         //FIX
         System.out.println("puedeEliminarse");
         int id = 0;
-        AeropuertoDAO dao = new AeropuertoDAO();
         boolean expResultado = true;
         boolean resultado = dao.puedeEliminarse(id);
         assertEquals(expResultado, resultado);

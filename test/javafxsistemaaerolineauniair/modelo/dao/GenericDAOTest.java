@@ -12,7 +12,6 @@ import java.util.List;
 import javafxsistemaaerolineauniair.modelo.pojo.Cliente;
 import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -22,25 +21,26 @@ import static org.junit.Assert.*;
  * @author uriel
  */
 public class GenericDAOTest {
-    
+
     private static ClienteDAO clienteDAO;
     private static final String RUTA_TEMPORAL = "data/test_clientes.json";
-    
+
     @BeforeClass
     public static void setUpClass() throws IOException {
         File file = new File(RUTA_TEMPORAL);
-        file.getParentFile().mkdirs();
+        file.getParentFile().mkdirs(); 
         if (!file.exists()) {
-            Files.write(file.toPath(), "[]".getBytes());
+            Files.write(file.toPath(), "[]".getBytes()); 
         }
         clienteDAO = new ClienteDAO(RUTA_TEMPORAL);
     }
-    
+
     @After
     public void limpiarArchivo() throws IOException {
+        // Limpiar contenido entre cada prueba
         Files.write(Paths.get(RUTA_TEMPORAL), "[]".getBytes());
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
         new File(RUTA_TEMPORAL).delete();
@@ -110,5 +110,4 @@ public class GenericDAOTest {
         cliente.setFechaNacimiento("1990-01-01");
         return cliente;
     }
-    
 }

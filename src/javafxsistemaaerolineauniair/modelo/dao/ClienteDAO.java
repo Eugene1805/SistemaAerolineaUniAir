@@ -22,6 +22,11 @@ public class ClienteDAO extends GenericDAO<Cliente>{
         super(obtenerRutaCompleta(), Cliente.class);
     }
     
+    public ClienteDAO(String rutaArchivo) {
+        super(rutaArchivo, Cliente.class);
+    }
+
+    
     private static String obtenerRutaCompleta() {
         // Crear directorio si no existe
         File dataDir = new File(DATA_DIR);

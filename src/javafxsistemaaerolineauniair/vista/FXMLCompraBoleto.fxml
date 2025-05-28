@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLCompraBoletoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLCompraBoletoController">
    <children>
        <AnchorPane prefHeight="90.0" prefWidth="600.0" style="-fx-background-color: #1E2A38;">
             <children>
@@ -29,6 +29,6 @@
       <Label layoutX="35.0" layoutY="149.0" text="Seleccione un cliente:" />
       <Label layoutX="360.0" layoutY="149.0" text="Seleccione un asiento:" />
       <Label fx:id="lbPrecio" layoutX="41.0" layoutY="288.0" prefHeight="35.0" prefWidth="130.0" />
-      <Button layoutX="435.0" layoutY="323.0" mnemonicParsing="false" style="-fx-background-color: #2F80ED;" text="Seleccionar" textFill="WHITE" />
+      <Button layoutX="435.0" layoutY="323.0" mnemonicParsing="false" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Seleccionar" textFill="WHITE" />
    </children>
 </AnchorPane>

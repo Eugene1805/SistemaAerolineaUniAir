@@ -16,7 +16,7 @@
                   <Font name="System Bold" size="50.0" />
                </font>
             </Label>
-            <Button layoutX="1014.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #1e2a38; -fx-border-color: #fff; -fx-cursor: hand;" text="Regresar" textFill="WHITE" />
+            <Button fx:id="btnRegresar" layoutX="1014.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #1e2a38; -fx-border-color: #fff; -fx-cursor: hand;" text="Regresar" textFill="WHITE" />
          </children>
       </AnchorPane>
       <Label layoutX="24.0" layoutY="95.0" text="Vuelos Disponibles" textFill="#1e2a38">

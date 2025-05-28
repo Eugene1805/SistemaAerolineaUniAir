@@ -14,19 +14,19 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="tfCapacidad" layoutX="370.0" layoutY="81.0" prefHeight="25.0" prefWidth="214.0" promptText="capacidad" />
+      <TextField fx:id="tfCapacidad" layoutX="370.0" layoutY="81.0" prefHeight="25.0" prefWidth="214.0" promptText="Capacidad" style="-fx-cursor: text;" />
       <Label layoutX="27.0" layoutY="131.0" text="Modelo" textFill="#333333">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="tfModelo" layoutX="371.0" layoutY="125.0" prefHeight="25.0" prefWidth="214.0" promptText="Modelo del avion" />
+      <TextField fx:id="tfModelo" layoutX="371.0" layoutY="125.0" prefHeight="25.0" prefWidth="214.0" promptText="Modelo del avion" style="-fx-cursor: text;" />
       <Label layoutX="26.0" layoutY="174.0" text="Peso" textFill="#333333">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="tfPeso" layoutX="371.0" layoutY="170.0" prefHeight="25.0" prefWidth="214.0" promptText="Peso del avion" />
+      <TextField fx:id="tfPeso" layoutX="371.0" layoutY="170.0" prefHeight="25.0" prefWidth="214.0" promptText="Peso del avion" style="-fx-cursor: text;" />
       <Label layoutX="24.0" layoutY="264.0" text="Fecha de ingreso" textFill="#333333" wrapText="true">
          <font>
             <Font size="18.0" />
@@ -37,8 +37,8 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="405.0" layoutY="436.0" mnemonicParsing="false" onAction="#btnClicGuardar" style="-fx-background-color: #2F80ED;" text="Guardar" />
-      <Button layoutX="524.0" layoutY="436.0" mnemonicParsing="false" onAction="#btnClicCancelar" style="-fx-background-color: #2F80ED;" text="Cancelar" />
+      <Button layoutX="405.0" layoutY="436.0" mnemonicParsing="false" onAction="#btnClicGuardar" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Guardar" textFill="WHITE" />
+      <Button layoutX="515.0" layoutY="436.0" mnemonicParsing="false" onAction="#btnClicCancelar" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Cancelar" textFill="WHITE" />
       <AnchorPane layoutY="-1.0" prefHeight="78.0" prefWidth="600.0" style="-fx-background-color: #1E2A38;">
          <children>
             <Label layoutX="14.0" layoutY="13.0" text="Datos del Avion" textFill="WHITE">
@@ -48,15 +48,15 @@
             </Label>
          </children>
       </AnchorPane>
-      <TextField fx:id="tfEstatus" layoutX="371.0" layoutY="214.0" prefHeight="39.0" prefWidth="214.0" promptText="Estatus" />
+      <TextField fx:id="tfEstatus" layoutX="371.0" layoutY="214.0" prefHeight="39.0" prefWidth="214.0" promptText="Estatus" style="-fx-cursor: text;" />
       <Label layoutX="23.0" layoutY="307.0" text="Aeropuerto" textFill="#333333">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cbAeropuerto" layoutX="370.0" layoutY="301.0" prefHeight="39.0" prefWidth="214.0" promptText="Aeropuerto" />
-      <DatePicker fx:id="dpFechaDeIngreso" layoutX="370.0" layoutY="258.0" prefHeight="39.0" prefWidth="214.0" promptText="Fecha de ingreso" />
-      <TextField fx:id="tfAsientos" layoutX="366.0" layoutY="350.0" promptText="Numero de asientos" />
+      <ComboBox fx:id="cbAeropuerto" layoutX="370.0" layoutY="301.0" prefHeight="39.0" prefWidth="214.0" promptText="Aeropuerto" style="-fx-cursor: hand;" />
+      <DatePicker fx:id="dpFechaDeIngreso" layoutX="370.0" layoutY="258.0" prefHeight="39.0" prefWidth="214.0" promptText="Fecha de ingreso" style="-fx-cursor: text;" />
+      <TextField fx:id="tfAsientos" layoutX="366.0" layoutY="350.0" promptText="Numero de asientos" style="-fx-cursor: text;" />
       <Label layoutX="24.0" layoutY="356.0" text="Numero de asientos" />
    </children>
 </AnchorPane>

@@ -1,1 +1,188 @@
-[]
+[
+  {
+    "idVuelo": 888,
+    "numPasajeros": 90,
+    "tiempoRecorrido": 180,
+    "costoBoleto": 1600.0,
+    "ciudadSalida": "GDL",
+    "ciudadLlegada": "Tijuana",
+    "fechaSalida": {
+      "year": 2024,
+      "month": 8,
+      "day": 15
+    },
+    "horaSalida": {
+      "hour": 9,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "fechaLlegada": {
+      "year": 2024,
+      "month": 8,
+      "day": 15
+    },
+    "horaLlegada": {
+      "hour": 12,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "idAvion": 0
+  },
+  {
+    "idVuelo": 999,
+    "numPasajeros": 100,
+    "tiempoRecorrido": 150,
+    "costoBoleto": 999.99,
+    "ciudadSalida": "CDMX",
+    "ciudadLlegada": "Monterrey",
+    "fechaSalida": {
+      "year": 2024,
+      "month": 7,
+      "day": 1
+    },
+    "horaSalida": {
+      "hour": 8,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "fechaLlegada": {
+      "year": 2024,
+      "month": 7,
+      "day": 1
+    },
+    "horaLlegada": {
+      "hour": 10,
+      "minute": 30,
+      "second": 0,
+      "nano": 0
+    },
+    "idAvion": 0
+  },
+  {
+    "idVuelo": 888,
+    "numPasajeros": 90,
+    "tiempoRecorrido": 180,
+    "costoBoleto": 1600.0,
+    "ciudadSalida": "GDL",
+    "ciudadLlegada": "Tijuana",
+    "fechaSalida": {
+      "year": 2024,
+      "month": 8,
+      "day": 15
+    },
+    "horaSalida": {
+      "hour": 9,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "fechaLlegada": {
+      "year": 2024,
+      "month": 8,
+      "day": 15
+    },
+    "horaLlegada": {
+      "hour": 12,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "idAvion": 0
+  },
+  {
+    "idVuelo": 999,
+    "numPasajeros": 100,
+    "tiempoRecorrido": 150,
+    "costoBoleto": 999.99,
+    "ciudadSalida": "CDMX",
+    "ciudadLlegada": "Monterrey",
+    "fechaSalida": {
+      "year": 2024,
+      "month": 7,
+      "day": 1
+    },
+    "horaSalida": {
+      "hour": 8,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "fechaLlegada": {
+      "year": 2024,
+      "month": 7,
+      "day": 1
+    },
+    "horaLlegada": {
+      "hour": 10,
+      "minute": 30,
+      "second": 0,
+      "nano": 0
+    },
+    "idAvion": 0
+  },
+  {
+    "idVuelo": 888,
+    "numPasajeros": 90,
+    "tiempoRecorrido": 180,
+    "costoBoleto": 1600.0,
+    "ciudadSalida": "GDL",
+    "ciudadLlegada": "Tijuana",
+    "fechaSalida": {
+      "year": 2024,
+      "month": 8,
+      "day": 15
+    },
+    "horaSalida": {
+      "hour": 9,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "fechaLlegada": {
+      "year": 2024,
+      "month": 8,
+      "day": 15
+    },
+    "horaLlegada": {
+      "hour": 12,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "idAvion": 0
+  },
+  {
+    "idVuelo": 999,
+    "numPasajeros": 100,
+    "tiempoRecorrido": 150,
+    "costoBoleto": 999.99,
+    "ciudadSalida": "CDMX",
+    "ciudadLlegada": "Monterrey",
+    "fechaSalida": {
+      "year": 2024,
+      "month": 7,
+      "day": 1
+    },
+    "horaSalida": {
+      "hour": 8,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "fechaLlegada": {
+      "year": 2024,
+      "month": 7,
+      "day": 1
+    },
+    "horaLlegada": {
+      "hour": 10,
+      "minute": 30,
+      "second": 0,
+      "nano": 0
+    },
+    "idAvion": 0
+  }
+]

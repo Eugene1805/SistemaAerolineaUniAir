@@ -214,7 +214,7 @@ public class FXMLAeropuertoController implements Initializable {
         }
     }
 
-    private Aeropuerto clonarAeropuerto(Aeropuerto original) {
+    public Aeropuerto clonarAeropuerto(Aeropuerto original) {
         return new Aeropuerto(
             original.getId(),
             original.getNombre(),

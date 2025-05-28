@@ -229,7 +229,7 @@ public class FXMLAvionController implements Initializable {
     }
 
     
-    private Avion clonarAvion(Avion original) {
+    public Avion clonarAvion(Avion original) {
         return new Avion(
             original.getIdAvion(),
             original.getCapacidad(),

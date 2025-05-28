@@ -158,7 +158,7 @@ public class FXMLVueloController implements Initializable {
         */
     }
     
-    private Vuelo clonarVuelo(Vuelo original){
+    public Vuelo clonarVuelo(Vuelo original){
         return new Vuelo(original.getIdVuelo(),
                 original.getNumPasajeros(),
                 original.getTiempoRecorrido(),

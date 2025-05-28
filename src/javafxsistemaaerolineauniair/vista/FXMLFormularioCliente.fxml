@@ -12,7 +12,7 @@
       <TextField fx:id="tfApellidoPaterno" layoutX="26.0" layoutY="169.0" promptText="Apellido paterno" style="-fx-cursor: text;" />
       <TextField fx:id="tfApellidoMaterno" layoutX="26.0" layoutY="244.0" promptText="Apellido materno" style="-fx-cursor: text;" />
       <TextField fx:id="tfNacionalidad" layoutX="321.0" layoutY="95.0" promptText="Nacionalidad" style="-fx-cursor: text;" />
-      <DatePicker fx:id="dpFechaNacimiento" layoutX="321.0" layoutY="169.0" promptText="Fecha de Nacimiento" style="-fx-cursor: hand;" />
+      <DatePicker fx:id="dpFechaNacimiento" layoutX="321.0" layoutY="169.0" promptText="Fecha de Nacimiento" style="-fx-cursor: text;" />
       <Label layoutX="26.0" layoutY="68.0" text="Nombre:" />
       <Label layoutX="26.0" layoutY="142.0" text="Apellido paterno:" />
       <Label layoutX="26.0" layoutY="217.0" text="Apellido materno:" />

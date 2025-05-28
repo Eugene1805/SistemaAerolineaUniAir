@@ -14,33 +14,33 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="tfNumeroPasajeros" layoutX="371.0" layoutY="88.0" prefHeight="25.0" prefWidth="214.0" promptText="Número de pasajeros" />
+      <TextField fx:id="tfNumeroPasajeros" layoutX="371.0" layoutY="88.0" prefHeight="25.0" prefWidth="214.0" promptText="Número de pasajeros" style="-fx-cursor: text;" />
       <Label layoutX="27.0" layoutY="125.0" text="Ciudad de salida:" textFill="#333333">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="tfCiudadSalida" layoutX="371.0" layoutY="126.0" prefHeight="25.0" prefWidth="214.0" promptText="Ciudad de salida" />
+      <TextField fx:id="tfCiudadSalida" layoutX="371.0" layoutY="126.0" prefHeight="25.0" prefWidth="214.0" promptText="Ciudad de salida" style="-fx-cursor: text;" />
       <Label layoutX="27.0" layoutY="174.0" text="Ciudad de llegada:" textFill="#333333">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="tfCiudadLlegada" layoutX="371.0" layoutY="175.0" prefHeight="25.0" prefWidth="214.0" promptText="Ciudad de llegada" />
+      <TextField fx:id="tfCiudadLlegada" layoutX="371.0" layoutY="175.0" prefHeight="25.0" prefWidth="214.0" promptText="Ciudad de llegada" style="-fx-cursor: text;" />
       <Label layoutX="27.0" layoutY="281.0" text="Fecha y hora de llegada:" textFill="#333333" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <DatePicker fx:id="dpFechaLlegada" layoutX="262.0" layoutY="282.0" promptText="Fecha de llegada" />
+      <DatePicker fx:id="dpFechaLlegada" layoutX="262.0" layoutY="282.0" promptText="Fecha de llegada" style="-fx-cursor: text;" />
       <Label layoutX="26.0" layoutY="228.0" text="Fecha y hora de salida:" textFill="#333333">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <DatePicker fx:id="dpFechaSalida" layoutX="262.0" layoutY="229.0" promptText="Fecha de salida" />
-      <Button layoutX="436.0" layoutY="436.0" mnemonicParsing="false" onAction="#btnClicGuardar" style="-fx-background-color: #2F80ED;" text="Guardar" />
-      <Button layoutX="524.0" layoutY="436.0" mnemonicParsing="false" onAction="#btnClicCancelar" style="-fx-background-color: #2F80ED;" text="Cancelar" />
+      <DatePicker fx:id="dpFechaSalida" layoutX="262.0" layoutY="229.0" promptText="Fecha de salida" style="-fx-cursor: text;" />
+      <Button layoutX="412.0" layoutY="436.0" mnemonicParsing="false" onAction="#btnClicGuardar" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Guardar" textFill="WHITE" />
+      <Button layoutX="508.0" layoutY="436.0" mnemonicParsing="false" onAction="#btnClicCancelar" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Cancelar" textFill="WHITE" />
       <AnchorPane layoutY="-1.0" prefHeight="78.0" prefWidth="600.0" style="-fx-background-color: #1E2A38;">
          <children>
             <Label layoutX="14.0" layoutY="13.0" text="Datos del vuelo" textFill="WHITE">
@@ -50,19 +50,19 @@
             </Label>
          </children>
       </AnchorPane>
-      <TextField fx:id="tfHoraLlegada" layoutX="449.0" layoutY="282.0" prefHeight="25.0" prefWidth="136.0" promptText="Hora llegada (HH:mm)" />
-      <TextField fx:id="tfHoraSalida" layoutX="449.0" layoutY="229.0" prefHeight="25.0" prefWidth="136.0" promptText="Hora salida (HH:mm)" />
+      <TextField fx:id="tfHoraLlegada" layoutX="449.0" layoutY="282.0" prefHeight="25.0" prefWidth="136.0" promptText="Hora llegada (HH:mm)" style="-fx-cursor: text;" />
+      <TextField fx:id="tfHoraSalida" layoutX="449.0" layoutY="229.0" prefHeight="25.0" prefWidth="136.0" promptText="Hora salida (HH:mm)" style="-fx-cursor: text;" />
       <Label layoutX="27.0" layoutY="386.0" text="Avión:" textFill="#333333">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cbAvion" disable="true" layoutX="371.0" layoutY="387.0" prefHeight="25.0" prefWidth="214.0" promptText="Avión" />
+      <ComboBox fx:id="cbAvion" disable="true" layoutX="371.0" layoutY="387.0" prefHeight="25.0" prefWidth="214.0" promptText="Avión" style="-fx-cursor: hand;" />
       <Label layoutX="27.0" layoutY="333.0" text="Costo del boleto:" textFill="#333333">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="tfCostoBoleto" layoutX="371.0" layoutY="334.0" prefHeight="25.0" prefWidth="214.0" promptText="Costo del boleto" />
+      <TextField fx:id="tfCostoBoleto" layoutX="371.0" layoutY="334.0" prefHeight="25.0" prefWidth="214.0" promptText="Costo del boleto" style="-fx-cursor: text;" />
    </children>
 </AnchorPane>

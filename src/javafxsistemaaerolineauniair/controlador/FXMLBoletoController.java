@@ -25,7 +25,6 @@ import javafxsistemaaerolineauniair.JavaFXSistemaAerolineaUniAir;
  */
 public class FXMLBoletoController implements Initializable {
 
-    private Button btnRegresar;
     @FXML
     private TableView<?> tvVuelos;
     @FXML
@@ -56,6 +55,8 @@ public class FXMLBoletoController implements Initializable {
     private MenuItem btnExportarXLSX;
     @FXML
     private MenuItem btnExportarPDF;
+    @FXML
+    private Button btnRegresar;
 
     /**
      * Initializes the controller class.
@@ -65,7 +66,8 @@ public class FXMLBoletoController implements Initializable {
         // TODO
     }    
 
-    private void onRegresar(ActionEvent event) {
+    @FXML
+    private void btnClicRegresar(ActionEvent event) {
         try {
             Stage escenarioBase = (Stage) btnRegresar.getScene().getWindow();
             Parent vista = FXMLLoader.load(JavaFXSistemaAerolineaUniAir.class.getResource("vista/FXMLPrincipal.fxml"));
@@ -76,10 +78,6 @@ public class FXMLBoletoController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(FXMLAvionController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    @FXML
-    private void btnClicRegresar(ActionEvent event) {
     }
 
     @FXML

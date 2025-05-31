@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="590.0" prefWidth="754.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLFormularioAsistenteController">
+   <children>
+      <Label layoutX="27.0" layoutY="87.0" prefHeight="27.0" prefWidth="177.0" text="Nombre" textFill="#333333">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfNombre" layoutX="428.0" layoutY="85.0" prefHeight="31.0" prefWidth="312.0" promptText="Nombre" style="-fx-cursor: text;" />
+      <Label layoutX="27.0" layoutY="131.0" text="Apellido Paterno" textFill="#333333">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfPaterno" layoutX="428.0" layoutY="129.0" prefHeight="31.0" prefWidth="312.0" promptText="Apellido Paterno" style="-fx-cursor: text;" />
+      <Label layoutX="26.0" layoutY="174.0" text="Apellido Materno" textFill="#333333">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfMaterno" layoutX="428.0" layoutY="172.0" prefHeight="31.0" prefWidth="312.0" promptText="Apellido Materno" style="-fx-cursor: text;" />
+      <Label layoutX="24.0" layoutY="264.0" text="Fecha de nacimiento" textFill="#333333" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="221.0" text="Direccion" textFill="#333333">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="547.0" layoutY="530.0" mnemonicParsing="false" onAction="#btnClicGuardar" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Guardar" textFill="WHITE" />
+      <Button layoutX="663.0" layoutY="530.0" mnemonicParsing="false" onAction="#btnClicCancelar" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Cancelar" textFill="WHITE" />
+      <AnchorPane layoutY="-1.0" prefHeight="78.0" prefWidth="754.0" style="-fx-background-color: #1E2A38;">
+         <children>
+            <Label layoutX="14.0" layoutY="13.0" text="Datos del Asistente de Vuelo" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="tfDIreccion" layoutX="428.0" layoutY="215.0" prefHeight="39.0" prefWidth="312.0" promptText="Dirección" style="-fx-cursor: text;" />
+      <Label layoutX="23.0" layoutY="307.0" text="Género" textFill="#333333">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dpFechaNacimiento" layoutX="428.0" layoutY="258.0" prefHeight="39.0" prefWidth="312.0" promptText="Fecha de nacimiento" style="-fx-cursor: text;" />
+      <TextField fx:id="tfGenero" layoutX="428.0" layoutY="305.0" prefHeight="31.0" prefWidth="312.0" promptText="Género" style="-fx-cursor: text;" />
+      <Label layoutX="23.0" layoutY="352.0" text="Salario" textFill="#333333">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfSalario" layoutX="428.0" layoutY="350.0" prefHeight="31.0" prefWidth="312.0" promptText="Salario" style="-fx-cursor: text;" />
+      <Label layoutX="20.0" layoutY="397.0" text="Horas de Asistencia" textFill="#333333">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="17.0" layoutY="447.0" text="Número de idiomas que habla" textFill="#333333">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfHorasAsistencia" layoutX="428.0" layoutY="395.0" prefHeight="31.0" prefWidth="312.0" promptText="Horas de asistencia" style="-fx-cursor: text;" />
+      <TextField fx:id="tfNoIdiomas" layoutX="428.0" layoutY="447.0" prefHeight="31.0" prefWidth="312.0" promptText="No.Idiomas" style="-fx-cursor: text;" />
+   </children>
+</AnchorPane>

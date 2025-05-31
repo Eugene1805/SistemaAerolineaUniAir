@@ -65,11 +65,11 @@ public class FXMLPrincipalController implements Initializable {
     private void lbClicAsistentePiloto(MouseEvent event) {
         try{
             Stage escenarioBase = (Stage) lbCerrarSesion.getScene().getWindow();
-            Parent vista = FXMLLoader.load(JavaFXSistemaAerolineaUniAir.class.getResource("vista/FXMLAsistentePiloto.fxml"));
+            Parent vista = FXMLLoader.load(JavaFXSistemaAerolineaUniAir.class.getResource("vista/FXMLAsistenteVuelo.fxml"));
             
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
-            escenarioBase.setTitle("Asistente Piloto");
+            escenarioBase.setTitle("Asistente Vuelo");
             escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();

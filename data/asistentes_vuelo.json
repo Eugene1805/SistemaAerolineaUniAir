@@ -1,0 +1,18 @@
+[
+  {
+    "noHorasAsistencia": 15000,
+    "noIdiomas": 5,
+    "noPersonal": 349305448,
+    "nombre": "María",
+    "direccion": "Avenida Oro 505, Guadalajara",
+    "fechaNacimiento": {
+      "year": 1993,
+      "month": 11,
+      "day": 30
+    },
+    "genero": "Femenino",
+    "salario": 40000.0,
+    "apellidoPaterno": "Cuevas",
+    "apellidoMaterno": "Carrillo"
+  }
+]

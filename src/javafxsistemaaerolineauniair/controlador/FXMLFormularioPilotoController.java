@@ -39,6 +39,23 @@ public class FXMLFormularioPilotoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cbLicencia.getItems().setAll(TipoLicencia.values());
+
+        // Mostrar la descripción en lugar del enum name
+        cbLicencia.setCellFactory(listView -> new ListCell<TipoLicencia>() {
+            @Override
+            protected void updateItem(TipoLicencia item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? null : item.getDescripcion());
+            }
+        });
+
+        cbLicencia.setButtonCell(new ListCell<TipoLicencia>() {
+            @Override
+            protected void updateItem(TipoLicencia item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? null : item.getDescripcion());
+            }
+        });
     }
 
     public void inicializarInformacion(Piloto piloto, PilotoDAO dao) {

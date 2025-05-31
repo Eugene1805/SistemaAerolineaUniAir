@@ -2,8 +2,10 @@ package javafxsistemaaerolineauniair.modelo.pojo;
 
 /**
  *
- * @author eugen
+ * @author meler
  */
 public class Administrativo extends Empleado{
+    
+    
     
 }

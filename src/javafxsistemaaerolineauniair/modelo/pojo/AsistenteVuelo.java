@@ -2,8 +2,8 @@ package javafxsistemaaerolineauniair.modelo.pojo;
 
 /**
  *
- * @author eugen
+ * @author meler
  */
 public class AsistenteVuelo extends Empleado{
-    
+
 }

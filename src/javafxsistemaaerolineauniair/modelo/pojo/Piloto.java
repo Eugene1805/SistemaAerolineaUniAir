@@ -14,7 +14,10 @@ public class Piloto extends Empleado{
     public Piloto(int noPersonal, String nombre, String direccion, LocalDate fechaNacimiento, String genero, double salario, String apellidoPaterno, String apellidoMaterno) {
         super(noPersonal, nombre, direccion, fechaNacimiento, genero, salario, apellidoPaterno, apellidoMaterno);
     }
-
+    
+    public Piloto() {
+    super(); // llama al constructor vacío de Empleado
+}
     
     public Piloto(int noPersonal, String nombre, String direccion, java.time.LocalDate fechaNacimiento,
                   String genero, double salario, String apellidoPaterno, String apellidoMaterno,

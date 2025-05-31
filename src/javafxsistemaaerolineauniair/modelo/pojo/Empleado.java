@@ -20,6 +20,10 @@ public abstract class Empleado {
     private String apellidoPaterno;
     private String apellidoMaterno;
 
+    public Empleado() {
+    }
+   
+
     public Empleado(int noPersonal, String nombre, String direccion, LocalDate fechaNacimiento, String genero, double salario, String apellidoPaterno, String apellidoMaterno) {
         this.noPersonal = noPersonal;
         this.nombre = nombre;

@@ -1,0 +1,19 @@
+[
+  {
+    "tipolicencia": "COMERCIAL",
+    "aniosExperiencia": 10,
+    "totalHoras": 10000,
+    "noPersonal": 1926783311,
+    "nombre": "Juan",
+    "direccion": "Calle 123, Veracruz",
+    "fechaNacimiento": {
+      "year": 1990,
+      "month": 5,
+      "day": 15
+    },
+    "genero": "Masculino",
+    "salario": 60000.0,
+    "apellidoPaterno": "Martínez",
+    "apellidoMaterno": "Gómez"
+  }
+]

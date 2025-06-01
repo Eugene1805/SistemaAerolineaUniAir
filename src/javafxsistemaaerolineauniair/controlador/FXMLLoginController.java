@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -33,7 +34,11 @@ public class FXMLLoginController implements Initializable {
     @FXML
     private TextField tfUsername;
     @FXML
-    private PasswordField tfPassword;
+    private TextField tfPasswordVisible;
+    @FXML
+    private Button btnMostrarContraseña;
+    @FXML
+    private PasswordField pfPassword;
 
     /**
      * Initializes the controller class.
@@ -46,7 +51,7 @@ public class FXMLLoginController implements Initializable {
     @FXML
     private void btnClicLogin(ActionEvent event) {
         String usuario = tfUsername.getText();
-        String contrasena = tfPassword.getText();
+        String contrasena = pfPassword.getText();
         if(validarCampos(usuario, contrasena))
             validarCredenciales(usuario, contrasena);
     }
@@ -100,6 +105,47 @@ public class FXMLLoginController implements Initializable {
             escenarioBase.showAndWait();
         } catch (IOException ex) {
             ex.printStackTrace();
+        }
+    }
+
+    private void mostrarContrasenaVisible() {
+        tfPasswordVisible.setText(pfPassword.getText());
+        tfPasswordVisible.setVisible(true);
+        tfPasswordVisible.setManaged(true);
+
+        pfPassword.setVisible(false);
+        pfPassword.setManaged(false);
+    }
+
+    private void ocultarContrasenaVisible() {
+        pfPassword.setText(tfPasswordVisible.getText());
+        pfPassword.setVisible(true);
+        pfPassword.setManaged(true);
+
+        tfPasswordVisible.setVisible(false);
+        tfPasswordVisible.setManaged(false);
+    }
+    
+    private void configurarListeners() {
+        pfPassword.textProperty().addListener((obs, oldText, newText) -> {
+            tfPasswordVisible.setText(newText);
+        });
+
+        tfPasswordVisible.textProperty().addListener((obs, oldText, newText) -> {
+            pfPassword.setText(newText);
+        });
+    }
+    
+    private String obtenerContrasenaActual() {
+        return pfPassword.isVisible() ? pfPassword.getText() : tfPasswordVisible.getText();
+    }
+    
+    @FXML
+    private void btnClicMostrarContraseña(ActionEvent event) {
+        if (tfPasswordVisible.isVisible()) {
+            ocultarContrasenaVisible();
+        } else {
+            mostrarContrasenaVisible();
         }
     }
     

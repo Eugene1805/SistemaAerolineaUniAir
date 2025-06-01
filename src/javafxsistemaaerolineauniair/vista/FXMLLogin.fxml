@@ -12,6 +12,8 @@
    <children>
       <AnchorPane layoutX="185.0" layoutY="87.0" prefHeight="444.0" prefWidth="341.0" style="-fx-background-color: #fdfdfd;">
          <children>
+            <TextField fx:id="tfPasswordVisible" layoutX="46.0" layoutY="267.0" managed="false" prefHeight="31.0" prefWidth="235.0" promptText="Contraseña" visible="false" />
+            <PasswordField fx:id="pfPassword" layoutX="46.0" layoutY="267.0" prefHeight="31.0" prefWidth="235.0" promptText="Password" style="-fx-cursor: text;" />
             <TextField fx:id="tfUsername" layoutX="46.0" layoutY="202.0" prefHeight="31.0" prefWidth="235.0" promptText="Username" style="-fx-cursor: text;" />
             <Label layoutX="126.0" layoutY="117.0" text="Login" textFill="#163251">
                <font>
@@ -28,7 +30,7 @@
                <image>
                   <Image url="@../recursos/UniAir_Logo_Transparente.png" />
                </image></ImageView>
-            <PasswordField fx:id="tfPassword" layoutX="46.0" layoutY="267.0" prefHeight="31.0" prefWidth="235.0" promptText="Password" style="-fx-cursor: text;" />
+            <Button fx:id="btnMostrarContraseña" layoutX="245.0" layoutY="267.0" onAction="#btnClicMostrarContraseña" prefHeight="31.0" prefWidth="35.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="👁" />
          </children>
       </AnchorPane>
    </children>

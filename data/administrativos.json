@@ -1,0 +1,17 @@
+[
+  {
+    "departamento": "Recursos Humanos",
+    "noPersonal": 1341610434,
+    "nombre": "José",
+    "direccion": "Calle 456",
+    "fechaNacimiento": {
+      "year": 2000,
+      "month": 12,
+      "day": 29
+    },
+    "genero": "Masculino",
+    "salario": 8000.0,
+    "apellidoPaterno": "Barradas",
+    "apellidoMaterno": "González"
+  }
+]

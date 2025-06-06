@@ -103,7 +103,6 @@ public class VueloDAO extends GenericDAO<Vuelo>{
         
         //Cadena de asistentes (Nombre apellido)
         String asistesStr = vuelo.getNombresAsistentes().stream().collect(Collectors.joining(", "));
-        
         return new String[]{
             String.valueOf(vuelo.getIdVuelo()),
             String.valueOf(vuelo.getNumPasajeros()),

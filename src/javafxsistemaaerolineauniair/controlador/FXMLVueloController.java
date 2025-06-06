@@ -312,13 +312,10 @@ public class FXMLVueloController implements Initializable {
     private void cargarInformacion() {
         try{
             List<Vuelo> lista = vueloDAO.obtenerTodos();
-                    System.out.println("====> DAO.obtenerTodos() devolvió " + lista.size() + " vuelos.");
 
             vuelos.setAll(lista);
-                    System.out.println("====> Después de setAll, vuelos.size() = " + vuelos.size());
 
             tvVuelos.setItems(vuelos);
-                    System.out.println("====> tvVuelos.getItems().size() = " + tvVuelos.getItems().size());
 
         }catch(IOException ex){
             Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error al cargar la informacion", ex.getMessage());

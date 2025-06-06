@@ -258,17 +258,12 @@ public class FXMLFormularioVueloController implements Initializable {
         if (tfNumeroPasajeros.getText().isEmpty() || tfCiudadSalida.getText().isEmpty() 
         || tfCiudadLlegada.getText().isEmpty() || dpFechaSalida.getValue() == null 
         || tfHoraSalida.getText().isEmpty() || dpFechaLlegada.getValue() == null 
-        || tfHoraLlegada.getText().isEmpty() || tfCostoBoleto.getText().isEmpty()
-        || cbAvion.getValue() == null) { 
-        
+        || tfHoraLlegada.getText().isEmpty() || tfCostoBoleto.getText().isEmpty()) { 
             Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos requeridos", 
             "Todos los campos son obligatorios.");
             return false;
         }
-        if (!tfHoraSalida.getText().matches("\\d{2}:\\d{2}") || !tfHoraLlegada.getText().matches("\\d{2}:\\d{2}") ) {
-            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "Formato de hora inválido (HH:mm).");
-            return false;
-        }
+    
     
     // Validar formato de hora (HH:mm)
         try {
@@ -279,8 +274,12 @@ public class FXMLFormularioVueloController implements Initializable {
             return false;
         }
         
-        if (cbAvion.getItems().isEmpty()){
-            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No hay aviones disponibles.");
+        if (cbAvion.getValue() == null) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.WARNING,
+                "Avión no seleccionado",
+                "Debe seleccionar un Avión para guardar el Vuelo."
+            );
             return false;
         }
         return true;

@@ -96,6 +96,12 @@ public class Avion {
     public void setAsiento(int asiento) {
         this.asiento = asiento;
     }
+
+    @Override
+    public String toString() {
+        return modelo + " (ID: " + idAvion + ")";
+    }
+    
     
     
 }

@@ -14,5 +14,69 @@
     "salario": 40000.0,
     "apellidoPaterno": "Cuevas",
     "apellidoMaterno": "Carrillo"
+  },
+  {
+    "noHorasAsistencia": 12000,
+    "noIdiomas": 2,
+    "noPersonal": 1961871207,
+    "nombre": "Juan",
+    "direccion": "Calle Centro 123, Colima",
+    "fechaNacimiento": {
+      "year": 1987,
+      "month": 6,
+      "day": 25
+    },
+    "genero": "Masculino",
+    "salario": 17000.0,
+    "apellidoPaterno": "Pérez",
+    "apellidoMaterno": "López"
+  },
+  {
+    "noHorasAsistencia": 17000,
+    "noIdiomas": 3,
+    "noPersonal": 431996326,
+    "nombre": "Gabriela",
+    "direccion": "Calle Guadalupe Victoria 354, Baja California",
+    "fechaNacimiento": {
+      "year": 1981,
+      "month": 10,
+      "day": 14
+    },
+    "genero": "Femenino",
+    "salario": 40000.0,
+    "apellidoPaterno": "Saldaña",
+    "apellidoMaterno": "Benitez"
+  },
+  {
+    "noHorasAsistencia": 14500,
+    "noIdiomas": 3,
+    "noPersonal": 1636473436,
+    "nombre": "Leonardo",
+    "direccion": "Calle Sebastian Lerdo de Tejada, Monterrey",
+    "fechaNacimiento": {
+      "year": 1980,
+      "month": 12,
+      "day": 18
+    },
+    "genero": "Masculino",
+    "salario": 35000.0,
+    "apellidoPaterno": "López",
+    "apellidoMaterno": "Bigurra"
+  },
+  {
+    "noHorasAsistencia": 18000,
+    "noIdiomas": 4,
+    "noPersonal": 1585696815,
+    "nombre": "Mario",
+    "direccion": "Calle Condesa, Ciudad de México",
+    "fechaNacimiento": {
+      "year": 1987,
+      "month": 6,
+      "day": 18
+    },
+    "genero": "Masculino",
+    "salario": 45000.0,
+    "apellidoPaterno": "Becares",
+    "apellidoMaterno": "Flores"
   }
 ]

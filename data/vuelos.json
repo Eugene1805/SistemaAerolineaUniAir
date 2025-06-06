@@ -1,1 +1,155 @@
-[]
+[
+  {
+    "idVuelo": 1387375346,
+    "numPasajeros": 300,
+    "tiempoRecorrido": 8,
+    "costoBoleto": 7500.0,
+    "ciudadSalida": "Londres",
+    "ciudadLlegada": "Ciudad de México",
+    "fechaSalida": {
+      "year": 2025,
+      "month": 6,
+      "day": 7
+    },
+    "horaSalida": {
+      "hour": 9,
+      "minute": 30,
+      "second": 0,
+      "nano": 0
+    },
+    "fechaLlegada": {
+      "year": 2025,
+      "month": 6,
+      "day": 7
+    },
+    "horaLlegada": {
+      "hour": 17,
+      "minute": 50,
+      "second": 0,
+      "nano": 0
+    },
+    "idAvion": 1926901376,
+    "pilotos": [
+      1926783311,
+      404966998
+    ],
+    "asistentes": [
+      1961871207,
+      431996326,
+      349305448,
+      1636473436
+    ],
+    "nombresPilotos": [
+      "Juan Martínez",
+      "Carlos Ortíz"
+    ],
+    "nombresAsistentes": [
+      "Juan Pérez",
+      "Gabriela Saldaña",
+      "María Cuevas",
+      "Leonardo López"
+    ]
+  },
+  {
+    "idVuelo": 135345488,
+    "numPasajeros": 250,
+    "tiempoRecorrido": 3,
+    "costoBoleto": 8000.0,
+    "ciudadSalida": "Paris",
+    "ciudadLlegada": "Madrid",
+    "fechaSalida": {
+      "year": 2025,
+      "month": 6,
+      "day": 8
+    },
+    "horaSalida": {
+      "hour": 19,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "fechaLlegada": {
+      "year": 2025,
+      "month": 6,
+      "day": 8
+    },
+    "horaLlegada": {
+      "hour": 22,
+      "minute": 30,
+      "second": 0,
+      "nano": 0
+    },
+    "idAvion": 1635461659,
+    "pilotos": [
+      1959250665,
+      14371642
+    ],
+    "asistentes": [
+      1585696815,
+      1636473436,
+      431996326,
+      1961871207
+    ],
+    "nombresPilotos": [
+      "Carla Pérez",
+      "Perla Fuentes"
+    ],
+    "nombresAsistentes": [
+      "Mario Becares",
+      "Leonardo López",
+      "Gabriela Saldaña",
+      "Juan Pérez"
+    ]
+  },
+  {
+    "idVuelo": 175177438,
+    "numPasajeros": 150,
+    "tiempoRecorrido": 2,
+    "costoBoleto": 5560.0,
+    "ciudadSalida": "Portugal",
+    "ciudadLlegada": "Venecia",
+    "fechaSalida": {
+      "year": 2025,
+      "month": 6,
+      "day": 14
+    },
+    "horaSalida": {
+      "hour": 15,
+      "minute": 30,
+      "second": 0,
+      "nano": 0
+    },
+    "fechaLlegada": {
+      "year": 2025,
+      "month": 6,
+      "day": 14
+    },
+    "horaLlegada": {
+      "hour": 17,
+      "minute": 59,
+      "second": 0,
+      "nano": 0
+    },
+    "idAvion": 1926901376,
+    "pilotos": [
+      1959250665,
+      404966998
+    ],
+    "asistentes": [
+      349305448,
+      1961871207,
+      431996326,
+      1585696815
+    ],
+    "nombresPilotos": [
+      "Carla Pérez",
+      "Carlos Ortíz"
+    ],
+    "nombresAsistentes": [
+      "María Cuevas",
+      "Juan Pérez",
+      "Gabriela Saldaña",
+      "Mario Becares"
+    ]
+  }
+]

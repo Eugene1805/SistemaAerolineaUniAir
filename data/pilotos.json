@@ -15,5 +15,73 @@
     "salario": 60000.0,
     "apellidoPaterno": "Martínez",
     "apellidoMaterno": "Gómez"
+  },
+  {
+    "tipolicencia": "COMERCIAL",
+    "aniosExperiencia": 10,
+    "totalHoras": 9000,
+    "noPersonal": 404966998,
+    "nombre": "Carlos",
+    "direccion": "Calle Juarez, Oaxaca",
+    "fechaNacimiento": {
+      "year": 1983,
+      "month": 6,
+      "day": 16
+    },
+    "genero": "Maculino",
+    "salario": 50000.0,
+    "apellidoPaterno": "Ortíz",
+    "apellidoMaterno": "Sánchez"
+  },
+  {
+    "tipolicencia": "DELINEAAEREA",
+    "aniosExperiencia": 5,
+    "totalHoras": 5000,
+    "noPersonal": 1959250665,
+    "nombre": "Carla",
+    "direccion": "Calle Pipila, Veracruz",
+    "fechaNacimiento": {
+      "year": 1986,
+      "month": 6,
+      "day": 11
+    },
+    "genero": "Femenino",
+    "salario": 50000.0,
+    "apellidoPaterno": "Pérez",
+    "apellidoMaterno": "Ochoa"
+  },
+  {
+    "tipolicencia": "DEPORTIVO",
+    "aniosExperiencia": 7,
+    "totalHoras": 7700,
+    "noPersonal": 14371642,
+    "nombre": "Perla",
+    "direccion": "Calle Ignacio de la Llave, Veracruz",
+    "fechaNacimiento": {
+      "year": 1977,
+      "month": 6,
+      "day": 9
+    },
+    "genero": "Femenino",
+    "salario": 55000.0,
+    "apellidoPaterno": "Fuentes",
+    "apellidoMaterno": "Hernández"
+  },
+  {
+    "tipolicencia": "COMERCIAL",
+    "aniosExperiencia": 12,
+    "totalHoras": 12000,
+    "noPersonal": 2028251171,
+    "nombre": "Pancho",
+    "direccion": "Calle Circuito Quetzales, Yucatán",
+    "fechaNacimiento": {
+      "year": 1973,
+      "month": 6,
+      "day": 21
+    },
+    "genero": "Masculino",
+    "salario": 65000.0,
+    "apellidoPaterno": "Utrera",
+    "apellidoMaterno": "Castañeda"
   }
 ]

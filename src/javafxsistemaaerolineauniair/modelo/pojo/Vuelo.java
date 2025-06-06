@@ -4,6 +4,8 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -22,11 +24,21 @@ public class Vuelo {
     private LocalTime horaLlegada;
     
     private int idAvion;
+    
+    private List<Integer> pilotos;
+    private List<Integer> asistentes;
+    
+    private List<String> nombresPilotos;
+    private List<String> nombresAsistentes;
 
     public Vuelo() {
+        this.pilotos = new ArrayList<>();
+        this.asistentes = new ArrayList<>();
+        this.nombresPilotos = new ArrayList<>();
+        this.nombresAsistentes = new ArrayList<>();
     }
 
-    public Vuelo(int idVuelo, int numPasajeros, int tiempoRecorrido, double costoBoleto, String ciudadSalida, String ciudadLlegada, LocalDate fechaSalida, LocalTime horaSalida, LocalDate fechaLlegada, LocalTime horaLlegada, int idAvion) {
+    public Vuelo(int idVuelo, int numPasajeros, int tiempoRecorrido, double costoBoleto, String ciudadSalida, String ciudadLlegada, LocalDate fechaSalida, LocalTime horaSalida, LocalDate fechaLlegada, LocalTime horaLlegada, int idAvion, List<Integer> pilotos, List<Integer> asistentes, List<String> nombresPilotos, List<String> nombresAsistentes) {
         this.idVuelo = idVuelo;
         this.numPasajeros = numPasajeros;
         this.tiempoRecorrido = tiempoRecorrido;
@@ -38,7 +50,15 @@ public class Vuelo {
         this.fechaLlegada = fechaLlegada;
         this.horaLlegada = horaLlegada;
         this.idAvion = idAvion;
+        this.pilotos = new ArrayList<>(pilotos);
+        this.asistentes = new ArrayList<>(asistentes);
+        this.nombresPilotos = new ArrayList<>(nombresPilotos);
+        this.nombresAsistentes = new ArrayList<>(nombresAsistentes);
     }
+
+ 
+
+    
     
     public void calcularTiempoRecorrido(){
         LocalDateTime salida = LocalDateTime.of(fechaSalida, horaSalida);
@@ -135,4 +155,38 @@ public class Vuelo {
     public void setIdAvion(int idAvion) {
         this.idAvion = idAvion;
     }
+
+    public List<Integer> getPilotos() {
+        return pilotos;
+    }
+
+    public void setPilotos(List<Integer> pilotos) {
+        this.pilotos = pilotos;
+    }
+
+    public List<Integer> getAsistentes() {
+        return asistentes;
+    }
+
+    public void setAsistentes(List<Integer> asistentes) {
+        this.asistentes = asistentes;
+    }
+
+    public List<String> getNombresPilotos() {
+        return nombresPilotos;
+    }
+
+    public void setNombresPilotos(List<String> nombresPilotos) {
+        this.nombresPilotos = nombresPilotos;
+    }
+
+    public List<String> getNombresAsistentes() {
+        return nombresAsistentes;
+    }
+
+    public void setNombresAsistentes(List<String> nombresAsistentes) {
+        this.nombresAsistentes = nombresAsistentes;
+    }
+    
+    
 }

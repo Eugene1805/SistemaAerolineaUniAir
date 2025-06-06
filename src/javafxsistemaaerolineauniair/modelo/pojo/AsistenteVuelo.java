@@ -41,6 +41,6 @@ public class AsistenteVuelo extends Empleado {
 
     @Override
     public String toString() {
-        return "AsistenteVuelo{" + "noHorasAsistencia=" + noHorasAsistencia + ", noIdiomas=" + noIdiomas + '}';
+        return getNombre() + " " + getApellidoPaterno();
     }
 }

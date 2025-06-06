@@ -4,6 +4,11 @@ import com.itextpdf.text.DocumentException;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import javafx.event.ActionEvent;
@@ -17,7 +22,9 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafxsistemaaerolineauniair.JavaFXSistemaAerolineaUniAir;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
@@ -26,7 +33,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
+import javafxsistemaaerolineauniair.modelo.dao.AsistenteVueloDAO;
+import javafxsistemaaerolineauniair.modelo.dao.AvionDAO;
+import javafxsistemaaerolineauniair.modelo.dao.PilotoDAO;
 import javafxsistemaaerolineauniair.modelo.dao.VueloDAO;
+import javafxsistemaaerolineauniair.modelo.pojo.AsistenteVuelo;
+import javafxsistemaaerolineauniair.modelo.pojo.Avion;
+import javafxsistemaaerolineauniair.modelo.pojo.Piloto;
 import javafxsistemaaerolineauniair.modelo.pojo.Vuelo;
 import javafxsistemaaerolineauniair.util.Util;
 
@@ -63,19 +76,30 @@ public class FXMLVueloController implements Initializable {
     @FXML
     private TableColumn colHoraLlegada;
     @FXML
-    private TableColumn colAvion;
+    private TableColumn<Vuelo,String> colAvion;
     @FXML
     private TableColumn colTiempoRecorrido;
     @FXML
     private TableColumn colCostoBoleto;
     @FXML
+    private TableColumn<Vuelo, String> colPilotos;
+    @FXML
+    private TableColumn<Vuelo, String> colAsistentes;
+    @FXML
     private Button btnActualizar;
     @FXML
     private Button btnEliminar;
     
-    private final ObservableList<Vuelo> vuelos = FXCollections.observableArrayList();
     private final VueloDAO vueloDAO = new VueloDAO();
+    private final AvionDAO avionDAO = new AvionDAO();
+    private final PilotoDAO pilotoDAO = new PilotoDAO();
+    private final AsistenteVueloDAO asistenteDAO = new AsistenteVueloDAO();
+ 
+    private final ObservableList<Vuelo> vuelos = FXCollections.observableArrayList();
 
+    private final Map<Integer, String> mPilotos = new HashMap<>();
+    private final Map<Integer, String> mAsistentes = new HashMap<>();
+    private final Map<Integer, String> mAviones = new HashMap<>();
 
 
     /**
@@ -139,8 +163,7 @@ public class FXMLVueloController implements Initializable {
     }
     @FXML
     private void btnClicActualizarVuelo(ActionEvent event) {
-    /*
-   //Añadir en vueloDAO.actualizar
+    
         Vuelo seleccionado = tvVuelos.getSelectionModel().getSelectedItem();
         if (seleccionado != null) {
             Vuelo copia = clonarVuelo(seleccionado);
@@ -155,7 +178,7 @@ public class FXMLVueloController implements Initializable {
         } else {
             Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Seleccione un vuelo para actualizar", "Debe seleccionar un vuelo para editar.");
         }
-        */
+        
     }
     
     public Vuelo clonarVuelo(Vuelo original){
@@ -169,13 +192,17 @@ public class FXMLVueloController implements Initializable {
                 original.getHoraSalida(),
                 original.getFechaLlegada(),
                 original.getHoraLlegada(),
-                original.getIdAvion()
+                original.getIdAvion(),
+                new ArrayList<>(original.getPilotos()),
+                new ArrayList<>(original.getAsistentes()),
+                new ArrayList<>(original.getNombresPilotos()),    
+                new ArrayList<>(original.getNombresAsistentes()) 
                 );
     }
 
     @FXML
     private void btnClicEliminarVuelo(ActionEvent event) {
-    /*
+
         //Añadir en VUELODAO .eliminar
         Vuelo seleccionado = tvVuelos.getSelectionModel().getSelectedItem();
     if (seleccionado != null) {
@@ -188,7 +215,7 @@ public class FXMLVueloController implements Initializable {
     } else {
         Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Seleccione un vuelo para eliminar", "Debe seleccionar un vuelo para eliminar.");
     }
-        */
+        
     }
 
     @FXML
@@ -252,15 +279,78 @@ public class FXMLVueloController implements Initializable {
         colHoraLlegada.setCellValueFactory(new PropertyValueFactory("horaLlegada"));
         colTiempoRecorrido.setCellValueFactory(new PropertyValueFactory("tiempoRecorrido"));
         colCostoBoleto.setCellValueFactory(new PropertyValueFactory("costoBoleto"));
-        colAvion.setCellValueFactory(new PropertyValueFactory("avion"));
+    
+        cargarEmpleados();
+        
+        cargarAviones();
+        
+        colAvion.setCellValueFactory(cellData ->{
+            Vuelo v = cellData.getValue();
+            String texto = mAviones.getOrDefault(v.getIdAvion(), String.valueOf(v.getIdAvion()));
+            return new SimpleStringProperty(texto);
+        });
+        
+        colPilotos.setCellValueFactory(cellData -> {
+            Vuelo v = cellData.getValue();
+            List<Integer> idsPilotos = v.getPilotos() == null ? Collections.emptyList() : v.getPilotos();
+            String unir = idsPilotos.stream()
+                    .map(id -> mPilotos.getOrDefault(id, String.valueOf(id)))
+                    .collect(Collectors.joining(", "));
+            return new SimpleStringProperty(unir);
+        });
+        
+        colAsistentes.setCellValueFactory(cellData -> {
+            Vuelo v = cellData.getValue();
+            List<Integer> idsAsistentes = v.getAsistentes() == null ? Collections.emptyList() : v.getAsistentes();
+            String unidos = idsAsistentes.stream()
+                    .map(id -> mAsistentes.getOrDefault(id, String.valueOf(id)))
+                    .collect(Collectors.joining(", "));
+            return new SimpleStringProperty(unidos);
+        });
     }
 
     private void cargarInformacion() {
         try{
-            vuelos.setAll(vueloDAO.obtenerTodos());
+            List<Vuelo> lista = vueloDAO.obtenerTodos();
+                    System.out.println("====> DAO.obtenerTodos() devolvió " + lista.size() + " vuelos.");
+
+            vuelos.setAll(lista);
+                    System.out.println("====> Después de setAll, vuelos.size() = " + vuelos.size());
+
             tvVuelos.setItems(vuelos);
+                    System.out.println("====> tvVuelos.getItems().size() = " + tvVuelos.getItems().size());
+
         }catch(IOException ex){
             Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error al cargar la informacion", ex.getMessage());
+        }
+    }
+    
+    private void cargarEmpleados(){
+        try {
+            List<Piloto> pilotos = pilotoDAO.obtenerTodos();
+            for(Piloto p : pilotos){
+                String nombre = p.getNombre() + " " + p.getApellidoPaterno();
+                mPilotos.put(p.getNoPersonal(),nombre);
+            }
+            
+            List<AsistenteVuelo> asistentes = asistenteDAO.obtenerTodos();
+            for(AsistenteVuelo a : asistentes){
+                String nombre = a.getNombre() + " " + a.getApellidoPaterno();
+                mAsistentes.put(a.getNoPersonal(),nombre);
+            }
+        } catch (IOException e) {
+            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error al cargar a los empleados", "Lo sentimos, no se pudo mostrar a los pilotos o asistentes.\n" + e.getMessage());
+        }
+    }
+    
+    private void cargarAviones() {
+        try {
+            List<Avion> aviones = avionDAO.obtenerTodos();
+            for (Avion a : aviones) {
+                String avion = a.getModelo() + " (ID: " + a.getIdAvion() + ")";
+                mAviones.put(a.getIdAvion(), avion);
+            }
+        } catch (IOException e) {
         }
     }
 }

@@ -52,12 +52,9 @@ public class Piloto extends Empleado{
         this.totalHoras = totalHoras;
     }
 
-    @Override
-    public String toString() {
-        return "Piloto{" + "tipolicencia=" + tipolicencia + ", aniosExperiencia=" + aniosExperiencia + ", totalHoras=" + totalHoras + '}';
-    }
-    
-    
- 
- 
+@Override
+public String toString() {
+        return getNombre() + " " + getApellidoPaterno();
+}
+
 }

@@ -78,5 +78,53 @@
     "salario": 45000.0,
     "apellidoPaterno": "Becares",
     "apellidoMaterno": "Flores"
+  },
+  {
+    "noHorasAsistencia": 17650,
+    "noIdiomas": 4,
+    "noPersonal": 451210208,
+    "nombre": "Frida",
+    "direccion": "Calle Chapultepec, Michoacán",
+    "fechaNacimiento": {
+      "year": 1972,
+      "month": 6,
+      "day": 15
+    },
+    "genero": "Femenino",
+    "salario": 54000.0,
+    "apellidoPaterno": "Gonzales",
+    "apellidoMaterno": "Castillo"
+  },
+  {
+    "noHorasAsistencia": 19000,
+    "noIdiomas": 3,
+    "noPersonal": 234090322,
+    "nombre": "Valeria",
+    "direccion": "Calle Francisco Morales 432, Veracruz",
+    "fechaNacimiento": {
+      "year": 1974,
+      "month": 6,
+      "day": 12
+    },
+    "genero": "Femenino",
+    "salario": 56000.0,
+    "apellidoPaterno": "Landa",
+    "apellidoMaterno": "Castañeda"
+  },
+  {
+    "noHorasAsistencia": 13560,
+    "noIdiomas": 2,
+    "noPersonal": 108896077,
+    "nombre": "Ximena",
+    "direccion": "Calle Tabachin 876, Xalapa, Veracuz",
+    "fechaNacimiento": {
+      "year": 1994,
+      "month": 6,
+      "day": 15
+    },
+    "genero": "Femenino",
+    "salario": 39800.0,
+    "apellidoPaterno": "Palacios",
+    "apellidoMaterno": "Gutierrez"
   }
 ]

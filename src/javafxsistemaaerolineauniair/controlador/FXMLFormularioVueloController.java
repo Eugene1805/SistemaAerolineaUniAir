@@ -2,6 +2,7 @@ package javafxsistemaaerolineauniair.controlador;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -91,7 +92,7 @@ public class FXMLFormularioVueloController implements Initializable {
 
     @FXML
     private void btnClicGuardar(ActionEvent event) {
-        if (validarCampos()) {
+        if (validarCampos() && validarPilotos() && validarAsistentes()) {
             //Actualizar objeto vuelo con los valores del formulario
             vuelo.setNumPasajeros(Integer.parseInt(tfNumeroPasajeros.getText()));
             vuelo.setCiudadSalida(tfCiudadSalida.getText());
@@ -104,52 +105,24 @@ public class FXMLFormularioVueloController implements Initializable {
             vuelo.setIdAvion(cbAvion.getValue().getIdAvion());
             vuelo.calcularTiempoRecorrido();           
             
-            Piloto piloto1 = cbPiloto1.getValue();
-            Piloto piloto2 = cbPiloto2.getValue();
-            if (piloto1 == null || piloto2 == null){
-                Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Pilotos incompletos",
-                        "Debe seleccionar ambos pilotos");
-                return;
-            }
-            if (piloto1.getNoPersonal() == piloto2.getNoPersonal()) {
-                Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Pilotos duplicados", 
-                        "Los dos pilotos deben ser diferentes");
-                return;
-            }
-            
+            Piloto p1 = cbPiloto1.getValue();
+            Piloto p2 = cbPiloto2.getValue();
             List<Integer> listaPilotos = new ArrayList<>();
-            listaPilotos.add(piloto1.getNoPersonal());
-            listaPilotos.add(piloto2.getNoPersonal());
+            listaPilotos.add(p1.getNoPersonal());
+            listaPilotos.add(p2.getNoPersonal());
             vuelo.setPilotos(listaPilotos);
             
             AsistenteVuelo as1 = cbAsistente1.getValue();
             AsistenteVuelo as2 = cbAsistente2.getValue();
             AsistenteVuelo as3 = cbAsistente3.getValue();
             AsistenteVuelo as4 = cbAsistente4.getValue();
-            
-            if (as1 == null || as2 == null || as3 == null || as4 == null) {
-                Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Asistentes incompletos",
-                        "Debe seleccionar los 4 asistentes");
-                return;                
-            }
-            
-            Set<Integer> setAsistentes = new HashSet<>();
-            setAsistentes.add(as1.getNoPersonal());
-            setAsistentes.add(as2.getNoPersonal());
-            setAsistentes.add(as3.getNoPersonal());
-            setAsistentes.add(as4.getNoPersonal());
-            if(setAsistentes.size() < 4){
-                Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Asistentes duplicados",
-                        "Cada asistente debe ser diferente");
-                return;
-            }
             List<Integer> listaAsistentes = new ArrayList<>();
             listaAsistentes.add(as1.getNoPersonal());
             listaAsistentes.add(as2.getNoPersonal());
             listaAsistentes.add(as3.getNoPersonal());
             listaAsistentes.add(as4.getNoPersonal());
             vuelo.setAsistentes(listaAsistentes);
-            
+ 
             confirmado = true;
             ((Stage) tfNumeroPasajeros.getScene().getWindow()).close();           
         }
@@ -170,9 +143,9 @@ public class FXMLFormularioVueloController implements Initializable {
             tfCiudadSalida.setText(vuelo.getCiudadSalida());
             tfCiudadLlegada.setText(vuelo.getCiudadLlegada());
             dpFechaSalida.setValue(vuelo.getFechaSalida());
-            tfHoraSalida.setText(vuelo.getHoraSalida() != null ? "" : vuelo.getHoraSalida().toString());
+            tfHoraSalida.setText(vuelo.getHoraSalida() != null ? vuelo.getHoraSalida().toString() : "");
             dpFechaLlegada.setValue(vuelo.getFechaLlegada());
-            tfHoraLlegada.setText(vuelo.getHoraLlegada() != null ? "" : vuelo.getHoraLlegada().toString());
+            tfHoraLlegada.setText(vuelo.getHoraLlegada() != null ? vuelo.getHoraLlegada().toString() : "");
             tfCostoBoleto.setText(String.valueOf(vuelo.getCostoBoleto()));
             
             for(Avion avion : cbAvion.getItems()){
@@ -187,12 +160,9 @@ public class FXMLFormularioVueloController implements Initializable {
                 try {
                     Piloto p1 = pilotoDAO.buscarPorId(listaPilotos.get(0));
                     Piloto p2 = pilotoDAO.buscarPorId(listaPilotos.get(1));
-                    if (p1 != null){
-                        cbPiloto1.getSelectionModel().select(p1);
-                    } 
-                    if (p2 != null){
-                        cbPiloto2.getSelectionModel().select(p2);
-                    } 
+                    if (p1 != null) cbPiloto1.getSelectionModel().select(p1);
+                    if (p2 != null) cbPiloto2.getSelectionModel().select(p2);
+                    
                 } catch (IOException e) {
                 }
             }
@@ -258,27 +228,135 @@ public class FXMLFormularioVueloController implements Initializable {
         if (tfNumeroPasajeros.getText().isEmpty() || tfCiudadSalida.getText().isEmpty() 
         || tfCiudadLlegada.getText().isEmpty() || dpFechaSalida.getValue() == null 
         || tfHoraSalida.getText().isEmpty() || dpFechaLlegada.getValue() == null 
-        || tfHoraLlegada.getText().isEmpty() || tfCostoBoleto.getText().isEmpty()) { 
-            Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos requeridos", 
-            "Todos los campos son obligatorios.");
+        || tfHoraLlegada.getText().isEmpty() || tfCostoBoleto.getText().isEmpty() 
+        ) { 
+            Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos Faltanres", 
+            "No puede haber ningún campo vacío.");
             return false;
         }
-    
-    
-    // Validar formato de hora (HH:mm)
+        
+        if (!tfNumeroPasajeros.getText().matches("\\d+")) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.ERROR,
+                "Número de pasajeros inválido",
+                "ERROR: El número de pasajeros debe ser un número entero positivo."
+            );
+            return false;
+        }
+
+        try {
+            double costo = Double.parseDouble(tfCostoBoleto.getText());
+            if (costo < 0) {
+                Util.mostrarAlertaSimple(
+                    Alert.AlertType.ERROR,
+                    "Costo de boleto inválido",
+                    "ERROR: El costo del boleto debe ser un número positivo."
+                );            
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.ERROR,
+                "Costo de boleto inválido",
+                "ERROR: El costo del boleto debe ser un número válido."
+            );
+            return false;
+        }
+        
+        String regexLetras = "^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$";
+        if (!tfCiudadSalida.getText().matches(regexLetras)) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.ERROR,
+                "Ciudad de salida inválida",
+                "ERROR: Por favor ingrese una ciudad de salida válida."
+            );
+            return false;
+        }
+        if (!tfCiudadLlegada.getText().matches(regexLetras)) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.ERROR,
+                "Ciudad de llegada inválida",
+                "ERROR: Por favor ingrese una ciudad de llegada válida."
+            );
+            return false;
+        }
+        
         try {
             LocalTime.parse(tfHoraSalida.getText());
             LocalTime.parse(tfHoraLlegada.getText());
         } catch (DateTimeParseException e) {
-            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Formato de hora inválido", "El formato de hora debe ser HH:mm.");
+            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Formato de hora inválido",
+                    "ERROR: El formato de hora debe ser HH:mm.");
             return false;
         }
+        
+        LocalDate fechaSalida = dpFechaSalida.getValue();
+        LocalDate fechaLlegada = dpFechaLlegada.getValue();
+        if (fechaLlegada.isBefore(fechaSalida)) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.ERROR,
+                "Fechas inconsistentes",
+                "ERROR: La fecha de llegada no puede ser anterior a la fecha de salida."
+            );
+            return false;
+        }        
         
         if (cbAvion.getValue() == null) {
             Util.mostrarAlertaSimple(
                 Alert.AlertType.WARNING,
                 "Avión no seleccionado",
                 "Debe seleccionar un Avión para guardar el Vuelo."
+            );
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean validarPilotos(){
+        Piloto p1 = cbPiloto1.getValue();
+        Piloto p2 = cbPiloto2.getValue();
+        if (p1 == null || p2 == null) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.WARNING,
+                "Pilotos Incompletos",
+                "Por favor selccione a dos pilotos antes de guardar."
+            );
+            return false;
+        }
+        if (p1.getNoPersonal() == p2.getNoPersonal()) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.ERROR,
+                "Pilotos Duplicados",
+                "ERROR: Por favor seleccione a dos pilotos diferentes."
+            );
+            return false;
+        }
+        return true; 
+    }
+    
+    private boolean validarAsistentes(){
+        AsistenteVuelo a1 = cbAsistente1.getValue();
+        AsistenteVuelo a2 = cbAsistente2.getValue();
+        AsistenteVuelo a3 = cbAsistente3.getValue();
+        AsistenteVuelo a4 = cbAsistente4.getValue();
+        if (a1 == null || a2 == null || a3 == null || a4 == null) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.WARNING,
+                "Asistentes incompletos",
+                "Por favor seleccione a los 4 asistentes antes de guardar."
+            );
+            return false;
+        }
+        Set<Integer> idsUnicos = new HashSet<>();
+        idsUnicos.add(a1.getNoPersonal());
+        idsUnicos.add(a2.getNoPersonal());
+        idsUnicos.add(a3.getNoPersonal());
+        idsUnicos.add(a4.getNoPersonal());
+        if (idsUnicos.size() < 4) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.ERROR,
+                "Asistentes duplicados",
+                "ERROR: Por favor seleccione a cada asistente diferente."
             );
             return false;
         }

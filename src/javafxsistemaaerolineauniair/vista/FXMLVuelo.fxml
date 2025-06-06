@@ -37,7 +37,7 @@
             <TableColumn fx:id="colCostoBoleto" prefWidth="64.0" text="    Costo&#10;del Boleto" />
             <TableColumn fx:id="colAvion" prefWidth="171.0" text="Avion" />
             <TableColumn fx:id="colPilotos" prefWidth="180.0" text="Pilotos" />
-            <TableColumn fx:id="colAsistentes" prefWidth="300.0" text="Asistentes" />
+            <TableColumn fx:id="colAsistentes" prefWidth="350.0" text="Asistentes" />
         </columns>
       </TableView>
       <Button layoutX="882.0" layoutY="542.0" mnemonicParsing="false" onAction="#btnClicAltaVuelos" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Alta" textFill="WHITE" />

@@ -1,11 +1,11 @@
 [
   {
-    "idVuelo": 1387375346,
-    "numPasajeros": 300,
-    "tiempoRecorrido": 8,
-    "costoBoleto": 7500.0,
+    "idVuelo": 54916571,
+    "numPasajeros": 250,
+    "tiempoRecorrido": 7,
+    "costoBoleto": 7540.0,
     "ciudadSalida": "Londres",
-    "ciudadLlegada": "Ciudad de México",
+    "ciudadLlegada": "México",
     "fechaSalida": {
       "year": 2025,
       "month": 6,
@@ -13,7 +13,7 @@
     },
     "horaSalida": {
       "hour": 9,
-      "minute": 30,
+      "minute": 0,
       "second": 0,
       "nano": 0
     },
@@ -23,47 +23,100 @@
       "day": 7
     },
     "horaLlegada": {
-      "hour": 17,
+      "hour": 16,
+      "minute": 20,
+      "second": 0,
+      "nano": 0
+    },
+    "idAvion": 1926901376,
+    "modeloAvion": "boing 777",
+    "pilotos": [
+      404966998,
+      1959250665
+    ],
+    "asistentes": [
+      108896077,
+      234090322,
+      451210208,
+      1585696815
+    ],
+    "nombresPilotos": [
+      "Carlos Ortíz",
+      "Carla Pérez"
+    ],
+    "nombresAsistentes": [
+      "Ximena Palacios",
+      "Valeria Landa",
+      "Frida Gonzales",
+      "Mario Becares"
+    ]
+  },
+  {
+    "idVuelo": 265022362,
+    "numPasajeros": 100,
+    "tiempoRecorrido": 2,
+    "costoBoleto": 4500.0,
+    "ciudadSalida": "Madrid",
+    "ciudadLlegada": "Paris",
+    "fechaSalida": {
+      "year": 2025,
+      "month": 6,
+      "day": 6
+    },
+    "horaSalida": {
+      "hour": 12,
+      "minute": 30,
+      "second": 0,
+      "nano": 0
+    },
+    "fechaLlegada": {
+      "year": 2025,
+      "month": 6,
+      "day": 6
+    },
+    "horaLlegada": {
+      "hour": 14,
       "minute": 50,
       "second": 0,
       "nano": 0
     },
     "idAvion": 1926901376,
+    "modeloAvion": "boing 777",
     "pilotos": [
       1926783311,
-      404966998
+      2028251171
     ],
     "asistentes": [
+      349305448,
       1961871207,
       431996326,
-      349305448,
       1636473436
     ],
     "nombresPilotos": [
       "Juan Martínez",
-      "Carlos Ortíz"
+      "Pancho Utrera"
     ],
     "nombresAsistentes": [
+      "María Cuevas",
       "Juan Pérez",
       "Gabriela Saldaña",
-      "María Cuevas",
       "Leonardo López"
     ]
   },
   {
-    "idVuelo": 135345488,
-    "numPasajeros": 250,
-    "tiempoRecorrido": 3,
-    "costoBoleto": 8000.0,
+    "idVuelo": 1202990189,
+    "numPasajeros": 350,
+    "tiempoRecorrido": 10,
+    "costoBoleto": 9000.0,
     "ciudadSalida": "Paris",
-    "ciudadLlegada": "Madrid",
+    "ciudadLlegada": "Perú",
     "fechaSalida": {
       "year": 2025,
       "month": 6,
       "day": 8
     },
     "horaSalida": {
-      "hour": 19,
+      "hour": 22,
       "minute": 0,
       "second": 0,
       "nano": 0
@@ -71,84 +124,34 @@
     "fechaLlegada": {
       "year": 2025,
       "month": 6,
-      "day": 8
+      "day": 9
     },
     "horaLlegada": {
-      "hour": 22,
-      "minute": 30,
-      "second": 0,
-      "nano": 0
-    },
-    "idAvion": 1635461659,
-    "pilotos": [
-      1959250665,
-      14371642
-    ],
-    "asistentes": [
-      1585696815,
-      1636473436,
-      431996326,
-      1961871207
-    ],
-    "nombresPilotos": [
-      "Carla Pérez",
-      "Perla Fuentes"
-    ],
-    "nombresAsistentes": [
-      "Mario Becares",
-      "Leonardo López",
-      "Gabriela Saldaña",
-      "Juan Pérez"
-    ]
-  },
-  {
-    "idVuelo": 175177438,
-    "numPasajeros": 150,
-    "tiempoRecorrido": 2,
-    "costoBoleto": 5560.0,
-    "ciudadSalida": "Portugal",
-    "ciudadLlegada": "Venecia",
-    "fechaSalida": {
-      "year": 2025,
-      "month": 6,
-      "day": 14
-    },
-    "horaSalida": {
-      "hour": 15,
-      "minute": 30,
-      "second": 0,
-      "nano": 0
-    },
-    "fechaLlegada": {
-      "year": 2025,
-      "month": 6,
-      "day": 14
-    },
-    "horaLlegada": {
-      "hour": 17,
-      "minute": 59,
+      "hour": 8,
+      "minute": 0,
       "second": 0,
       "nano": 0
     },
     "idAvion": 1926901376,
+    "modeloAvion": "boing 777",
     "pilotos": [
-      1959250665,
-      404966998
+      404966998,
+      1959250665
     ],
     "asistentes": [
-      349305448,
-      1961871207,
-      431996326,
+      108896077,
+      1636473436,
+      451210208,
       1585696815
     ],
     "nombresPilotos": [
-      "Carla Pérez",
-      "Carlos Ortíz"
+      "Carlos Ortíz",
+      "Carla Pérez"
     ],
     "nombresAsistentes": [
-      "María Cuevas",
-      "Juan Pérez",
-      "Gabriela Saldaña",
+      "Ximena Palacios",
+      "Leonardo López",
+      "Frida Gonzales",
       "Mario Becares"
     ]
   }

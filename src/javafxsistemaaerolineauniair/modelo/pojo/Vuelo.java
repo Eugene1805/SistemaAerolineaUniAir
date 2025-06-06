@@ -24,6 +24,7 @@ public class Vuelo {
     private LocalTime horaLlegada;
     
     private int idAvion;
+    private String modeloAvion;
     
     private List<Integer> pilotos;
     private List<Integer> asistentes;
@@ -32,13 +33,14 @@ public class Vuelo {
     private List<String> nombresAsistentes;
 
     public Vuelo() {
+        this.modeloAvion = "";
         this.pilotos = new ArrayList<>();
         this.asistentes = new ArrayList<>();
         this.nombresPilotos = new ArrayList<>();
         this.nombresAsistentes = new ArrayList<>();
     }
 
-    public Vuelo(int idVuelo, int numPasajeros, int tiempoRecorrido, double costoBoleto, String ciudadSalida, String ciudadLlegada, LocalDate fechaSalida, LocalTime horaSalida, LocalDate fechaLlegada, LocalTime horaLlegada, int idAvion, List<Integer> pilotos, List<Integer> asistentes, List<String> nombresPilotos, List<String> nombresAsistentes) {
+    public Vuelo(int idVuelo, int numPasajeros, int tiempoRecorrido, double costoBoleto, String ciudadSalida, String ciudadLlegada, LocalDate fechaSalida, LocalTime horaSalida, LocalDate fechaLlegada, LocalTime horaLlegada, int idAvion, String modeloAvion, List<Integer> pilotos, List<Integer> asistentes, List<String> nombresPilotos, List<String> nombresAsistentes) {
         this.idVuelo = idVuelo;
         this.numPasajeros = numPasajeros;
         this.tiempoRecorrido = tiempoRecorrido;
@@ -50,6 +52,7 @@ public class Vuelo {
         this.fechaLlegada = fechaLlegada;
         this.horaLlegada = horaLlegada;
         this.idAvion = idAvion;
+        this.modeloAvion = modeloAvion;
         this.pilotos = new ArrayList<>(pilotos);
         this.asistentes = new ArrayList<>(asistentes);
         this.nombresPilotos = new ArrayList<>(nombresPilotos);
@@ -156,6 +159,15 @@ public class Vuelo {
         this.idAvion = idAvion;
     }
 
+    public String getModeloAvion() {
+        return modeloAvion;
+    }
+
+    public void setModeloAvion(String modeloAvion) {
+        this.modeloAvion = modeloAvion;
+    }
+
+    
     public List<Integer> getPilotos() {
         return pilotos;
     }

@@ -193,6 +193,7 @@ public class FXMLVueloController implements Initializable {
                 original.getFechaLlegada(),
                 original.getHoraLlegada(),
                 original.getIdAvion(),
+                original.getModeloAvion(),
                 new ArrayList<>(original.getPilotos()),
                 new ArrayList<>(original.getAsistentes()),
                 new ArrayList<>(original.getNombresPilotos()),    

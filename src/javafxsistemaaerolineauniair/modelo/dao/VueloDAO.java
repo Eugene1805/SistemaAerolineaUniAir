@@ -68,6 +68,17 @@ public class VueloDAO extends GenericDAO<Vuelo>{
                 }
             }
             v.setNombresAsistentes(nombresA);
+            
+            try {
+                Avion avion = avionDAO.buscarPorId(v.getIdAvion());
+                if (avion != null) {
+                    v.setModeloAvion(avion.getModelo());
+                }else{
+                    v.setModeloAvion("ID:" + v.getIdAvion());
+                }
+            } catch (IOException e) {
+                    v.setModeloAvion("ID:" + v.getIdAvion());
+            }
         }
         super.guardarTodos(lista);
     }

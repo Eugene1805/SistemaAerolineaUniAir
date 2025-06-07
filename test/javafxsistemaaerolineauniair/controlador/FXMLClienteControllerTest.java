@@ -4,8 +4,11 @@
  */
 package javafxsistemaaerolineauniair.controlador;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafxsistemaaerolineauniair.modelo.dao.ClienteDAO;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,37 +22,17 @@ import static org.junit.Assert.*;
  */
 public class FXMLClienteControllerTest {
     
-    public FXMLClienteControllerTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of initialize method, of class FXMLClienteController.
-     */
     @Test
-    public void testInitialize() {
-        System.out.println("initialize");
-        URL url = null;
-        ResourceBundle rb = null;
-        FXMLClienteController instance = new FXMLClienteController();
-        instance.initialize(url, rb);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testExportarArchivoConExtensionValida() {
+        try {
+            ClienteDAO dao = new ClienteDAO();
+            File archivoTemporal = File.createTempFile("clientes", ".csv");
+            dao.exportarAArchivo(archivoTemporal);
+            assertTrue("El archivo debe existir", archivoTemporal.exists());
+            archivoTemporal.delete();
+        } catch (IOException | com.itextpdf.text.DocumentException e) {
+            fail("Error al exportar archivo: " + e.getMessage());
+        }
     }
     
 }

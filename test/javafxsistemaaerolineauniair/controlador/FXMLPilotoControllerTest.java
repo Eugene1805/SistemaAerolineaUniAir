@@ -4,8 +4,14 @@
  */
 package javafxsistemaaerolineauniair.controlador;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafxsistemaaerolineauniair.modelo.dao.PilotoDAO;
+import javafxsistemaaerolineauniair.modelo.pojo.Piloto;
+import javafxsistemaaerolineauniair.modelo.pojo.TipoLicencia;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,37 +25,55 @@ import static org.junit.Assert.*;
  */
 public class FXMLPilotoControllerTest {
     
-    public FXMLPilotoControllerTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of initialize method, of class FXMLPilotoController.
-     */
     @Test
-    public void testInitialize() {
-        System.out.println("initialize");
-        URL url = null;
-        ResourceBundle rb = null;
-        FXMLPilotoController instance = new FXMLPilotoController();
-        instance.initialize(url, rb);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testExportarArchivoConExtensionValida() {
+        try {
+            PilotoDAO dao = new PilotoDAO();
+            File archivoTemporal = File.createTempFile("pilotos", ".csv");
+            dao.exportarAArchivo(archivoTemporal);
+            assertTrue("El archivo debe existir", archivoTemporal.exists());
+            archivoTemporal.delete();
+        } catch (IOException | com.itextpdf.text.DocumentException e) {
+            fail("Error al exportar archivo: " + e.getMessage());
+        }
     }
     
+    @Test
+    public void testClonarPiloto() {
+        // Datos de prueba
+        TipoLicencia licencia = TipoLicencia.COMERCIAL; // Suponiendo un enum definido así
+        Piloto original = new Piloto(
+            1234,
+            "Juan",
+            "Calle Falsa 123",
+            LocalDate.of(1990, 5, 15),
+            "Masculino",
+            15000.50,
+            "Pérez",
+            "Gómez",
+            licencia,
+            8,
+            1200
+        );
+
+        FXMLPilotoController controller = new FXMLPilotoController();
+
+        Piloto copia = controller.clonarPiloto(original);
+
+        // Asegura que sea una nueva instancia
+        assertNotSame(original, copia);
+
+        // Verifica que todos los campos se hayan copiado correctamente
+        assertEquals(original.getNoPersonal(), copia.getNoPersonal());
+        assertEquals(original.getNombre(), copia.getNombre());
+        assertEquals(original.getDireccion(), copia.getDireccion());
+        assertEquals(original.getFechaNacimiento(), copia.getFechaNacimiento());
+        assertEquals(original.getGenero(), copia.getGenero());
+        assertEquals(original.getSalario(), copia.getSalario(), 0.001);
+        assertEquals(original.getApellidoPaterno(), copia.getApellidoPaterno());
+        assertEquals(original.getApellidoMaterno(), copia.getApellidoMaterno());
+        assertEquals(original.getTipolicencia(), copia.getTipolicencia());
+        assertEquals(original.getAniosExperiencia(), copia.getAniosExperiencia());
+        assertEquals(original.getTotalHoras(), copia.getTotalHoras());
+    }    
 }

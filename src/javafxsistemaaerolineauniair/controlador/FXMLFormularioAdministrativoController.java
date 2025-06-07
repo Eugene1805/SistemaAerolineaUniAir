@@ -20,21 +20,21 @@ import java.util.ResourceBundle;
 public class FXMLFormularioAdministrativoController implements Initializable {
 
     @FXML 
-    private TextField tfNombre;
+    public TextField tfNombre;
     @FXML 
-    private TextField tfPaterno;
+    public TextField tfPaterno;
     @FXML 
-    private TextField tfMaterno;
+    public TextField tfMaterno;
     @FXML 
-    private TextField tfDIreccion;
+    public TextField tfDIreccion;
     @FXML 
-    private DatePicker dpFechaNacimiento;
+    public DatePicker dpFechaNacimiento;
     @FXML 
-    private TextField tfGenero;
+    public TextField tfGenero;
     @FXML 
-    private TextField tfSalario;
+    public TextField tfSalario;
     @FXML 
-    private TextField tfDepartamento;
+    public TextField tfDepartamento;
 
     private boolean confirmado = false;
     private Administrativo administrativo;

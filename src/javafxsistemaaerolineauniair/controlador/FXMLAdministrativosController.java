@@ -187,7 +187,7 @@ public class FXMLAdministrativosController implements Initializable {
         }
     }
 
-    private Administrativo clonarAdministrativo(Administrativo original) {
+    public Administrativo clonarAdministrativo(Administrativo original) {
         return new Administrativo(
             original.getNoPersonal(),
             original.getNombre(),

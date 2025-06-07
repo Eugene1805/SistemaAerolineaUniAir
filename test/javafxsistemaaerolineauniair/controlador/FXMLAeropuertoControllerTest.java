@@ -4,9 +4,12 @@
  */
 package javafxsistemaaerolineauniair.controlador;
 
+import java.io.File;
+import java.io.IOException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import javafxsistemaaerolineauniair.controlador.FXMLAeropuertoController;
+import javafxsistemaaerolineauniair.modelo.dao.AeropuertoDAO;
 import javafxsistemaaerolineauniair.modelo.pojo.Aeropuerto;
 
 /**
@@ -14,6 +17,19 @@ import javafxsistemaaerolineauniair.modelo.pojo.Aeropuerto;
  * @author uriel
  */
 public class FXMLAeropuertoControllerTest {
+    
+    @Test
+    public void testExportarArchivoConExtensionValida() {
+        try {
+            AeropuertoDAO dao = new AeropuertoDAO();
+            File archivoTemporal = File.createTempFile("aeropuerto", ".csv");
+            dao.exportarAArchivo(archivoTemporal);
+            assertTrue("El archivo debe existir", archivoTemporal.exists());
+            archivoTemporal.delete();
+        } catch (IOException | com.itextpdf.text.DocumentException e) {
+            fail("Error al exportar archivo: " + e.getMessage());
+        }
+    }
     
     @Test
     public void testClonarAeropuerto() {

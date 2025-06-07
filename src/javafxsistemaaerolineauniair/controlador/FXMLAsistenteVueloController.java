@@ -261,7 +261,7 @@ public class FXMLAsistenteVueloController implements Initializable {
         }
     }
 
-    private AsistenteVuelo clonarAsistente(AsistenteVuelo original) {
+    public AsistenteVuelo clonarAsistente(AsistenteVuelo original) {
         return new AsistenteVuelo(
             original.getNoPersonal(),
             original.getNombre(),

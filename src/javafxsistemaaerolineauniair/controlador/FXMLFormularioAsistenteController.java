@@ -15,15 +15,15 @@ import java.util.ResourceBundle;
 
 public class FXMLFormularioAsistenteController implements Initializable {
 
-    @FXML private TextField tfNombre;
-    @FXML private TextField tfPaterno;
-    @FXML private TextField tfMaterno;
-    @FXML private TextField tfDIreccion;
-    @FXML private DatePicker dpFechaNacimiento;
-    @FXML private TextField tfGenero;
-    @FXML private TextField tfSalario;
-    @FXML private TextField tfHorasAsistencia;
-    @FXML private TextField tfNoIdiomas;
+    @FXML public TextField tfNombre;
+    @FXML public TextField tfPaterno;
+    @FXML public TextField tfMaterno;
+    @FXML public TextField tfDIreccion;
+    @FXML public DatePicker dpFechaNacimiento;
+    @FXML public TextField tfGenero;
+    @FXML public TextField tfSalario;
+    @FXML public TextField tfHorasAsistencia;
+    @FXML public TextField tfNoIdiomas;
 
     private boolean confirmado = false;
     private AsistenteVuelo asistente;
@@ -84,7 +84,7 @@ public class FXMLFormularioAsistenteController implements Initializable {
         cerrarVentana();
     }
 
-    private boolean validarCampos() {
+    public boolean validarCampos() {
         if (tfNombre.getText().isEmpty() || tfPaterno.getText().isEmpty() || tfMaterno.getText().isEmpty()
                 || tfDIreccion.getText().isEmpty() || dpFechaNacimiento.getValue() == null
                 || tfGenero.getText().isEmpty() || tfSalario.getText().isEmpty()

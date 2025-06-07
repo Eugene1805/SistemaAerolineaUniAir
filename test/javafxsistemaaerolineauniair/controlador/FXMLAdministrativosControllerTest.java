@@ -4,8 +4,13 @@
  */
 package javafxsistemaaerolineauniair.controlador;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafxsistemaaerolineauniair.modelo.dao.AdministrativoDAO;
+import javafxsistemaaerolineauniair.modelo.pojo.Administrativo;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,37 +24,50 @@ import static org.junit.Assert.*;
  */
 public class FXMLAdministrativosControllerTest {
     
-    public FXMLAdministrativosControllerTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of initialize method, of class FXMLAdministrativosController.
-     */
     @Test
-    public void testInitialize() {
-        System.out.println("initialize");
-        URL url = null;
-        ResourceBundle rb = null;
-        FXMLAdministrativosController instance = new FXMLAdministrativosController();
-        instance.initialize(url, rb);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testExportarArchivoConExtensionValida() {
+        try {
+            AdministrativoDAO dao = new AdministrativoDAO();
+            File archivoTemporal = File.createTempFile("administrativos", ".csv");
+            dao.exportarAArchivo(archivoTemporal);
+            assertTrue("El archivo debe existir", archivoTemporal.exists());
+            archivoTemporal.delete();
+        } catch (IOException | com.itextpdf.text.DocumentException e) {
+            fail("Error al exportar archivo: " + e.getMessage());
+        }
     }
     
+    @Test
+    public void testClonarAdministrativo() {
+        // Datos de prueba
+        Administrativo original = new Administrativo(
+            5678,
+            "Laura",
+            "Av. Central 456",
+            LocalDate.of(1985, 10, 20),
+            "Femenino",
+            12000.75,
+            "Ramírez",
+            "Martínez",
+            "Recursos Humanos"
+        );
+
+        FXMLAdministrativosController controller = new FXMLAdministrativosController();
+
+        Administrativo copia = controller.clonarAdministrativo(original);
+
+        // Verifica que son objetos distintos
+        assertNotSame(original, copia);
+
+        // Verifica que todos los atributos sean iguales
+        assertEquals(original.getNoPersonal(), copia.getNoPersonal());
+        assertEquals(original.getNombre(), copia.getNombre());
+        assertEquals(original.getDireccion(), copia.getDireccion());
+        assertEquals(original.getFechaNacimiento(), copia.getFechaNacimiento());
+        assertEquals(original.getGenero(), copia.getGenero());
+        assertEquals(original.getSalario(), copia.getSalario(), 0.001);
+        assertEquals(original.getApellidoPaterno(), copia.getApellidoPaterno());
+        assertEquals(original.getApellidoMaterno(), copia.getApellidoMaterno());
+        assertEquals(original.getDepartamento(), copia.getDepartamento());
+    }
 }

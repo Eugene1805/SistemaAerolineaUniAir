@@ -233,7 +233,7 @@ public class FXMLPilotoController implements Initializable {
         }
     }
 
-    private Piloto clonarPiloto(Piloto original) {
+    public Piloto clonarPiloto(Piloto original) {
         return new Piloto(
             original.getNoPersonal(),
             original.getNombre(),

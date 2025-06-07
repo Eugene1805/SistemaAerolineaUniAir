@@ -178,5 +178,17 @@
     "asistentes": [],
     "nombresPilotos": [],
     "nombresAsistentes": []
+  },
+  {
+    "idVuelo": 1791411030,
+    "numPasajeros": 0,
+    "tiempoRecorrido": 0,
+    "costoBoleto": 0.0,
+    "idAvion": 99999,
+    "modeloAvion": "ID:99999",
+    "pilotos": [],
+    "asistentes": [],
+    "nombresPilotos": [],
+    "nombresAsistentes": []
   }
 ]

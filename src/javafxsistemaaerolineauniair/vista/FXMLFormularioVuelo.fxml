@@ -64,8 +64,8 @@
          </font>
       </Label>
       <TextField fx:id="tfCostoBoleto" layoutX="371.0" layoutY="334.0" prefHeight="25.0" prefWidth="214.0" promptText="Costo del boleto" style="-fx-cursor: text;" />
-      <ComboBox fx:id="cbPiloto1" layoutX="256.0" layoutY="436.0" prefWidth="150.0" promptText="Piloto" />
-      <ComboBox fx:id="cbPiloto2" layoutX="436.0" layoutY="436.0" prefWidth="150.0" promptText="Piloto" />
+      <ComboBox fx:id="cbPiloto1" layoutX="256.0" layoutY="436.0" prefWidth="150.0" promptText="Piloto" style="-fx-cursor: hand;" />
+      <ComboBox fx:id="cbPiloto2" layoutX="436.0" layoutY="436.0" prefWidth="150.0" promptText="Piloto" style="-fx-cursor: hand;" />
       <Label layoutX="27.0" layoutY="435.0" text="Pilotos: " textFill="#333333">
          <font>
             <Font size="18.0" />
@@ -76,9 +76,9 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cbAsistente1" layoutX="256.0" layoutY="486.0" prefWidth="150.0" promptText="Asistente" />
-      <ComboBox fx:id="cbAsistente2" layoutX="436.0" layoutY="486.0" prefWidth="150.0" promptText="Asistente" />
-      <ComboBox fx:id="cbAsistente3" layoutX="256.0" layoutY="525.0" prefWidth="150.0" promptText="Asistente" />
-      <ComboBox fx:id="cbAsistente4" layoutX="436.0" layoutY="525.0" prefWidth="150.0" promptText="Asistente" />
+      <ComboBox fx:id="cbAsistente1" layoutX="256.0" layoutY="486.0" prefWidth="150.0" promptText="Asistente" style="-fx-cursor: hand;" />
+      <ComboBox fx:id="cbAsistente2" layoutX="436.0" layoutY="486.0" prefWidth="150.0" promptText="Asistente" style="-fx-cursor: hand;" />
+      <ComboBox fx:id="cbAsistente3" layoutX="256.0" layoutY="525.0" prefWidth="150.0" promptText="Asistente" style="-fx-cursor: hand;" />
+      <ComboBox fx:id="cbAsistente4" layoutX="436.0" layoutY="525.0" prefWidth="150.0" promptText="Asistente" style="-fx-cursor: hand;" />
    </children>
 </AnchorPane>

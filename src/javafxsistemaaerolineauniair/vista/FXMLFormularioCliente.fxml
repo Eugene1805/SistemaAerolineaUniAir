@@ -19,8 +19,8 @@
       <Label layoutX="22.0" layoutY="249.0" text="Apellido materno:" />
       <Label layoutX="24.0" layoutY="325.0" text="Nacionalidad:" />
       <Label layoutX="24.0" layoutY="390.0" text="Fecha de nacimiento:" />
-      <Button layoutX="329.0" layoutY="477.0" mnemonicParsing="false" onAction="#onAceptar" style="-fx-cursor: hand; -fx-background-color: #1E2A38;" text="Aceptar" textFill="WHITE" />
-      <Button layoutX="463.0" layoutY="477.0" mnemonicParsing="false" onAction="#onCancelar" style="-fx-cursor: hand; -fx-background-color: #1E2A38;" text="Cancelar" textFill="WHITE" />
+      <Button layoutX="329.0" layoutY="477.0" mnemonicParsing="false" onAction="#onAceptar" style="-fx-cursor: hand; -fx-background-color: #2F80ED;" text="Aceptar" textFill="WHITE" />
+      <Button layoutX="463.0" layoutY="477.0" mnemonicParsing="false" onAction="#onCancelar" style="-fx-cursor: hand; -fx-background-color: #2F80ED;" text="Cancelar" textFill="WHITE" />
       <Label layoutX="22.0" layoutY="40.0" text="Datos del cliente" textFill="#1e2a38">
          <font>
             <Font size="24.0" />

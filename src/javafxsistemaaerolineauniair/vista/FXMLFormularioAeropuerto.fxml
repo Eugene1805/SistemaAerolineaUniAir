@@ -15,7 +15,7 @@
       <TextField fx:id="tfTelefono" layoutX="141.0" layoutY="254.0" promptText="Telefono" style="-fx-cursor: text;" />
       <TextField fx:id="tfFlota" layoutX="141.0" layoutY="328.0" prefHeight="39.0" prefWidth="155.0" promptText="Tamaño de flota" style="-fx-cursor: text;" />
       <Button layoutX="351.0" layoutY="405.0" mnemonicParsing="false" onAction="#btnAceptar" style="-fx-cursor: hand; -fx-background-color: #2F80ED;" text="Aceptar" textFill="WHITE" />
-      <Button layoutX="468.0" layoutY="405.0" mnemonicParsing="false" onAction="#btnCancelar" style="-fx-background-color: #FFF; -fx-border-color: #cdcdcd;" text="Cancelar" />
+      <Button layoutX="468.0" layoutY="405.0" mnemonicParsing="false" onAction="#btnCancelar" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Cancelar" textFill="WHITE" />
       <Label layoutX="29.0" layoutY="81.0" text="Nombre:" />
       <Label layoutX="25.0" layoutY="138.0" text="Direccion:" />
       <Label layoutX="29.0" layoutY="186.0" prefHeight="56.0" prefWidth="92.0" text="Persona de contacto:" wrapText="true" />

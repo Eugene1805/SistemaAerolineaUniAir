@@ -40,10 +40,10 @@
             <TableColumn fx:id="colAsistentes" prefWidth="350.0" text="Asistentes" />
         </columns>
       </TableView>
-      <Button layoutX="882.0" layoutY="542.0" mnemonicParsing="false" onAction="#btnClicAltaVuelos" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Alta" textFill="WHITE" />
-      <Button fx:id="btnActualizar" layoutX="965.0" layoutY="542.0" mnemonicParsing="false" onAction="#btnClicActualizarVuelo" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Actualizar" textFill="WHITE" />
-      <Button fx:id="btnEliminar" layoutX="1072.0" layoutY="542.0" mnemonicParsing="false" onAction="#btnClicEliminarVuelo" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Eliminar" textFill="WHITE" />
-      <MenuButton layoutX="1171.0" layoutY="542.0" mnemonicParsing="false" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Exportar Infromación" textFill="WHITE">
+      <Button layoutX="847.0" layoutY="547.0" mnemonicParsing="false" onAction="#btnClicAltaVuelos" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Alta" textFill="WHITE" />
+      <Button fx:id="btnActualizar" layoutX="930.0" layoutY="547.0" mnemonicParsing="false" onAction="#btnClicActualizarVuelo" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Actualizar" textFill="WHITE" />
+      <Button fx:id="btnEliminar" layoutX="1037.0" layoutY="547.0" mnemonicParsing="false" onAction="#btnClicEliminarVuelo" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Eliminar" textFill="WHITE" />
+      <MenuButton layoutX="1136.0" layoutY="547.0" mnemonicParsing="false" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Exportar Infromación" textFill="WHITE">
         <items>
           <MenuItem fx:id="btnExportarCsv" mnemonicParsing="false" onAction="#btnClicExportarCSV" text="CSV" />
           <MenuItem fx:id="btnExportarXLS" mnemonicParsing="false" onAction="#btnClicExportarXLS" text="EXCEL (XLS)" />

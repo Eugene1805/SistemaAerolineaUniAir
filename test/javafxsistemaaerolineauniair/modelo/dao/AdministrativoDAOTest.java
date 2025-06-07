@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  * Pruebas unitarias para la clase AdministrativoDAO.
  * Se asegura que todos los datos creados durante las pruebas se limpien después.
  * 
- * @author meler
+ * @author uriel
  */
 public class AdministrativoDAOTest {
 

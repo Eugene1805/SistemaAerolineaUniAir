@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
+import javafxsistemaaerolineauniair.excepciones.EmpleadoConVuelosException;
+import javafxsistemaaerolineauniair.modelo.pojo.Vuelo;
 
 /**
  *
@@ -66,9 +68,29 @@ public class AsistenteVueloDAO extends GenericDAO<AsistenteVuelo> {
         guardarTodos(asistentes);
     }
 
-    public void eliminar(int id) throws IOException {
+   /**
+     * Verifica si un asistente tiene vuelos asignados y, si no, lo elimina.
+     * @param idAsistente El No. Personal del asistente a eliminar.
+     * @throws IOException Si ocurre un error de archivos.
+     * @throws EmpleadoConVuelosException Si el asistente está asignado a uno o más vuelos.
+     */
+    public void verificarYEliminar(int idAsistente) throws IOException, EmpleadoConVuelosException {
+        // Verificar si el asistente tiene vuelos asociados
+        VueloDAO vueloDAO = new VueloDAO();
+        List<Vuelo> vuelosAsociados = vueloDAO.buscarVuelosPorAsistente(idAsistente);
+
+        if (!vuelosAsociados.isEmpty()) {
+            // Si la lista no está vacía, lanzamos la excepción
+            String mensaje = String.format(
+                "El asistente no puede ser eliminado. Está asignado a %d vuelo(s).",
+                vuelosAsociados.size()
+            );
+            throw new EmpleadoConVuelosException(mensaje);
+        }
+
+        // Si no hay vuelos, proceder con la eliminación
         List<AsistenteVuelo> asistentes = obtenerTodos();
-        asistentes.removeIf(a -> a.getNoPersonal() == id);
+        asistentes.removeIf(a -> a.getNoPersonal() == idAsistente);
         guardarTodos(asistentes);
     }
 

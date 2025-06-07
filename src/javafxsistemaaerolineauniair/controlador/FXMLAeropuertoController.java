@@ -5,6 +5,7 @@ import java.io.File;
 import javafxsistemaaerolineauniair.modelo.dao.AeropuertoDAO;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
@@ -29,6 +31,7 @@ import javafx.stage.Stage;
 import javafxsistemaaerolineauniair.modelo.pojo.Aeropuerto;
 import javafxsistemaaerolineauniair.util.Util;
 import javafxsistemaaerolineauniair.JavaFXSistemaAerolineaUniAir;
+import javafxsistemaaerolineauniair.excepciones.AeropuertoConVuelosException;
 
 
 /**
@@ -128,22 +131,42 @@ public class FXMLAeropuertoController implements Initializable {
     @FXML
     private void onEliminar(ActionEvent event) {
         Aeropuerto seleccionado = tvAeropuerto.getSelectionModel().getSelectedItem();
-        if (seleccionado != null) {
-            if (aeropuertoDAO.puedeEliminarse(seleccionado.getId())) {
-                try {
-                    aeropuertoDAO.eliminar(seleccionado.getId());
-                    loadInformation();
-                } catch (IOException e) {
-                    Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error al eliminar",
-                            e.getMessage());
-                }
-            } else {
-                Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "No se puede eliminar",
-                        "Hay vuelos asociados a " + seleccionado.getNombre());
-            }
-        } else {
+        
+        if (seleccionado == null) {
             Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Seleccione un aeropuerto para eliminar",
-                    "Debe seleccionar un aeropuerto para poder utilizar la opcion de eliminar");
+                    "Debe seleccionar un aeropuerto para poder utilizar la opción de eliminar");
+            return;
+        }
+
+        Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmacion.setTitle("Confirmar Eliminación");
+        confirmacion.setHeaderText("¿Está seguro de que desea eliminar el aeropuerto: " + seleccionado.getNombre() + "?");
+        confirmacion.setContentText("Esta acción no se puede deshacer.");
+
+        Optional<ButtonType> resultado = confirmacion.showAndWait();
+        
+        if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
+            // Aquí reemplazamos tu antiguo if/else con un try/catch
+            try {
+                // Intentamos eliminar. El método del DAO hará la validación internamente.
+                aeropuertoDAO.verificarYEliminar(seleccionado.getId());
+                
+                // Si no se lanza ninguna excepción, todo fue exitoso.
+                Util.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", 
+                        "El aeropuerto ha sido eliminado correctamente.");
+                
+                // Recargamos la tabla para reflejar el cambio.
+                loadInformation();
+
+            } catch (AeropuertoConVuelosException e) {
+                // Capturamos nuestra excepción específica y mostramos el mensaje al usuario.
+                Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Operación Denegada", e.getMessage());
+                
+            } catch (IOException e) {
+                // Capturamos cualquier otro error de archivo.
+                Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error de Archivo", 
+                        "Ocurrió un error al intentar eliminar el aeropuerto: " + e.getMessage());
+            }
         }
     }
     

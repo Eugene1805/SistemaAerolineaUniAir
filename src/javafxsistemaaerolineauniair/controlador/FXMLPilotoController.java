@@ -4,6 +4,7 @@ import com.itextpdf.text.DocumentException;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +21,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafxsistemaaerolineauniair.JavaFXSistemaAerolineaUniAir;
+import javafxsistemaaerolineauniair.excepciones.EmpleadoConVuelosException;
 import javafxsistemaaerolineauniair.modelo.dao.PilotoDAO;
 import javafxsistemaaerolineauniair.modelo.pojo.Piloto;
 import javafxsistemaaerolineauniair.util.Util;
@@ -129,12 +131,34 @@ public class FXMLPilotoController implements Initializable {
     @FXML
     private void onEliminar(ActionEvent event) {
         Piloto seleccionado = tvPilotos.getSelectionModel().getSelectedItem();
-        if (seleccionado != null) {
+        if (seleccionado == null) {
+             // Esta alerta no es necesaria porque el botón ya está deshabilitado, pero es una buena práctica dejarla.
+            Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Sin selección", "Por favor, seleccione un piloto a eliminar.");
+            return;
+        }
+
+        // Pedir confirmación al usuario
+        Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmacion.setTitle("Confirmar Eliminación");
+        confirmacion.setHeaderText("¿Desea eliminar al piloto: " + seleccionado.getNombre()+ "?");
+        confirmacion.setContentText("Esta acción es irreversible.");
+
+        Optional<ButtonType> resultado = confirmacion.showAndWait();
+        if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
             try {
-                pilotoDAO.eliminar(seleccionado.getNoPersonal());
-                cargarInformacion();
+                // Llamamos al nuevo método que ya hace la validación
+                pilotoDAO.verificarYEliminar(seleccionado.getNoPersonal());
+                
+                // Si llegamos aquí, fue exitoso
+                Util.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "El piloto ha sido eliminado correctamente.");
+                cargarInformacion(); // Actualizar la tabla
+
+            } catch (EmpleadoConVuelosException e) {
+                // Capturamos la excepción de negocio y mostramos el mensaje
+                Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Operación Denegada", e.getMessage());
             } catch (IOException e) {
-                Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error al eliminar", e.getMessage());
+                // Capturamos errores de archivo
+                Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error de Archivo", "No se pudo completar la eliminación: " + e.getMessage());
             }
         }
     }

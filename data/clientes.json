@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": 966987029,
+    "nombre": "Eugenio",
+    "apellidoPaterno": "Gonzalez",
+    "apellidoMaterno": "Sanchez",
+    "nacionalidad": "Mexicana",
+    "fechaNacimiento": "18/01/2005"
+  },
+  {
+    "id": 1186942161,
+    "nombre": "Arturo",
+    "apellidoPaterno": "Cuevas",
+    "apellidoMaterno": "Perez",
+    "nacionalidad": "Argentian",
+    "fechaNacimiento": "01/01/2005"
+  },
+  {
+    "id": 2013145851,
+    "nombre": "Erickmel",
+    "apellidoPaterno": "Vazquez",
+    "apellidoMaterno": "Lopez",
+    "nacionalidad": "Italiana",
+    "fechaNacimiento": "23/03/2005"
+  },
+  {
+    "id": 1719619092,
+    "nombre": "Uriel",
+    "apellidoPaterno": "Cendon",
+    "apellidoMaterno": "Diaz",
+    "nacionalidad": "Peruana",
+    "fechaNacimiento": "02/11/2005"
+  },
+  {
+    "id": 1903266982,
+    "nombre": "Miguel",
+    "apellidoPaterno": "Escobar",
+    "apellidoMaterno": "Ladron de Guevara",
+    "nacionalidad": "Haitiana",
+    "fechaNacimiento": "01/06/2005"
+  }
+]

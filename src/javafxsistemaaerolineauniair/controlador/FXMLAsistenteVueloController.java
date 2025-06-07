@@ -24,8 +24,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import com.itextpdf.text.DocumentException;
 import java.io.File;
+import java.util.Optional;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
+import javafxsistemaaerolineauniair.excepciones.EmpleadoConVuelosException;
 
 import javafxsistemaaerolineauniair.modelo.dao.AsistenteVueloDAO;
 import javafxsistemaaerolineauniair.modelo.pojo.AsistenteVuelo;
@@ -150,12 +153,32 @@ public class FXMLAsistenteVueloController implements Initializable {
     @FXML
     private void onEliminar(ActionEvent event) {
         AsistenteVuelo seleccionado = tvAsistentes.getSelectionModel().getSelectedItem();
-        if (seleccionado != null) {
+        if (seleccionado == null) {
+            Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Sin selección", "Por favor, seleccione un asistente a eliminar.");
+            return;
+        }
+
+        // Pedir confirmación al usuario
+        Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmacion.setTitle("Confirmar Eliminación");
+        confirmacion.setHeaderText("¿Desea eliminar al asistente: " + seleccionado.getNombre() + " " + seleccionado.getApellidoPaterno() + "?");
+        confirmacion.setContentText("Esta acción es irreversible.");
+
+        Optional<ButtonType> resultado = confirmacion.showAndWait();
+        if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
             try {
-                asistenteDAO.eliminar(seleccionado.getNoPersonal());
-                cargarInformacion();
+                // Llamamos al nuevo método que ya hace la validación
+                asistenteDAO.verificarYEliminar(seleccionado.getNoPersonal());
+                
+                Util.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "El asistente ha sido eliminado correctamente.");
+                cargarInformacion(); // Actualizar la tabla
+
+            } catch (EmpleadoConVuelosException e) {
+                // Capturamos la excepción de negocio y mostramos el mensaje
+                Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Operación Denegada", e.getMessage());
             } catch (IOException e) {
-                Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error al eliminar", e.getMessage());
+                // Capturamos errores de archivo
+                Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error de Archivo", "No se pudo completar la eliminación: " + e.getMessage());
             }
         }
     }

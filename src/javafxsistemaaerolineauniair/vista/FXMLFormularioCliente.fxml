@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLFormularioClienteController">
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLFormularioClienteController">
    <children>
-      <TextField fx:id="tfNombre" layoutX="26.0" layoutY="95.0" promptText="Nombre" style="-fx-cursor: text;" />
-      <TextField fx:id="tfApellidoPaterno" layoutX="26.0" layoutY="169.0" promptText="Apellido paterno" style="-fx-cursor: text;" />
-      <TextField fx:id="tfApellidoMaterno" layoutX="26.0" layoutY="244.0" promptText="Apellido materno" style="-fx-cursor: text;" />
-      <TextField fx:id="tfNacionalidad" layoutX="321.0" layoutY="95.0" promptText="Nacionalidad" style="-fx-cursor: text;" />
-      <DatePicker fx:id="dpFechaNacimiento" layoutX="321.0" layoutY="169.0" promptText="Fecha de Nacimiento" style="-fx-cursor: text;" />
-      <Label layoutX="26.0" layoutY="68.0" text="Nombre:" />
-      <Label layoutX="26.0" layoutY="142.0" text="Apellido paterno:" />
-      <Label layoutX="26.0" layoutY="217.0" text="Apellido materno:" />
-      <Label layoutX="321.0" layoutY="61.0" text="Nacionalidad" />
-      <Label layoutX="321.0" layoutY="142.0" text="Fecha de nacimiento:" />
-      <Button layoutX="335.0" layoutY="323.0" mnemonicParsing="false" onAction="#onAceptar" style="-fx-cursor: hand;" text="Aceptar" />
-      <Button layoutX="475.0" layoutY="323.0" mnemonicParsing="false" onAction="#onCancelar" style="-fx-cursor: hand;" text="Cancelar" />
+      <TextField fx:id="tfNombre" layoutX="298.0" layoutY="95.0" promptText="Nombre" style="-fx-cursor: text;" />
+      <TextField fx:id="tfApellidoPaterno" layoutX="298.0" layoutY="170.0" promptText="Apellido paterno" style="-fx-cursor: text;" />
+      <TextField fx:id="tfApellidoMaterno" layoutX="298.0" layoutY="243.0" promptText="Apellido materno" style="-fx-cursor: text;" />
+      <TextField fx:id="tfNacionalidad" layoutX="298.0" layoutY="319.0" promptText="Nacionalidad" style="-fx-cursor: text;" />
+      <DatePicker fx:id="dpFechaNacimiento" layoutX="298.0" layoutY="384.0" promptText="Fecha de Nacimiento" style="-fx-cursor: text;" />
+      <Label layoutX="22.0" layoutY="101.0" text="Nombre:" />
+      <Label layoutX="22.0" layoutY="176.0" text="Apellido paterno:" />
+      <Label layoutX="22.0" layoutY="249.0" text="Apellido materno:" />
+      <Label layoutX="24.0" layoutY="325.0" text="Nacionalidad:" />
+      <Label layoutX="24.0" layoutY="390.0" text="Fecha de nacimiento:" />
+      <Button layoutX="329.0" layoutY="477.0" mnemonicParsing="false" onAction="#onAceptar" style="-fx-cursor: hand; -fx-background-color: #1E2A38;" text="Aceptar" textFill="WHITE" />
+      <Button layoutX="463.0" layoutY="477.0" mnemonicParsing="false" onAction="#onCancelar" style="-fx-cursor: hand; -fx-background-color: #1E2A38;" text="Cancelar" textFill="WHITE" />
+      <Label layoutX="22.0" layoutY="40.0" text="Datos del cliente" textFill="#1e2a38">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -150,7 +150,6 @@ public class VueloDAO extends GenericDAO<Vuelo>{
         guardarTodos(vuelos);
     }
     
-    
     public int generarIdVueloUnico() throws IOException{
         int nuevoIdVuelo;
         do{
@@ -158,5 +157,29 @@ public class VueloDAO extends GenericDAO<Vuelo>{
         }while (buscarPorIdVuelo(nuevoIdVuelo) != null);
         
         return nuevoIdVuelo;
+    }
+    
+    /**
+     * Busca todos los vuelos asignados a un piloto específico.
+     * @param idPiloto El ID (No. Personal) del piloto.
+     * @return Una lista de vuelos asociados. Estará vacía si no hay ninguno.
+     * @throws IOException Si ocurre un error de lectura de archivo.
+     */
+    public List<Vuelo> buscarVuelosPorPiloto(int idPiloto) throws IOException {
+        return obtenerTodos().stream()
+                .filter(vuelo -> vuelo.getPilotos().contains(idPiloto))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Busca todos los vuelos asignados a un asistente de vuelo específico.
+     * @param idAsistente El ID (No. Personal) del asistente.
+     * @return Una lista de vuelos asociados. Estará vacía si no hay ninguno.
+     * @throws IOException Si ocurre un error de lectura de archivo.
+     */
+    public List<Vuelo> buscarVuelosPorAsistente(int idAsistente) throws IOException {
+        return obtenerTodos().stream()
+                .filter(vuelo -> vuelo.getAsistentes().contains(idAsistente))
+                .collect(Collectors.toList());
     }
 }

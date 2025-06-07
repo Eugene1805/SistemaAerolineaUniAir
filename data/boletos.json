@@ -1,0 +1,142 @@
+[
+  {
+    "idVuelo": 1202990189,
+    "numPasajeros": 0,
+    "tiempoRecorrido": 0,
+    "costoBoleto": 9000.0,
+    "ciudadSalida": "Paris",
+    "ciudadLlegada": "Perú",
+    "fechaSalida": {
+      "year": 2025,
+      "month": 6,
+      "day": 8
+    },
+    "horaSalida": {
+      "hour": 22,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "fechaLlegada": {
+      "year": 2025,
+      "month": 6,
+      "day": 9
+    },
+    "horaLlegada": {
+      "hour": 8,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "asiento": "11A",
+    "idAvion": 1926901376,
+    "modeloAvion": "",
+    "idCliente": 1186942161,
+    "nombreCliente": "Arturo"
+  },
+  {
+    "idVuelo": 265022362,
+    "numPasajeros": 0,
+    "tiempoRecorrido": 0,
+    "costoBoleto": 4500.0,
+    "ciudadSalida": "Madrid",
+    "ciudadLlegada": "Paris",
+    "fechaSalida": {
+      "year": 2025,
+      "month": 6,
+      "day": 6
+    },
+    "horaSalida": {
+      "hour": 12,
+      "minute": 30,
+      "second": 0,
+      "nano": 0
+    },
+    "fechaLlegada": {
+      "year": 2025,
+      "month": 6,
+      "day": 6
+    },
+    "horaLlegada": {
+      "hour": 14,
+      "minute": 50,
+      "second": 0,
+      "nano": 0
+    },
+    "asiento": "1A",
+    "idAvion": 1926901376,
+    "modeloAvion": "",
+    "idCliente": 966987029,
+    "nombreCliente": "Eugenio"
+  },
+  {
+    "idVuelo": 54916571,
+    "numPasajeros": 0,
+    "tiempoRecorrido": 0,
+    "costoBoleto": 7540.0,
+    "ciudadSalida": "Londres",
+    "ciudadLlegada": "México",
+    "fechaSalida": {
+      "year": 2025,
+      "month": 6,
+      "day": 7
+    },
+    "horaSalida": {
+      "hour": 9,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "fechaLlegada": {
+      "year": 2025,
+      "month": 6,
+      "day": 7
+    },
+    "horaLlegada": {
+      "hour": 16,
+      "minute": 20,
+      "second": 0,
+      "nano": 0
+    },
+    "asiento": "1D",
+    "idAvion": 1926901376,
+    "modeloAvion": "",
+    "idCliente": 2013145851,
+    "nombreCliente": "Erickmel"
+  },
+  {
+    "idVuelo": 1202990189,
+    "numPasajeros": 0,
+    "tiempoRecorrido": 0,
+    "costoBoleto": 9000.0,
+    "ciudadSalida": "Paris",
+    "ciudadLlegada": "Perú",
+    "fechaSalida": {
+      "year": 2025,
+      "month": 6,
+      "day": 8
+    },
+    "horaSalida": {
+      "hour": 22,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "fechaLlegada": {
+      "year": 2025,
+      "month": 6,
+      "day": 9
+    },
+    "horaLlegada": {
+      "hour": 8,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "asiento": "4E",
+    "idAvion": 1926901376,
+    "modeloAvion": "",
+    "idCliente": 1719619092,
+    "nombreCliente": "Uriel"
+  }
+]

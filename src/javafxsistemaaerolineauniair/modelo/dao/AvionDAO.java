@@ -5,6 +5,7 @@ import java.io.File;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 import javafxsistemaaerolineauniair.modelo.pojo.Avion;
 
 public class AvionDAO extends GenericDAO<Avion> {
@@ -68,5 +69,11 @@ public class AvionDAO extends GenericDAO<Avion> {
             nuevoId = UUID.randomUUID().hashCode() & Integer.MAX_VALUE;
         } while (buscarPorId(nuevoId) != null);
         return nuevoId;
+    }
+
+    public List<Avion> buscarPorAeropuerto(int idAeropuerto) throws IOException {
+        return obtenerTodos().stream()
+            .filter(avion -> avion.getIdAerolinea() == idAeropuerto)
+            .collect(Collectors.toList());
     }
 }

@@ -14,7 +14,9 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.pdf.PdfPCell;
+import java.io.ByteArrayOutputStream;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -27,7 +29,9 @@ import java.io.FileReader;
 import java.io.Reader;
 import java.io.Writer;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Type;
+import javafxsistemaaerolineauniair.excepciones.VueloLlenoException;
 
 
 /**
@@ -69,7 +73,7 @@ public abstract class GenericDAO<T> {
         }
     }
     
-    public void agregar(T item) throws IOException {
+    public void agregar(T item) throws IOException{
         List<T> items = obtenerTodos();
         items.add(item);
         guardarTodos(items);
@@ -168,13 +172,63 @@ public abstract class GenericDAO<T> {
         Document document = new Document();
         PdfWriter.getInstance(document, new FileOutputStream(outputFile));
         document.open();
-        
-        // Título del documento
-        Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18);
-        Paragraph title = new Paragraph("Reporte Exportado", titleFont);
-        title.setAlignment(Element.ALIGN_CENTER);
-        title.setSpacingAfter(20f);
-        document.add(title);
+        try {
+            // 1. Cargar la imagen del logo desde los recursos
+            InputStream logoStream = getClass().getResourceAsStream("/javafxsistemaaerolineauniair/recursos/UniAir_Logo_Transparente.png");
+            
+            if (logoStream != null) {
+                // Convertir InputStream a byte array para iText
+                ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+                int nRead;
+                byte[] imgData = new byte[1024];
+                while ((nRead = logoStream.read(imgData, 0, imgData.length)) != -1) {
+                    buffer.write(imgData, 0, nRead);
+                }
+                Image logo = Image.getInstance(buffer.toByteArray());
+                logo.scaleToFit(100, 50); // Ajustar tamaño del logo
+
+                // 2. Generar un título dinámico basado en el nombre del DAO
+                String daoName = this.getClass().getSimpleName().replace("DAO", "");
+                String reportTitleText = "Reporte de " + daoName + "s";
+                
+                // 3. Crear una tabla para alinear el logo y el título
+                PdfPTable headerTable = new PdfPTable(2);
+                headerTable.setWidthPercentage(100);
+                headerTable.setWidths(new float[]{1f, 4f}); // El logo ocupa menos espacio
+                headerTable.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
+                headerTable.setSpacingAfter(20f);
+
+                // Celda para el logo
+                PdfPCell logoCell = new PdfPCell(logo);
+                logoCell.setBorder(PdfPCell.NO_BORDER);
+                logoCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                headerTable.addCell(logoCell);
+
+                // Celda para el título
+                Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18);
+                Paragraph title = new Paragraph(reportTitleText, titleFont);
+                title.setAlignment(Element.ALIGN_LEFT);
+                PdfPCell titleCell = new PdfPCell(title);
+                titleCell.setBorder(PdfPCell.NO_BORDER);
+                titleCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                titleCell.setPaddingLeft(10);
+                headerTable.addCell(titleCell);
+                
+                document.add(headerTable);
+
+            } else {
+                // Fallback: Si no se encuentra el logo, mostrar un título simple
+                throw new IOException("No se encontró el recurso del logo.");
+            }
+        } catch (IOException | DocumentException e) {
+            System.err.println("Advertencia: No se pudo cargar el logo. El PDF se generará sin él. Causa: " + e.getMessage());
+            // Fallback: Mostrar un título de texto simple si falla la carga del logo
+            Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18);
+            Paragraph title = new Paragraph("Reporte Exportado", titleFont);
+            title.setAlignment(Element.ALIGN_CENTER);
+            title.setSpacingAfter(20f);
+            document.add(title);
+        }
         
         // Crear tabla
         PdfPTable table = new PdfPTable(headers.length);

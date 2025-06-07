@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
-import javafxsistemaaerolineauniair.excepciones.ClienteConVueloAsociadoException;
 import javafxsistemaaerolineauniair.modelo.pojo.Cliente;
 
 
@@ -89,22 +88,5 @@ public class ClienteDAO extends GenericDAO<Cliente>{
         } while (buscarPorId(nuevoId) != null);
         
         return nuevoId;
-    }
-    
-    /**
-     * Valida si un cliente puede ser eliminado (sin vuelos asociados)
-     * @param id ID del cliente
-     * @return true si se puede eliminar
-     */
-    public boolean puedeEliminarse(int id) throws ClienteConVueloAsociadoException{ //TODO
-        //Lanzar excepcion en caso que no se pueda eliminar
-        // Implementar lógica de verificación con VueloDAO
-        try {
-            // VueloDAO vueloDAO = DAOManager.getInstance().getVueloDAO();
-            // return vueloDAO.buscarPorAeropuerto(id).isEmpty();
-            return true; // Temporal - implementar la verificación real
-        } catch (Exception e) {
-            return false;
-        }
     }
 }

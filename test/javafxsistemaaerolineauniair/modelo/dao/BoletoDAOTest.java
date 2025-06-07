@@ -57,7 +57,7 @@ public class BoletoDAOTest {
 
     @After
     public void limpiarDatos() throws Exception {
-        // Limpiar boletos de prueba usando obtenerTodos() y guardarTodos()
+        // Limpiar boletos
         List<Boleto> boletosActuales = boletoDAO.obtenerTodos();
         List<Boleto> boletosFiltrados = new ArrayList<>();
         for (Boleto boleto : boletosActuales) {
@@ -71,11 +71,15 @@ public class BoletoDAOTest {
             }
         }
         boletoDAO.guardarTodos(boletosFiltrados);
-        
-        // Limpiar datos relacionados de prueba
+
+        // Limpiar vuelos válidos
         vueloDAO.eliminar(idVueloPrueba);
         avionDAO.eliminar(idAvionPrueba);
+
+        // Eliminar vuelo falso si quedó
+        vueloDAO.eliminar(99999); // id de prueba usado
     }
+
 
     private Boleto crearBoletoPrueba() {
         Boleto boleto = new Boleto();
@@ -163,18 +167,19 @@ public class BoletoDAOTest {
 
     @Test(expected = IOException.class)
     public void testRegistrarCompraBoletoAvionInexistente() throws Exception {
-        // Crear vuelo con avión que no existe
-        Vuelo vuelo = new Vuelo();
         int idVueloFalso = vueloDAO.generarIdVueloUnico();
+        Vuelo vuelo = new Vuelo();
         vuelo.setIdVuelo(idVueloFalso);
-        vuelo.setIdAvion(99999); // ID que no existe
+        vuelo.setIdAvion(99999);
         vueloDAO.agregar(vuelo);
-        
-        Boleto boleto = crearBoletoPrueba();
-        boleto.setIdVuelo(idVueloFalso);
-        boletoDAO.registrarCompraBoleto(boleto);
-        
-        // Limpiar
-        vueloDAO.eliminar(idVueloFalso);
+
+        try {
+            Boleto boleto = crearBoletoPrueba();
+            boleto.setIdVuelo(idVueloFalso);
+            boletoDAO.registrarCompraBoleto(boleto);
+        } finally {
+            vueloDAO.eliminar(idVueloFalso); 
+        }
     }
+
 }

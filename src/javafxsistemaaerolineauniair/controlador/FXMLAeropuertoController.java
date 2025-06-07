@@ -42,7 +42,7 @@ import javafxsistemaaerolineauniair.excepciones.AeropuertoConVuelosException;
 public class FXMLAeropuertoController implements Initializable {
 
     @FXML
-    private TableView<Aeropuerto> tvAeropuerto;
+    public TableView<Aeropuerto> tvAeropuerto;
     @FXML
     private TableColumn tcNombre;
     @FXML
@@ -56,7 +56,7 @@ public class FXMLAeropuertoController implements Initializable {
     
     private final ObservableList<Aeropuerto> aeropuertos = FXCollections.observableArrayList();
     
-    private final AeropuertoDAO aeropuertoDAO = new AeropuertoDAO();
+    public AeropuertoDAO aeropuertoDAO = new AeropuertoDAO();
     @FXML
     private Button btnActualizar;
     @FXML
@@ -129,7 +129,7 @@ public class FXMLAeropuertoController implements Initializable {
     }
 
     @FXML
-    private void onEliminar(ActionEvent event) {
+    public void onEliminar(ActionEvent event) {
         Aeropuerto seleccionado = tvAeropuerto.getSelectionModel().getSelectedItem();
         
         if (seleccionado == null) {

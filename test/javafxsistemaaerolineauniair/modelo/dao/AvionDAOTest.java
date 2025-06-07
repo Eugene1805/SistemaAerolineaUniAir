@@ -33,7 +33,8 @@ public class AvionDAOTest {
     @Test
     public void testObtenerNombresColumnas() {
         System.out.println("obtenerNombresColumnas");
-        String[] expResultado = {"ID", "Capacidad", "Modelo", "Peso", "Estatus", "Fecha de Ingreso", "ID Aerolínea", "Asientos"};
+        String[] expResultado = {"ID", "Capacidad", "Modelo", "Peso", 
+            "Estatus", "Fecha de Ingreso", "ID Aerolínea", "Asientos"};
         String[] resultado = dao.obtenerNombresColumnas();
         assertArrayEquals(expResultado, resultado);
     }

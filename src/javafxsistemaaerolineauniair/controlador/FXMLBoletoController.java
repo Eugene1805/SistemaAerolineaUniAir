@@ -81,6 +81,8 @@ public class FXMLBoletoController implements Initializable {
  
     private final ObservableList<Vuelo> vuelos = FXCollections.observableArrayList();
     private final Map<Integer, String> mAviones = new HashMap<>();
+    @FXML
+    private Button btnComprar;
     /**
      * Initializes the controller class.
      */
@@ -88,6 +90,7 @@ public class FXMLBoletoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         configurarTabla();
         cargarInformacion();
+        btnComprar.disableProperty().bind(tvVuelos.getSelectionModel().selectedItemProperty().isNull());
         btnExportarCsv.disableProperty().bind(Bindings.isEmpty(tvVuelos.getItems()));
         btnExportarXLS.disableProperty().bind(Bindings.isEmpty(tvVuelos.getItems()));
         btnExportarXLSX.disableProperty().bind(Bindings.isEmpty(tvVuelos.getItems()));

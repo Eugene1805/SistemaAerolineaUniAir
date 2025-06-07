@@ -34,7 +34,7 @@ public class LoginDAO extends GenericDAO<Usuario>{
      * Obtiene la ruta completa del archivo de datos
      * @return Ruta absoluta del archivo JSON
      */
-    private static String obtenerRutaCompleta() {
+    public static String obtenerRutaCompleta() {
         // Crear directorio si no existe
         File dataDir = new File(DATA_DIR);
         if (!dataDir.exists()) {

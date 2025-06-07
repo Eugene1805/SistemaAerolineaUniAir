@@ -154,5 +154,29 @@
       "Frida Gonzales",
       "Mario Becares"
     ]
+  },
+  {
+    "idVuelo": 1064166639,
+    "numPasajeros": 0,
+    "tiempoRecorrido": 0,
+    "costoBoleto": 0.0,
+    "idAvion": 99999,
+    "modeloAvion": "ID:99999",
+    "pilotos": [],
+    "asistentes": [],
+    "nombresPilotos": [],
+    "nombresAsistentes": []
+  },
+  {
+    "idVuelo": 802641275,
+    "numPasajeros": 0,
+    "tiempoRecorrido": 0,
+    "costoBoleto": 0.0,
+    "idAvion": 99999,
+    "modeloAvion": "ID:99999",
+    "pilotos": [],
+    "asistentes": [],
+    "nombresPilotos": [],
+    "nombresAsistentes": []
   }
 ]

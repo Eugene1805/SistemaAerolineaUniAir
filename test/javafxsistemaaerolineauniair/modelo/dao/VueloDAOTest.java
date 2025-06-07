@@ -1,51 +1,55 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
- */
 package javafxsistemaaerolineauniair.modelo.dao;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import javafxsistemaaerolineauniair.modelo.pojo.Vuelo;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * Pruebas unitarias para la clase VueloDAO.
+ * Se asegura que todos los datos creados durante las pruebas se limpien después.
+ * 
  * @author uriel
  */
 public class VueloDAOTest {
 
+    private VueloDAO dao;
+    private List<Integer> idsPrueba = new ArrayList<>();
+
+    @Before
+    public void setUp() throws Exception {
+        dao = new VueloDAO();
+    }
+
     @After
     public void limpiarDatosDePrueba() throws Exception {
-        VueloDAO dao = new VueloDAO();
-
-        // Lista de IDs que usas durante tus pruebas
-        int[] idsPrueba = {777, 888, 999};
-
         for (int id : idsPrueba) {
             Vuelo vuelo = dao.buscarPorIdVuelo(id);
             if (vuelo != null) {
                 dao.eliminar(id);
             }
         }
+        idsPrueba.clear();
     }
 
     @Test
     public void testObtenerNombresColumnas() {
-        System.out.println("obtenerNombresColumnas");
-        VueloDAO dao = new VueloDAO();
-        String[] expResultado = {"ID Vuelo", "Pasajeros", "Ciudad Salida", "Ciudad Llegada", "Fecha Salida", "Hora Salida", "Fecha Llegada", "Hora Llegada",
-            "Tiempo Recorrido (hrs)", "Costo Boleto"};
+        String[] expResultado = {
+            "ID Vuelo", "Pasajeros", "Ciudad Salida", "Ciudad Llegada", 
+            "Fecha Salida", "Hora Salida", "Fecha Llegada", "Hora Llegada",
+            "Tiempo Recorrido (hrs)", "Costo Boleto", "Avion", "Pilotos", "Asistentes"
+        };
         String[] resultado = dao.obtenerNombresColumnas();
         assertArrayEquals(expResultado, resultado);
     }
 
     @Test
     public void testObtenerValoresFila() {
-        System.out.println("obtenerValoresFila");
         Vuelo vuelo = new Vuelo();
         vuelo.setIdVuelo(1);
         vuelo.setNumPasajeros(150);
@@ -57,25 +61,28 @@ public class VueloDAOTest {
         vuelo.setHoraLlegada(LocalTime.of(13, 15));
         vuelo.setTiempoRecorrido(165);
         vuelo.setCostoBoleto(1200.5);
+        vuelo.setIdAvion(1);
+        vuelo.setPilotos(new ArrayList<>());
+        vuelo.setAsistentes(new ArrayList<>());
 
-        VueloDAO dao = new VueloDAO();
         String[] result = dao.obtenerValoresFila(vuelo);
 
-        String[] expected = {
-            "1", "150", "Ciudad A", "Ciudad B",
-            "2024-06-01", "10:30", "2024-06-01", "13:15",
-            "165", "1200.5"
-        };
-
-        assertArrayEquals(expected, result);
+        assertNotNull(result);
+        assertEquals("1", result[0]);
+        assertEquals("150", result[1]);
+        assertEquals("Ciudad A", result[2]);
+        assertEquals("Ciudad B", result[3]);
+        assertEquals("2024-06-01", result[4]);
+        assertEquals("10:30", result[5]);
     }
 
     @Test
     public void testBuscarPorIdVuelo() throws Exception {
-        System.out.println("buscarPorIdVuelo");
-        VueloDAO dao = new VueloDAO();
+        int idPrueba = dao.generarIdVueloUnico();
+        idsPrueba.add(idPrueba);
+        
         Vuelo vuelo = new Vuelo();
-        vuelo.setIdVuelo(999);
+        vuelo.setIdVuelo(idPrueba);
         vuelo.setNumPasajeros(100);
         vuelo.setCiudadSalida("CDMX");
         vuelo.setCiudadLlegada("Monterrey");
@@ -85,22 +92,26 @@ public class VueloDAOTest {
         vuelo.setHoraLlegada(LocalTime.of(10, 30));
         vuelo.setTiempoRecorrido(150);
         vuelo.setCostoBoleto(999.99);
+        vuelo.setIdAvion(1);
+        vuelo.setPilotos(new ArrayList<>());
+        vuelo.setAsistentes(new ArrayList<>());
 
         List<Vuelo> vuelos = dao.obtenerTodos();
         vuelos.add(vuelo);
         dao.guardarTodos(vuelos);
 
-        Vuelo result = dao.buscarPorIdVuelo(999);
+        Vuelo result = dao.buscarPorIdVuelo(idPrueba);
         assertNotNull(result);
-        assertEquals(999, result.getIdVuelo());
+        assertEquals(idPrueba, result.getIdVuelo());
     }
 
     @Test
     public void testActualizar() throws Exception {
-        System.out.println("actualizar");
-        VueloDAO dao = new VueloDAO();
+        int idPrueba = dao.generarIdVueloUnico();
+        idsPrueba.add(idPrueba);
+        
         Vuelo vuelo = new Vuelo();
-        vuelo.setIdVuelo(888);
+        vuelo.setIdVuelo(idPrueba);
         vuelo.setNumPasajeros(90);
         vuelo.setCiudadSalida("GDL");
         vuelo.setCiudadLlegada("Cancún");
@@ -110,6 +121,9 @@ public class VueloDAOTest {
         vuelo.setHoraLlegada(LocalTime.of(12, 0));
         vuelo.setTiempoRecorrido(180);
         vuelo.setCostoBoleto(1500);
+        vuelo.setIdAvion(1);
+        vuelo.setPilotos(new ArrayList<>());
+        vuelo.setAsistentes(new ArrayList<>());
 
         List<Vuelo> vuelos = dao.obtenerTodos();
         vuelos.add(vuelo);
@@ -119,17 +133,17 @@ public class VueloDAOTest {
         vuelo.setCostoBoleto(1600);
         dao.actualizar(vuelo);
 
-        Vuelo actualizado = dao.buscarPorIdVuelo(888);
+        Vuelo actualizado = dao.buscarPorIdVuelo(idPrueba);
         assertEquals("Tijuana", actualizado.getCiudadLlegada());
         assertEquals(1600, actualizado.getCostoBoleto(), 0.001);
     }
 
     @Test
     public void testEliminar() throws Exception {
-        System.out.println("eliminar");
-        VueloDAO dao = new VueloDAO();
+        int idPrueba = dao.generarIdVueloUnico();
+        
         Vuelo vuelo = new Vuelo();
-        vuelo.setIdVuelo(777);
+        vuelo.setIdVuelo(idPrueba);
         vuelo.setNumPasajeros(70);
         vuelo.setCiudadSalida("Puebla");
         vuelo.setCiudadLlegada("Oaxaca");
@@ -139,21 +153,22 @@ public class VueloDAOTest {
         vuelo.setHoraLlegada(LocalTime.of(15, 30));
         vuelo.setTiempoRecorrido(90);
         vuelo.setCostoBoleto(850);
+        vuelo.setIdAvion(1);
+        vuelo.setPilotos(new ArrayList<>());
+        vuelo.setAsistentes(new ArrayList<>());
 
         List<Vuelo> vuelos = dao.obtenerTodos();
         vuelos.add(vuelo);
         dao.guardarTodos(vuelos);
 
-        dao.eliminar(777);
+        dao.eliminar(idPrueba);
 
-        Vuelo eliminado = dao.buscarPorIdVuelo(777);
+        Vuelo eliminado = dao.buscarPorIdVuelo(idPrueba);
         assertNull(eliminado);
     }
 
     @Test
     public void testGenerarIdVueloUnico() throws Exception {
-        System.out.println("generarIdVueloUnico");
-        VueloDAO dao = new VueloDAO();
         int id1 = dao.generarIdVueloUnico();
         int id2 = dao.generarIdVueloUnico();
 

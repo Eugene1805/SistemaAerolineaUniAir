@@ -7,6 +7,7 @@ package javafxsistemaaerolineauniair.controlador;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafxsistemaaerolineauniair.modelo.pojo.Vuelo;
 import org.junit.After;
@@ -27,7 +28,14 @@ public class FXMLVueloControllerTest {
         LocalTime horaSalida = LocalTime.parse("14:00");
         LocalDate fechaLlegada = LocalDate.parse("2025-05-27");
         LocalTime horaLlegada = LocalTime.parse("16:30");
-        Vuelo original = new Vuelo(1, 100, 2, 150f, "Ciudad A", "Ciudad B", fechaSalida, horaSalida, fechaLlegada, horaLlegada, 10);
+        Vuelo original = new Vuelo(
+            1, 100, 2, 150f, "Ciudad A", "Ciudad B", 
+            fechaSalida, horaSalida, fechaLlegada, horaLlegada, 
+            10, "Boeing 737", 
+            new ArrayList<>(), new ArrayList<>(), 
+            new ArrayList<>(), new ArrayList<>()
+        );
+
         FXMLVueloController controller = new FXMLVueloController();
         
         Vuelo copia = controller.clonarVuelo(original);

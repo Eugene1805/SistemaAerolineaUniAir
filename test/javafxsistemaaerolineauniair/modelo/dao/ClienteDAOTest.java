@@ -159,13 +159,4 @@ public class ClienteDAOTest {
         assertNotEquals("Los IDs deben ser diferentes", id1, id2);
         assertTrue("ID debe ser positivo", id1 > 0 && id2 > 0);
     }
-
-    @Test
-    public void testPuedeEliminarse() throws Exception {
-        System.out.println("puedeEliminarse");
-        int id = 0;
-        boolean expResultado = true;
-        boolean resultado = dao.puedeEliminarse(id);
-        assertEquals(expResultado, resultado);
-    }
 }

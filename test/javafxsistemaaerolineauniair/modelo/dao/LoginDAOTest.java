@@ -1,7 +1,11 @@
 package javafxsistemaaerolineauniair.modelo.dao;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import javafxsistemaaerolineauniair.modelo.pojo.Usuario;
 import org.junit.After;
@@ -10,61 +14,60 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * Pruebas unitarias para la clase LoginDAO.
+ * Crea una copia del archivo JSON original para utilizarlos en su normalidad.
+ * Se asegura que todos los datos creados durante las pruebas se limpien después.
+ * 
  * @author uriel
  */
 public class LoginDAOTest {
     
     private LoginDAO dao;
-    private List<Usuario> usuariosOriginales;
-    private List<String> usuariosTemporales; // Para registrar usuarios de prueba
+    private Path backupPath;
+    private final String TEST_USERNAME = "testAdmin";
+    private final String TEST_PASSWORD = "test1234";
 
     @Before
     public void setUp() throws IOException {
+        // Crear backup del archivo original
+        File originalFile = new File(LoginDAO.obtenerRutaCompleta());
+        backupPath = Paths.get(LoginDAO.obtenerRutaCompleta() + ".backup");
+        Files.copy(originalFile.toPath(), backupPath, StandardCopyOption.REPLACE_EXISTING);
+        
+        // 2. Inicializar DAO
         dao = new LoginDAO();
-        usuariosOriginales = new ArrayList<>(dao.obtenerTodos());
-        usuariosTemporales = new ArrayList<>();
     }
 
     @After
-    public void limpiarDatos() throws Exception {
-        dao.guardarTodos(new ArrayList<>(usuariosOriginales));
-        
-        List<Usuario> usuariosActuales = dao.obtenerTodos();
-        for (String username : usuariosTemporales) {
-            usuariosActuales.removeIf(u -> u.getUsuario().equals(username));
-        }
-        dao.guardarTodos(usuariosActuales);
+    public void limpiarDatos() throws IOException {
+        // Restaurar el backup original
+        Files.copy(backupPath, Paths.get(LoginDAO.obtenerRutaCompleta()), StandardCopyOption.REPLACE_EXISTING);
+        // Eliminar el archivo backup
+        Files.deleteIfExists(backupPath);
     }
 
     @Test
     public void testVerificarCredenciales() throws Exception {
-        System.out.println("verificarCredenciales");
-    
-        String usernameTest = "testAdmin";
-        String passwordTest = "test1234";
-        usuariosTemporales.add(usernameTest);
-
+        // Crear usuario de prueba con TODOS los campos necesarios
         Usuario usuarioPrueba = new Usuario();
-        usuarioPrueba.setUsuario(usernameTest);
-        usuarioPrueba.setContraseña(passwordTest);
+        usuarioPrueba.setUsuario(TEST_USERNAME);
+        usuarioPrueba.setContraseña(TEST_PASSWORD);
 
-        List<Usuario> usuariosModificados = new ArrayList<>(dao.obtenerTodos());
-        usuariosModificados.add(usuarioPrueba);
-        dao.guardarTodos(usuariosModificados);
+        // Guardar usando el DAO real (no manipular listas directamente)
+        List<Usuario> usuarios = dao.obtenerTodos();
+        usuarios.add(usuarioPrueba);
+        dao.guardarTodos(usuarios);
 
-        Usuario result = dao.verificarCredenciales(usernameTest, passwordTest);
-
-        assertNotNull("Debe encontrar al usuario", result);
-        assertEquals(usernameTest, result.getUsuario());
-        assertEquals(passwordTest, result.getContraseña());
+        // Verificar
+        Usuario result = dao.verificarCredenciales(TEST_USERNAME, TEST_PASSWORD);
+        assertNotNull("El usuario debería existir", result);
+        assertEquals("El nombre de usuario debería coincidir", TEST_USERNAME, result.getUsuario());
+        assertEquals("La contraseña debería coincidir", TEST_PASSWORD, result.getContraseña());
     }
     
     @Test
     public void testVerificarCredencialesIncorrectas() throws Exception {
-        System.out.println("verificarCredencialesIncorrectas");
-        
         Usuario result = dao.verificarCredenciales("usuarioInexistente", "claveIncorrecta");
-        assertNull("No debe encontrar al usuario", result);
+        assertNull("No debería encontrar usuario", result);
     }
 }

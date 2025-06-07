@@ -38,7 +38,7 @@
             <TableColumn fx:id="colAvion" prefWidth="124.0" text="Avion" />
         </columns>
       </TableView>
-      <Button layoutX="860.0" layoutY="537.0" mnemonicParsing="false" onAction="#btnComprar" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Comprar" textFill="WHITE" />
+      <Button fx:id="btnComprar" layoutX="860.0" layoutY="537.0" mnemonicParsing="false" onAction="#btnComprar" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Comprar" textFill="WHITE" />
       <MenuButton layoutX="1021.0" layoutY="537.0" mnemonicParsing="false" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Exportar Infromación" textFill="WHITE">
         <items>
           <MenuItem fx:id="btnExportarCsv" mnemonicParsing="false" onAction="#btnClicExportarCSV" text="CSV" />

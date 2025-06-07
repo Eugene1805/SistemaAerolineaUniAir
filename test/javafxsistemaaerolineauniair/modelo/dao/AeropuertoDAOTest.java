@@ -1,13 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
- */
 package javafxsistemaaerolineauniair.modelo.dao;
 
 import javafxsistemaaerolineauniair.modelo.pojo.Aeropuerto;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.io.IOException;
+import java.util.List;
+import javafxsistemaaerolineauniair.excepciones.AeropuertoConVuelosException;
+import javafxsistemaaerolineauniair.modelo.pojo.Avion;
 
 /**
  *
@@ -15,36 +16,50 @@ import static org.junit.Assert.*;
  */
 public class AeropuertoDAOTest {
     
-    private AeropuertoDAO dao = new AeropuertoDAO();
+    private AeropuertoDAO dao;
+
+    @Before
+    public void setUp() throws Exception {
+        dao = new AeropuertoDAO();
+    }
     
     @After
     public void limpiarDatos() throws Exception {
         // Limpiar todos los aeropuertos creados en los tests
-        for (Aeropuerto aeropuerto : dao.obtenerTodos()) {
-            // Asegurarse de que no sean datos críticos del sistema
-            if (aeropuerto.getNombre().contains("Test") || aeropuerto.getNombre().contains("Actualizado")) {
-                dao.eliminar(aeropuerto.getId());
+        List<Aeropuerto> aeropuertos = dao.obtenerTodos();
+        for (Aeropuerto aeropuerto : aeropuertos) {
+            if (aeropuerto.getNombre().contains("Test") || 
+                aeropuerto.getNombre().contains("Actualizado") ||
+                aeropuerto.getNombre().contains("Aeropuerto para eliminar") ||
+                aeropuerto.getNombre().contains("Aeropuerto con vuelos")) {
+                
+                try {
+                    // Intentamos eliminar el aeropuerto, si tiene aviones asociados
+                    // simplemente continuamos con el siguiente
+                    dao.verificarYEliminar(aeropuerto.getId());
+                } catch (AeropuertoConVuelosException e) {
+                    // Si tiene aviones asociados, eliminamos los aviones
+                    AvionDAO avionDAO = new AvionDAO();
+                    List<Avion> aviones = avionDAO.buscarPorAeropuerto(aeropuerto.getId());
+                    for (Avion avion : aviones) {
+                        avionDAO.eliminar(avion.getIdAvion());
+                    }
+                    // Ahora intentamos eliminar el aeropuerto nuevamente
+                    dao.verificarYEliminar(aeropuerto.getId());
+                }
             }
         }
     }
-    /**
-     * Test of obtenerNombresColumnas method, of class AeropuertoDAO.
-     */
+
     @Test
     public void testObtenerNombresColumnas() {
-        System.out.println("obtenerNombresColumnas");
         String[] expResultado = {"ID","Nombre", "Dirección", "Persona de Contacto", "Teléfono", "Flota"};
         String[] resultado = dao.obtenerNombresColumnas();
-        assertArrayEquals(expResultado, resultado);
+        assertArrayEquals("Las columnas deben coincidir", expResultado, resultado);
     }
 
-
-    /**
-     * Test of obtenerValoresFila method, of class AeropuertoDAO.
-     */
     @Test
     public void testObtenerValoresFila() {
-        System.out.println("obtenerValoresFila");
         Aeropuerto aeropuerto = new Aeropuerto();
         aeropuerto.setId(1);
         aeropuerto.setNombre("Aeropuerto Internacional");
@@ -57,12 +72,18 @@ public class AeropuertoDAOTest {
             "1", "Aeropuerto Internacional", "Av. Principal 123", "Juan Pérez", "555-1234", "5"
         };
         String[] resultado = dao.obtenerValoresFila(aeropuerto);
-        assertArrayEquals(expResultado, resultado);
+        assertArrayEquals("Los valores de la fila no coinciden", expResultado, resultado);
     }
 
-    /**
-     * Test of buscarPorId method, of class AeropuertoDAO.
-     */
+    @Test
+    public void testGenerarIdUnico() throws IOException {
+        int id1 = dao.generarIdUnico();
+        int id2 = dao.generarIdUnico();
+
+        assertNotEquals("Los IDs generados deben ser diferentes", id1, id2);
+        assertTrue("El ID generado debe ser positivo", id1 > 0 && id2 > 0);
+    }
+
     @Test
     public void testBuscarPorId() throws Exception {
         int id = dao.generarIdUnico();
@@ -72,13 +93,10 @@ public class AeropuertoDAOTest {
 
         Aeropuerto resultado = dao.buscarPorId(id);
 
-        assertNotNull("Debe encontrar el aeropuerto", resultado);
+        assertNotNull("El aeropuerto no debe ser nulo", resultado);
         assertEquals("El nombre debe coincidir", "Aeropuerto Test", resultado.getNombre());
     }
 
-    /**
-     * Test of actualizar method, of class AeropuertoDAO.
-     */
     @Test
     public void testActualizar() throws Exception {
         int id = dao.generarIdUnico();
@@ -90,49 +108,37 @@ public class AeropuertoDAOTest {
         dao.actualizar(actualizado);
 
         Aeropuerto resultado = dao.buscarPorId(id);
-        assertEquals("Nombre debe actualizarse", "Actualizado", resultado.getNombre());
+        assertEquals("El nombre debe haber sido actualizado", "Actualizado", resultado.getNombre());
     }
 
-    /**
-     * Test of eliminar method, of class AeropuertoDAO.
-     */
     @Test
-    public void testEliminar() throws Exception {
+    public void testVerificarYEliminar() throws Exception {
         int id = dao.generarIdUnico();
 
-        Aeropuerto aeropuerto = new Aeropuerto(id, "Para eliminar", "Dirección", "Persona", "123", 1);
+        Aeropuerto aeropuerto = new Aeropuerto(id, "Aeropuerto para eliminar", "Dirección", "Persona", "123", 3);
         dao.agregar(aeropuerto);
 
-        dao.eliminar(id);
+        // Test caso normal sin vuelos asociados
+        dao.verificarYEliminar(id);
 
         Aeropuerto eliminado = dao.buscarPorId(id);
         assertNull("El aeropuerto debe haber sido eliminado", eliminado);
     }
 
-    /**
-     * Test of generarIdUnico method, of class AeropuertoDAO.
-     */
-    @Test
-    public void testGenerarIdUnico() throws Exception {
-        
-        int id1 = dao.generarIdUnico();
-        int id2 = dao.generarIdUnico();
+    @Test(expected = AeropuertoConVuelosException.class)
+    public void testVerificarYEliminarConVuelos() throws Exception {
+        int idAeropuerto = dao.generarIdUnico();
 
-        assertNotEquals("Los IDs deben ser diferentes", id1, id2);
-        assertTrue("ID debe ser positivo", id1 > 0 && id2 > 0);
-    }
+        Aeropuerto aeropuerto = new Aeropuerto(idAeropuerto, "Aeropuerto con vuelos", "Dirección", "Persona", "123", 2);
+        dao.agregar(aeropuerto);
 
-    /**
-     * Test of puedeEliminarse method, of class AeropuertoDAO.
-     */
-    @Test
-    public void testPuedeEliminarse() {
-        //FIX
-        System.out.println("puedeEliminarse");
-        int id = 0;
-        boolean expResultado = true;
-        boolean resultado = dao.puedeEliminarse(id);
-        assertEquals(expResultado, resultado);
+        // Simulamos que el aeropuerto tiene aviones asociados
+        AvionDAO avionDAO = new AvionDAO();
+        Avion avion = new Avion();
+        avion.setIdAerolinea(idAeropuerto);  // Asocia un avión al aeropuerto
+        avionDAO.agregar(avion);
+
+        // lanza AeropuertoConVuelosException
+        dao.verificarYEliminar(idAeropuerto);
     }
-    
 }

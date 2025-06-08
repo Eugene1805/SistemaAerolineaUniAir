@@ -226,15 +226,15 @@ public class FXMLFormularioVueloController implements Initializable {
 
     private boolean validarCampos() {
         if (tfNumeroPasajeros.getText().isEmpty() || tfCiudadSalida.getText().isEmpty() 
-        || tfCiudadLlegada.getText().isEmpty() || dpFechaSalida.getValue() == null 
-        || tfHoraSalida.getText().isEmpty() || dpFechaLlegada.getValue() == null 
-        || tfHoraLlegada.getText().isEmpty() || tfCostoBoleto.getText().isEmpty() 
-        ) { 
-            Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos Faltanres", 
-            "No puede haber ningún campo vacío.");
+            || tfCiudadLlegada.getText().isEmpty() || dpFechaSalida.getValue() == null 
+            || tfHoraSalida.getText().isEmpty() || dpFechaLlegada.getValue() == null 
+            || tfHoraLlegada.getText().isEmpty() || tfCostoBoleto.getText().isEmpty()) { 
+
+            Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos faltantes", 
+                "No puede haber ningún campo vacío.");
             return false;
         }
-        
+
         if (!tfNumeroPasajeros.getText().matches("\\d+")) {
             Util.mostrarAlertaSimple(
                 Alert.AlertType.ERROR,
@@ -262,7 +262,7 @@ public class FXMLFormularioVueloController implements Initializable {
             );
             return false;
         }
-        
+
         String regexLetras = "^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$";
         if (!tfCiudadSalida.getText().matches(regexLetras)) {
             Util.mostrarAlertaSimple(
@@ -280,7 +280,7 @@ public class FXMLFormularioVueloController implements Initializable {
             );
             return false;
         }
-        
+
         try {
             LocalTime.parse(tfHoraSalida.getText());
             LocalTime.parse(tfHoraLlegada.getText());
@@ -289,7 +289,7 @@ public class FXMLFormularioVueloController implements Initializable {
                     "ERROR: El formato de hora debe ser HH:mm.");
             return false;
         }
-        
+
         LocalDate fechaSalida = dpFechaSalida.getValue();
         LocalDate fechaLlegada = dpFechaLlegada.getValue();
         if (fechaLlegada.isBefore(fechaSalida)) {
@@ -300,7 +300,7 @@ public class FXMLFormularioVueloController implements Initializable {
             );
             return false;
         }        
-        
+
         if (cbAvion.getValue() == null) {
             Util.mostrarAlertaSimple(
                 Alert.AlertType.WARNING,
@@ -309,9 +309,23 @@ public class FXMLFormularioVueloController implements Initializable {
             );
             return false;
         }
+
+        int pasajeros = Integer.parseInt(tfNumeroPasajeros.getText());
+        int asientosDisponibles = cbAvion.getValue().getAsiento(); // Se asume que cbAvion contiene objetos Avion
+
+        if (pasajeros > asientosDisponibles) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.ERROR,
+                "Exceso de pasajeros",
+                "La cantidad de pasajeros (" + pasajeros + 
+                ") excede el número de asientos del avión (" + asientosDisponibles + ")."
+            );
+            return false;
+        }
+
         return true;
     }
-    
+
     private boolean validarPilotos(){
         Piloto p1 = cbPiloto1.getValue();
         Piloto p2 = cbPiloto2.getValue();

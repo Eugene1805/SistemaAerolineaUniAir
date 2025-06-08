@@ -2,6 +2,7 @@ package javafxsistemaaerolineauniair.controlador;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -55,10 +56,7 @@ public class FXMLFormularioAvionController implements Initializable {
 
     @FXML
     private void btnClicGuardar(ActionEvent event) {
-        if (tfCapacidad.getText().isEmpty() || tfModelo.getText().isEmpty() || tfPeso.getText().isEmpty() ||
-            tfEstatus.getText().isEmpty() || dpFechaDeIngreso.getValue() == null || cbAeropuerto.getValue() == null || tfAsientos.getText().isEmpty()) {
-            Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos requeridos",
-                    "Todos los campos son obligatorios.");
+        if (!validarFormulario()) {
             return;
         }
 
@@ -74,10 +72,11 @@ public class FXMLFormularioAvionController implements Initializable {
             confirmado = true;
             ((Stage) tfCapacidad.getScene().getWindow()).close();
         } catch (Exception e) {
-            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error de entrada",
-                    "Verifica los campos numéricos y la fecha (AAAA-MM-DD).");
+            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error inesperado",
+                    "Ocurrió un error al guardar los datos. Verifica los campos e intenta nuevamente.");
         }
     }
+
 
     @FXML
     private void btnClicCancelar(ActionEvent event) {
@@ -110,5 +109,55 @@ public class FXMLFormularioAvionController implements Initializable {
     public boolean isConfirmado() {
         return confirmado;
     }
-    
+
+    private boolean validarFormulario() {
+        String capacidadTexto = tfCapacidad.getText().trim();
+        String modelo = tfModelo.getText().trim();
+        String pesoTexto = tfPeso.getText().trim();
+        String estatus = tfEstatus.getText().trim();
+        String asientosTexto = tfAsientos.getText().trim();
+        Aeropuerto aeropuerto = cbAeropuerto.getValue();
+        LocalDate fecha = dpFechaDeIngreso.getValue();
+
+        if (capacidadTexto.isEmpty() || modelo.isEmpty() || pesoTexto.isEmpty() ||
+            estatus.isEmpty() || asientosTexto.isEmpty() || aeropuerto == null || fecha == null) {
+            Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos requeridos", "Todos los campos son obligatorios.");
+            return false;
+        }
+
+        int capacidad;
+        int asientos;
+        float peso;
+
+        try {
+            capacidad = Integer.parseInt(capacidadTexto);
+            if (capacidad <= 0) throw new NumberFormatException();
+
+            peso = Float.parseFloat(pesoTexto);
+            if (peso <= 0) throw new NumberFormatException();
+
+            asientos = Integer.parseInt(asientosTexto);
+            if (asientos <= 0) throw new NumberFormatException();
+        } catch (NumberFormatException e) {
+            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error de entrada", "Los campos numéricos deben ser positivos.");
+            return false;
+        }
+
+        if (asientos > capacidad) {
+            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Lógica inválida", "El número de asientos no puede ser mayor que la capacidad.");
+            return false;
+        }
+
+        if (!estatus.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Formato incorrecto", "El campo 'Estatus' solo debe contener letras y espacios.");
+            return false;
+        }
+
+        if (fecha.isAfter(LocalDate.now())) {
+            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Fecha inválida", "La fecha de ingreso no puede ser posterior a hoy.");
+            return false;
+        }
+
+        return true;
+    }
 }

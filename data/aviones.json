@@ -14,17 +14,31 @@
     "asiento": 130
   },
   {
-    "idAvion": 1635461659,
-    "capacidad": 200,
-    "modelo": "boing 876",
-    "peso": 10000.0,
+    "idAvion": 266591202,
+    "capacidad": 510,
+    "modelo": "boing",
+    "peso": 80000.0,
     "estatus": "activo",
     "fechaDeIngreso": {
-      "year": 2024,
-      "month": 12,
-      "day": 3
+      "year": 2025,
+      "month": 6,
+      "day": 5
     },
-    "idAerolinea": 827029342,
-    "asiento": 180
+    "idAerolinea": 1030515690,
+    "asiento": 500
+  },
+  {
+    "idAvion": 878038055,
+    "capacidad": 100,
+    "modelo": "maverick",
+    "peso": 5000.0,
+    "estatus": "activo",
+    "fechaDeIngreso": {
+      "year": 2025,
+      "month": 5,
+      "day": 27
+    },
+    "idAerolinea": 1140857020,
+    "asiento": 90
   }
 ]

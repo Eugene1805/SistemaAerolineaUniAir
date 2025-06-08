@@ -4,6 +4,7 @@ import com.itextpdf.text.DocumentException;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +24,8 @@ import javafxsistemaaerolineauniair.modelo.dao.AvionDAO;
 import javafxsistemaaerolineauniair.modelo.pojo.Avion;
 import javafxsistemaaerolineauniair.util.Util;
 import javafxsistemaaerolineauniair.JavaFXSistemaAerolineaUniAir;
+import javafxsistemaaerolineauniair.modelo.dao.AeropuertoDAO;
+import javafxsistemaaerolineauniair.modelo.pojo.Aeropuerto;
 
 
 public class FXMLAvionController implements Initializable {
@@ -58,10 +61,17 @@ public class FXMLAvionController implements Initializable {
 
     private final ObservableList<Avion> aviones = FXCollections.observableArrayList();
     private final AvionDAO avionDAO = new AvionDAO();
+    private List<Aeropuerto> aeropuertos;
+
 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        try {
+            aeropuertos = new AeropuertoDAO().obtenerTodos(); 
+        } catch (IOException e) {
+            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo cargar la lista de aeropuertos.");
+        }
         configurarTabla();
         cargarInformacion();
 
@@ -183,9 +193,28 @@ public class FXMLAvionController implements Initializable {
         tcPeso.setCellValueFactory(new PropertyValueFactory<>("peso"));
         tcEstatus.setCellValueFactory(new PropertyValueFactory<>("estatus"));
         tcFechaIngreso.setCellValueFactory(new PropertyValueFactory<>("fechaDeIngreso"));
-        tcAerolinea.setCellValueFactory(new PropertyValueFactory<>("idAerolinea"));
         tcAsientos.setCellValueFactory(new PropertyValueFactory<>("asiento"));
+
+        tcAerolinea.setCellValueFactory(new PropertyValueFactory<>("idAerolinea"));
+
+        tcAerolinea.setCellFactory(column -> new TableCell<Avion, Integer>() {
+            @Override
+            protected void updateItem(Integer idAerolinea, boolean empty) {
+                super.updateItem(idAerolinea, empty);
+                if (empty || idAerolinea == null) {
+                    setText(null);
+                } else {
+                    String nombre = aeropuertos.stream()
+                        .filter(a -> a.getId() == idAerolinea)
+                        .map(Aeropuerto::getNombre)
+                        .findFirst()
+                        .orElse("Desconocido");
+                    setText(nombre);
+                }
+            }
+        });
     }
+
     
     private void cargarInformacion() {
         try {
@@ -199,7 +228,7 @@ public class FXMLAvionController implements Initializable {
     private boolean irFormularioAvion(Avion avion) {
         try {
             FXMLLoader loader = new FXMLLoader(JavaFXSistemaAerolineaUniAir.class.getResource("vista/FXMLFormularioAvion.fxml"));
-            Parent vista = loader.load(); // 👈 importante: primero se carga
+            Parent vista = loader.load(); 
 
             FXMLFormularioAvionController controlador = loader.getController();
             if (controlador != null) {

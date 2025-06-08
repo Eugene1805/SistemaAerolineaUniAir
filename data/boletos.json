@@ -138,5 +138,40 @@
     "modeloAvion": "",
     "idCliente": 1719619092,
     "nombreCliente": "Uriel"
+  },
+  {
+    "idVuelo": 1202990189,
+    "numPasajeros": 0,
+    "tiempoRecorrido": 0,
+    "costoBoleto": 9000.0,
+    "ciudadSalida": "Paris",
+    "ciudadLlegada": "Perú",
+    "fechaSalida": {
+      "year": 2025,
+      "month": 6,
+      "day": 8
+    },
+    "horaSalida": {
+      "hour": 22,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "fechaLlegada": {
+      "year": 2025,
+      "month": 6,
+      "day": 9
+    },
+    "horaLlegada": {
+      "hour": 8,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "asiento": "23D",
+    "idAvion": 1926901376,
+    "modeloAvion": "",
+    "idCliente": 1186942161,
+    "nombreCliente": "Arturo"
   }
 ]

@@ -44,23 +44,17 @@ public class FXMLFormularioAeropuertoController implements Initializable {
 
     @FXML
     private void btnAceptar(ActionEvent event) {
-        if (tfNombre.getText().isEmpty() || tfDireccion.getText().isEmpty()
-                || tfPersonaContacto.getText().isEmpty() 
-                || tfTelefono.getText().isEmpty() || tfFlota.getText().isEmpty()) {
-            Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos requeridos", 
-                    "Nombre y Dirección son campos obligatorios");
-            return;
+        if(validarCampos()){
+            // Actualizar objeto aeropuerto con los valores del formulario
+            aeropuerto.setNombre(tfNombre.getText());
+            aeropuerto.setDireccion(tfDireccion.getText());
+            aeropuerto.setPersonaContacto(tfPersonaContacto.getText());
+            aeropuerto.setTelefono(tfTelefono.getText());
+            aeropuerto.setFlota(Integer.parseInt(tfFlota.getText()));
+
+            confirmado = true;
+            ((Stage) tfNombre.getScene().getWindow()).close();  
         }
-        
-        // Actualizar objeto aeropuerto con los valores del formulario
-        aeropuerto.setNombre(tfNombre.getText());
-        aeropuerto.setDireccion(tfDireccion.getText());
-        aeropuerto.setPersonaContacto(tfPersonaContacto.getText());
-        aeropuerto.setTelefono(tfTelefono.getText());
-        aeropuerto.setFlota(Integer.parseInt(tfFlota.getText()));
-        
-        confirmado = true;
-        ((Stage) tfNombre.getScene().getWindow()).close();  
     }
 
     @FXML
@@ -87,4 +81,49 @@ public class FXMLFormularioAeropuertoController implements Initializable {
         return confirmado;
     }
     
+    private boolean validarCampos(){
+        if (tfNombre.getText().isEmpty() || tfDireccion.getText().isEmpty()
+                || tfPersonaContacto.getText().isEmpty() 
+                || tfTelefono.getText().isEmpty() || tfFlota.getText().isEmpty()) {
+            Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos faltantes", 
+                    "No puede haber ningún campo vacío.");
+            return false;
+        }
+        
+        String regexLetras = "^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$";
+        if (!tfNombre.getText().matches(regexLetras)) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.ERROR,
+                "Nombre inválido",
+                "ERROR: Por favor ingrese un nombre válido."
+            );
+            return false;
+        }
+        if (!tfPersonaContacto.getText().matches(regexLetras)) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.ERROR,
+                "Persona de Contacto inválida",
+                "ERROR: Por favor ingrese una persona de contacto válida."
+            );
+            return false;
+        }
+        if (!tfTelefono.getText().matches("\\d+")) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.ERROR,
+                "Númerp de teléfono inválido",
+                "ERROR: Por favor ingrese un núero de teléfono válido"
+            );
+            return false;
+        }
+        if (!tfFlota.getText().matches("\\d+")) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.ERROR,
+                "Tamaño de Flota inválida",
+                "ERROR: El tamaño de flota debe ser un número entero positivo."
+            );
+            return false;
+        }
+        
+        return true;
+    }
 }

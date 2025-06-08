@@ -93,6 +93,32 @@ public class FXMLFormularioAsistenteController implements Initializable {
                     "Todos los campos son obligatorios.");
             return false;
         }
+        
+        LocalDate fechaSeleccionada = dpFechaNacimiento.getValue();
+        LocalDate fechaActual = LocalDate.now();
+        if (fechaSeleccionada.isAfter(fechaActual)) {
+            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Fecha inválida",
+                    "ERROR: La fecha de nacimiento no puede ser posterior a la fecha actual.");
+            return false;
+        } 
+        if (!validarCadenas(tfNombre, "Nombre")) return false;
+        if (!validarCadenas(tfPaterno, "Paterno")) return false;
+        if (!validarCadenas(tfMaterno, "Materno")) return false;
+        if (!validarCadenas(tfGenero, "Genero")) return false;
+        
+        return true;
+    }
+    
+    private boolean validarCadenas(TextField campo, String nombreCampo){
+        String regex = "^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$";
+        if (!campo.getText().matches(regex)) {
+        Util.mostrarAlertaSimple(
+            Alert.AlertType.ERROR,
+            nombreCampo + " inválido",
+            "ERROR: Por favor ingrese un " + nombreCampo.toLowerCase() + " válido."
+        );
+        return false;
+    }
         return true;
     }
 

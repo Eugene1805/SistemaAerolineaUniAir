@@ -125,6 +125,13 @@ public class FXMLFormularioClienteController implements Initializable {
             );
             return false;
         }
+        LocalDate fechaSeleccionada = dpFechaNacimiento.getValue();
+        LocalDate fechaActual = LocalDate.now();
+        if (fechaSeleccionada.isAfter(fechaActual)) {
+            Util.mostrarAlertaSimple(Alert.AlertType.ERROR, "Fecha inválida",
+                    "ERROR: La fecha de nacimiento no puede ser posterior a la fecha actual.");
+            return false;
+        }
         return true;
     }
 }

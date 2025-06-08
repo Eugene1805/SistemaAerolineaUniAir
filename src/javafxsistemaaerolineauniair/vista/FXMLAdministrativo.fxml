@@ -11,9 +11,9 @@
    <children>
       <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FFF;">
          <children>
-            <Label layoutX="37.0" layoutY="98.0" text="Administrativos" textFill="#1e2a38">
+            <Label layoutX="37.0" layoutY="103.0" text="Administrativos" textFill="#1e2a38">
                <font>
-                  <Font size="36.0" />
+                  <Font name="System Bold" size="36.0" />
                </font>
             </Label>
             <TableView fx:id="tvAdministrativos" layoutX="24.0" layoutY="166.0" prefHeight="342.0" prefWidth="1225.0">

@@ -9,9 +9,9 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxsistemaaerolineauniair.controlador.FXMLClienteController">
    <children>
-      <Label layoutX="38.0" layoutY="138.0" text="Clientes registrados" textFill="#0e437c">
+      <Label layoutX="38.0" layoutY="138.0" text="Clientes registrados" textFill="#1e2a38">
          <font>
-            <Font size="36.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
       <TableView fx:id="tvClientes" layoutX="38.0" layoutY="207.0" prefHeight="285.0" prefWidth="838.0">

@@ -59,31 +59,72 @@ public class FXMLFormularioClienteController implements Initializable {
 
     @FXML
     private void onAceptar(ActionEvent event) {
-        if (tfNombre.getText().isEmpty() || tfApellidoPaterno.getText().isEmpty()
-                || tfNacionalidad.getText().isEmpty() || dpFechaNacimiento.getValue().isAfter(LocalDate.now())) {
-            Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos requeridos", 
-                    "Nombre y Dirección son campos obligatorios");
-            return;
-        }
+        if (validarCampos()){
         
-        // Actualizar objeto aeropuerto con los valores del formulario
-        cliente.setNombre(tfNombre.getText());
-        cliente.setApellidoPaterno(tfApellidoPaterno.getText());
-        cliente.setApellidoMaterno(tfApellidoMaterno.getText());
-        cliente.setNacionalidad(tfNacionalidad.getText());
-        
-        LocalDate fecha = dpFechaNacimiento.getValue();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String fechaFormateada = fecha.format(formatter);
-        cliente.setFechaNacimiento(fechaFormateada);
-        
-        confirmado = true;
-        ((Stage) tfNombre.getScene().getWindow()).close();  
+            // Actualizar objeto aeropuerto con los valores del formulario
+            cliente.setNombre(tfNombre.getText());
+            cliente.setApellidoPaterno(tfApellidoPaterno.getText());
+            cliente.setApellidoMaterno(tfApellidoMaterno.getText());
+            cliente.setNacionalidad(tfNacionalidad.getText());
+
+            LocalDate fecha = dpFechaNacimiento.getValue();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String fechaFormateada = fecha.format(formatter);
+            cliente.setFechaNacimiento(fechaFormateada);
+
+            confirmado = true;
+            ((Stage) tfNombre.getScene().getWindow()).close();  
+        }    
     }
 
     @FXML
     private void onCancelar(ActionEvent event) {
         confirmado = false;
         ((Stage) tfNombre.getScene().getWindow()).close(); 
+    }
+    
+    private boolean validarCampos(){
+        if(tfNombre.getText().isEmpty() || tfApellidoPaterno.getText().isEmpty() 
+           || tfApellidoMaterno.getText().isEmpty()
+           || tfNacionalidad.getText().isEmpty() || dpFechaNacimiento.getValue() == null){
+            Util.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos faltantes", 
+                    "No puede haber ningún campo vacío.");
+            return false;
+        }
+        
+        String regexLetras = "^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$";
+        if (!tfNombre.getText().matches(regexLetras)) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.ERROR,
+                "Nombre inválido",
+                "ERROR: Por favor ingrese un nombre válido."
+            );
+            return false;
+        }
+        if (!tfNacionalidad.getText().matches(regexLetras)) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.ERROR,
+                "Nacionalidad inválida",
+                "ERROR: Por favor ingrese una nacionalidad válida."
+            );
+            return false;
+        }
+        if (!tfApellidoPaterno.getText().matches(regexLetras)) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.ERROR,
+                "Apellido Paterno inválido",
+                "ERROR: Por favor ingrese un apellido paterno válido."
+            );
+            return false;
+        }
+        if (!tfApellidoMaterno.getText().matches(regexLetras)) {
+            Util.mostrarAlertaSimple(
+                Alert.AlertType.ERROR,
+                "Apellido Materno inválido",
+                "ERROR: Por favor ingrese un apellido materno válido."
+            );
+            return false;
+        }
+        return true;
     }
 }

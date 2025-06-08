@@ -64,7 +64,7 @@ public class FXMLCompraBoletoController implements Initializable {
     private ClienteDAO clienteDAO;
     private BoletoDAO boletoDAO;
     private AvionDAO avionDAO;
-
+    
     /**
      * Initializes the controller class.
      */
@@ -317,6 +317,21 @@ public class FXMLCompraBoletoController implements Initializable {
         celda.setBorder(PdfPCell.NO_BORDER);
         celda.setPadding(5);
         tabla.addCell(celda);
+    }
+
+    @FXML
+    private void btnCancelar(ActionEvent event) {
+        try{
+            Stage escenarioBase = (Stage) lbPrecio.getScene().getWindow();
+            Parent vista = FXMLLoader.load(JavaFXSistemaAerolineaUniAir.class.getResource("vista/FXMLBoleto.fxml"));
+            
+            Scene escenaPrincipal = new Scene(vista);
+            escenarioBase.setScene(escenaPrincipal);
+            escenarioBase.setTitle("Comprar boleto");
+            escenarioBase.show();
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
     }
     
 }

@@ -44,7 +44,7 @@
                <children>
                   <Label layoutX="38.0" layoutY="16.0" text="UniAir" textFill="WHITE">
                      <font>
-                        <Font size="50.0" />
+                        <Font name="System Bold" size="50.0" />
                      </font>
                   </Label>
                   <Button layoutX="1155.0" layoutY="28.0" mnemonicParsing="false" onAction="#onRegresar" style="-fx-background-color: #1E2A38; -fx-border-color: #FFF; -fx-cursor: hand;" text="Regresar" textFill="WHITE" />

@@ -37,7 +37,7 @@
             <Button fx:id="btnRegresar" layoutX="764.0" layoutY="27.0" mnemonicParsing="false" onAction="#onRegresar" style="-fx-background-color: #1E2A38; -fx-border-color: #FFF; -fx-cursor: hand;" text="Regresar" textFill="WHITE" />
             <Label layoutX="43.0" layoutY="21.0" text="UniAir" textFill="WHITE">
                <font>
-                  <Font size="50.0" />
+                  <Font name="System Bold" size="50.0" />
                </font>
             </Label>
          </children>

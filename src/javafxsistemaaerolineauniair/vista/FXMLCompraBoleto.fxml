@@ -29,7 +29,7 @@
       <Label layoutX="35.0" layoutY="149.0" text="Seleccione un cliente:" />
       <Label layoutX="360.0" layoutY="149.0" text="Seleccione un asiento:" />
       <Label fx:id="lbPrecio" layoutX="41.0" layoutY="288.0" prefHeight="35.0" prefWidth="130.0" />
-      <Button layoutX="463.0" layoutY="323.0" mnemonicParsing="false" onAction="#onSeleccionar" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Seleccionar" textFill="WHITE" />
-      <Button layoutX="357.0" layoutY="323.0" mnemonicParsing="false" onAction="#btnCancelar" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Cancelar" textFill="WHITE" />
+      <Button layoutX="360.0" layoutY="323.0" mnemonicParsing="false" onAction="#onSeleccionar" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Seleccionar" textFill="WHITE" />
+      <Button layoutX="484.0" layoutY="323.0" mnemonicParsing="false" onAction="#btnCancelar" style="-fx-background-color: #2F80ED; -fx-cursor: hand;" text="Cancelar" textFill="WHITE" />
    </children>
 </AnchorPane>

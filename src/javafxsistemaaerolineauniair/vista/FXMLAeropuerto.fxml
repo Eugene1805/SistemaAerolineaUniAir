@@ -13,7 +13,7 @@
    <children>
       <Label layoutX="40.0" layoutY="102.0" text="Aeropuertos Registradas" textFill="#1e2a38">
          <font>
-            <Font size="36.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
       <TableView fx:id="tvAeropuerto" layoutX="24.0" layoutY="166.0" prefHeight="342.0" prefWidth="850.0">
@@ -40,7 +40,7 @@
          <children>
             <Label layoutX="38.0" layoutY="16.0" text="UniAir" textFill="WHITE">
                <font>
-                  <Font size="50.0" />
+                  <Font name="System Bold" size="50.0" />
                </font>
             </Label>
             <Button layoutX="772.0" layoutY="25.0" mnemonicParsing="false" onAction="#onRegresar" style="-fx-background-color: #1E2A38; -fx-border-color: #FFF; -fx-cursor: hand;" text="Regresar" textFill="WHITE" />
